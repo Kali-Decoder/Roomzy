@@ -41,17 +41,17 @@ export default function TopNavbar() {
           className="sm:hidden"
         /> */}
         <NavbarBrand href="/" as={Link}>
-          <Clarity style={{ width: 48, marginRight: 4 }} />
+          
           <p
             style={{ color: "black" }}
-            className="font-extrabold text-black text-inherit"
+            className="font-extrabold text-3xl text-black text-inherit"
           >
-            Clarity
+            Roomzy
           </p>
         </NavbarBrand>
       </NavbarContent>
 
-      {/* <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
           <Link color="foreground" href="#">
             Features
@@ -67,7 +67,7 @@ export default function TopNavbar() {
             Integrations
           </Link>
         </NavbarItem>
-      </NavbarContent> */}
+      </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
           {/* <Link style={{ color: "black" }} href="#">
