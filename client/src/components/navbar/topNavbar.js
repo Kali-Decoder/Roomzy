@@ -12,6 +12,7 @@ import {
 } from "@nextui-org/react";
 //import logo as svg
 import { ReactComponent as Clarity } from "../../lib/logo2.svg";
+import MapIcon from '../../lib/icons/map-pin-simple-area.svg';
 
 export default function TopNavbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -42,12 +43,12 @@ export default function TopNavbar() {
         /> */}
         <NavbarBrand href="/" as={Link}>
           
-          <p
+          <span
             style={{ color: "black" }}
             className="font-extrabold text-3xl text-black text-inherit"
           >
-            Roomzy
-          </p>
+            Room<img src={MapIcon} alt="map" className="inline-block ml-1" />zy
+          </span>
         </NavbarBrand>
       </NavbarContent>
 
