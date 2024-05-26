@@ -25,9 +25,9 @@ export default function Hero() {
       >
         <div id="bgbgbg"></div>
         <p className="text-center uppercase text-lg font-light">
-          Not enough cashback?
+          Not you have Room Partner?
         </p>
-        <div className="">
+        <div className=" w-full mt-4">
           <h1
             className=" uppercase font-bold text-center"
             id="herotext"
@@ -36,8 +36,8 @@ export default function Hero() {
               lineHeight: "1em",
             }}
           >
-            Make daily purchases
-            <br /> & earn cash
+            Share your room with right roommates
+            <br /> & Earn Rewards
           </h1>
         </div>
         <CheckmarksHero />
