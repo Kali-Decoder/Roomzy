@@ -12,6 +12,7 @@ import {
 } from "@nextui-org/react";
 //import logo as svg
 import { ReactComponent as Clarity } from "../../lib/logo2.svg";
+import MapIcon from '../../lib/icons/map-pin-simple-area.svg';
 
 export default function TopNavbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
