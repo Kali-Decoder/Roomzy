@@ -64,20 +64,20 @@ export default function ExplanationHero() {
             <ol className="space-y-4">
               <li className="flex items-center">
                 <Image src={Step1} className="text-yellow-400 mr-2 h-8" />
-                <span>Select one of the cash back tools</span>
+                <span>Make yourself Register</span>
               </li>
               <li className="flex items-center">
                 <Image src={Step2} className="text-blue-400 mr-2 h-8" />
-                <span>Login or use anonymously</span>
+                <span>Search your prefer Location</span>
               </li>
               <li className="flex items-center">
                 <Image src={Step3} className="text-green-400 mr-2 h-8" />
-                <span>Save like never before!</span>
+                <span>And Boom 💥 Find  your Roommates</span>
               </li>
-              {/* <li className="flex items-center">
+              <li className="flex items-center">
                 <Image src={Step4} className="text-yellow-300 mr-2 h-8" />
-                <span>Get the best card for each purchase!</span>
-              </li> */}
+                <span>Checkout Best among them </span>
+              </li>
             </ol>
             <Button
               as={Link}
