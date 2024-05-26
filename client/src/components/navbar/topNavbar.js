@@ -42,12 +42,12 @@ export default function TopNavbar() {
         /> */}
         <NavbarBrand href="/" as={Link}>
           
-          <p
+          <span
             style={{ color: "black" }}
             className="font-extrabold text-3xl text-black text-inherit"
           >
-            Roomzy
-          </p>
+            Room<img src={MapIcon} alt="map" className="inline-block ml-1" />zy
+          </span>
         </NavbarBrand>
       </NavbarContent>
 
