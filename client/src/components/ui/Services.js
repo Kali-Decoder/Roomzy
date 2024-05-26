@@ -41,6 +41,16 @@ export default function Services() {
             src={ComingSoon}
             title={"Credit Card Comparison Tool"}
           />
+           <ToolsCard
+            className="card"
+            src={ComingSoon}
+            title={"Cashback Investment Calculator"}
+          />
+          <ToolsCard
+            className="card"
+            src={ComingSoon}
+            title={"Credit Card Comparison Tool"}
+          />
         </div>
       </div>
     </div>

@@ -35,14 +35,12 @@ export default function ByTheNumbers() {
 
   const popoverContext = (
     <div className="px-1 py-2">
-      <div className="text-small font-bold">How we calculate cashback?</div>
+      <div className="text-small font-bold">How we calculate TON Rewards?</div>
       <div className="text-small" style={{ maxWidth: 300 }}>
-        Typically, the average American credit card user, if utilizing cashback
-        options, earns between 1 to 2 percent cashback on purchases. However,
-        credit card issuers offer numerous deals with potential cashback rates
-        exceeding 20 percent. Our rewards calculation method incorporates an
-        estimated additional cashback of 2 to 5 percent of the annual spend,
-        leveraging these deals offered by credit card companies and banks.
+        To estimate potential earnings from renting out a property, calculate
+        annual rental income after deducting expenses. Consider cashback from
+        rental payments on credit cards and referral bonuses. Total these for
+        potential earnings.
       </div>
     </div>
   );
@@ -58,7 +56,7 @@ export default function ByTheNumbers() {
         }}
       >
         <h2 className="uppercase text-slate-800 color text-2xl font-black w-full text-center mb-4">
-          Numbers don't lie
+          Numbers don't lie ⚡️
         </h2>
         <div
           className="w-full max-w-md p-6 m-4 bg-white shadow-[0px_5px_0px_0px_#1a202c] rounded-lg"
@@ -70,7 +68,7 @@ export default function ByTheNumbers() {
           }}
         >
           <h1 className="text-2xl font-bold text-center mb-4 flex items-center justify-center">
-            Cashback Calculator{" "}
+           Reward Calculator{" "}
             <Popover
               showArrow
               backdrop={"opaque"}
@@ -115,8 +113,9 @@ export default function ByTheNumbers() {
             </Popover>
           </h1>
           <p className="text-center mb-12">
-            Estimate how much you could have earned in cashback with a credit
-            card accelerator based on your annual spend.
+            Calculate your potential earnings from{" "}
+            <span className="text-red-500">Renting out</span> a house or a PG
+            room as well as from referral bonuses.
           </p>
 
           <Input
@@ -165,7 +164,7 @@ export default function ByTheNumbers() {
                 style={{ border: "2px solid #1a202c" }}
                 variant="bordered"
               >
-                Get Cashback
+                Claim Cashback
               </Button>
             </div>
           </div>

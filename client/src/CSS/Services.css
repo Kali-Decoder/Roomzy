@@ -1,9 +1,10 @@
 /* Mobile devices (default) - single column layout */
 .card-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Small screens (2x2 grid) */
