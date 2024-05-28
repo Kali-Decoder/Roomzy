@@ -15,6 +15,16 @@ const AddRoomAvail = () => {
     "House keeping",
     "Gym nearby",
   ];
+
+  const amenties = [
+    "TV",
+    "Fridge",
+    "Kitchen",
+    "Wifi",
+    "Washing Machine",
+    "AC",
+    "Parking",
+  ];
   return (
     <>
       <div id="review_div">
@@ -36,7 +46,7 @@ const AddRoomAvail = () => {
             <label className="block" for="name">
               <p className="text-gray-600">Add your Location</p>
               <input
-                className="w-full rounded-md border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
+                className="w-full mt-2 rounded-md border bg-white px-2 py-3 outline-none ring-[#FE797A] focus:ring-1"
                 type="text"
                 placeholder="Location"
               />
@@ -44,7 +54,7 @@ const AddRoomAvail = () => {
             <label className="block" for="name">
               <p className="text-gray-600">Email Address</p>
               <input
-                className="w-full rounded-md border bg-white px-2 py-2 outline-none ring-blue-600 focus:ring-1"
+                className="w-full mt-2 rounded-md border bg-white px-2 py-3 outline-none ring-[#FE797A] focus:ring-1"
                 type="email"
                 placeholder="Enter your email"
               />
@@ -52,109 +62,111 @@ const AddRoomAvail = () => {
 
             <div className="space-y-2">
               <p className="text-gray-600">Looking For </p>
-
-              <div className="relative flex md:w-36 w-full items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
-                <input
-                  className="peer hidden"
-                  type="radio"
-                  name="framework"
-                  id="framework1"
-                  checked
-                />
-                <label
-                  className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
-                  for="framework1"
-                >
-                  {" "}
-                </label>
-                <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-orange-600 ring-offset-2"></div>
-                <span>MALE</span>
-              </div>
-              <div className="relative flex sm:w-36 w-full items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
-                <input
-                  className="peer hidden"
-                  type="radio"
-                  name="framework"
-                  id="framework2"
-                />
-                <label
-                  className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
-                  for="framework2"
-                >
-                  {" "}
-                </label>
-                <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-sky-500 ring-offset-2"></div>
-                <span className="mx-4">FEMALE</span>
-              </div>
-              <div className="relative flex sm:w-36 w-full items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
-                <input
-                  className="peer hidden"
-                  type="radio"
-                  name="framework"
-                  id="framework3"
-                />
-                <label
-                  className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
-                  for="framework3"
-                >
-                  {" "}
-                </label>
-                <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-emerald-400 ring-offset-2"></div>
-                <span>ANY</span>
+              <div class="grid sm:grid-cols-2 grid-cols-2 gap-2">
+                <div className="relative flex md:w-36 w-full items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
+                  <input
+                    className="peer hidden"
+                    type="radio"
+                    name="framework"
+                    id="framework1"
+                    checked
+                  />
+                  <label
+                    className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
+                    for="framework1"
+                  >
+                    {" "}
+                  </label>
+                  <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-orange-600 ring-offset-2"></div>
+                  <span>MALE</span>
+                </div>
+                <div className="relative flex sm:w-36 w-full items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
+                  <input
+                    className="peer hidden"
+                    type="radio"
+                    name="framework"
+                    id="framework2"
+                  />
+                  <label
+                    className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
+                    for="framework2"
+                  >
+                    {" "}
+                  </label>
+                  <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-sky-500 ring-offset-2"></div>
+                  <span className="mx-4">FEMALE</span>
+                </div>
+                <div className="relative flex sm:w-36 w-full items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
+                  <input
+                    className="peer hidden"
+                    type="radio"
+                    name="framework"
+                    id="framework3"
+                  />
+                  <label
+                    className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
+                    for="framework3"
+                  >
+                    {" "}
+                  </label>
+                  <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-emerald-400 ring-offset-2"></div>
+                  <span>ANY</span>
+                </div>
               </div>
             </div>
 
             <div className="space-y-2">
               <p className="text-gray-600">Occupancy </p>
-
-              <div className="relative flex md:w-36 w-full items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
-                <input
-                  className="peer hidden"
-                  type="radio"
-                  name="framework"
-                  id="framework4"
-                  checked
-                />
-                <label
-                  className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
-                  for="framework4"
-                >
-                  {" "}
-                </label>
-                <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-orange-600 ring-offset-2"></div>
-                <span>SINGLE</span>
-              </div>
-              <div className="relative flex sm:w-36 w-full items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
-                <input
-                  className="peer hidden"
-                  type="radio"
-                  name="framework"
-                  id="framework5"
-                />
-                <label
-                  className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
-                  for="framework5"
-                >
-                  {" "}
-                </label>
-                <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-sky-500 ring-offset-2"></div>
-                <span className="mx-4">SHARED</span>
-              </div>
-              <div className="relative flex sm:w-36 w-full items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
-                <input
-                  className="peer hidden"
-                  type="radio"
-                  name="framework"
-                  id="framework6"
-                />
-                <label
-                  className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
-                  for="framework6"
-                >
-                  {" "}
-                </label>
-                <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-sky-500 ring-offset-2"></div>
-                <span className="mx-4">ANY</span>
+              <div class="grid sm:grid-cols-2 grid-cols-2 gap-2">
+                <div className="relative flex  items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
+                  <input
+                    className="peer hidden"
+                    type="radio"
+                    name="framework"
+                    id="framework4"
+                    checked
+                  />
+                  <label
+                    className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
+                    for="framework4"
+                  >
+                    {" "}
+                  </label>
+                  <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-orange-600 ring-offset-2"></div>
+                  <span>SINGLE</span>
+                </div>
+                <div className="relative flex items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
+                  <input
+                    className="peer hidden"
+                    type="radio"
+                    name="framework"
+                    id="framework5"
+                  />
+                  <label
+                    className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
+                    for="framework5"
+                  >
+                    {" "}
+                  </label>
+                  <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-sky-500 ring-offset-2"></div>
+                  <span className="mx-4">SHARED</span>
+                </div>
+                <div className="relative flex items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
+                  <input
+                    className="peer hidden"
+                    type="radio"
+                    name="framework"
+                    id="framework6"
+                  />
+                  <label
+                    className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
+                    for="framework6"
+                  >
+                    {" "}
+                  </label>
+                  <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-sky-500 ring-offset-2"></div>
+                  <span className="mx-4">ANY</span>
+                </div>
               </div>
             </div>
             <h2 className="text- font-medium text-gray-700">
@@ -186,7 +198,9 @@ const AddRoomAvail = () => {
             </div>
 
             <div className="space-y-2">
-              <p className="text-gray-600">Do you want to make your mobile visible to others </p>
+              <p className="text-gray-600">
+                Do you want to make your mobile visible to others{" "}
+              </p>
 
               <div className="relative flex md:w-36 w-full items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
                 <input
@@ -221,7 +235,41 @@ const AddRoomAvail = () => {
                 <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-sky-500 ring-offset-2"></div>
                 <span className="mx-4">NO MAKE IT PRIVATE</span>
               </div>
-             
+              <p className="text-xs mt-3">
+                NOTE* : If your phone number is private other can ontact you
+                through telegram
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <p className="text-gray-600">Amenties</p>
+
+              <div class="grid sm:grid-cols-3 grid-cols-2 gap-4">
+                {amenties.map((ele, i) => {
+                  return (
+                    <>
+                      <div className="flex flex-col justify-center items-center">
+                        <div className="relative overflow-hidden flex border  rounded-full items-center justify-center w-25 h-25 bg-gray-50 px-4 py-3 font-medium text-gray-700">
+                          <input
+                            className="peer hidden"
+                            type="checkbox"
+                            name="amenties"
+                            id={`amenties${i}`}
+                          />
+                          <label
+                            className="peer-checked:border-[#FE797A] peer-checked:border-2 absolute top-0 h-full w-full cursor-pointer rounded-full border"
+                            for={`amenties${i}`}
+                          >
+                            {" "}
+                          </label>
+                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQekcrL1wdy13S8K9V7nqZ1UYhlAJzNsz1ilyH02U9dSw&s" />
+                        </div>
+                        <span className=" font-bold text-xs mt-2">{ele}</span>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
             </div>
             <Button
               style={{ border: "1px solid #1a202c" }}
