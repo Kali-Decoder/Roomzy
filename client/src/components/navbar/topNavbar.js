@@ -78,7 +78,6 @@ export default function TopNavbar() {
         <NavbarItem>
           <Button
             as={Link}
-            href="https://forms.gle/kcRvqnSBm1XSQVfa7"
             style={{ border: "1px solid #1a202c" }}
             target="_blank"
             variant="bordered"
