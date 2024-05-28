@@ -6,6 +6,7 @@ import Reviews from "./pages/reviews";
 import PageNotFound from "./pages/notFound";
 import AddRoomAvail from "./pages/add-room-avail";
 import "./output.css";
+import RegisterUser from "./pages/register-user";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/review" element={<Reviews />} />
         <Route path="*" element={<PageNotFound />} />
         <Route path="/add-room-avail" element={<AddRoomAvail />} />
+        <Route path="/register-user" element={<RegisterUser />} />
       </Routes>
     </Router>
   );

@@ -78,6 +78,7 @@ export default function TopNavbar() {
         <NavbarItem>
           <Button
             as={Link}
+            href="/register-user"
             style={{ border: "1px solid #1a202c" }}
             target="_blank"
             variant="bordered"
