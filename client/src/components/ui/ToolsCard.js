@@ -23,11 +23,9 @@ export default function ToolsCard({ src, isBlack = false, title }) {
         className="overflow-visible py-2"
       >
         <h3
-          className="text-md p-[4
-                px]"
+          className="text-2xl font-bold p-[4px]"
           style={{
             maxWidth: 190,
-            fontWeight: 400,
             color: isBlack ? "white" : "black",
           }}
         >

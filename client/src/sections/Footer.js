@@ -1,19 +1,24 @@
 import { ReactComponent as Logo } from "../lib/logo2.svg";
-
+import MapIcon from '../lib/icons/map-pin-simple-area-bold.svg';
 export default function Footer() {
   return (
     <footer key="1" className="bg-white py-6 mt-12">
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-center items-center space-x-4">
           {/* Full-width hr elements */}
-          <hr className="w-1/2 border-gray-200" />
+          <hr className="w-1/3 border-gray-200" />
           {/* Container for words and logo */}
-          <div className="flex items-center">
-            <span className="text-lg font-semibold text-gray-800">Cards</span>
-            <Logo style={{ width: 48, height: "auto", margin: "0 8px" }} />
-            <span className="text-lg font-semibold text-gray-800">Clarity</span>
+          <div className="flex">
+            <span
+              style={{ color: "black" }}
+              className="font-extrabold text-3xl text-black text-inherit align-middle"
+            >
+              Room
+              <img src={MapIcon} alt="map" className="inline-block ml-1" />
+              zy
+            </span>
           </div>
-          <hr className="w-1/2 border-gray-200" />
+          <hr className="w-1/3 border-gray-200" />
         </div>
         <div className="flex justify-center space-x-4 mt-4">
           <FacebookIcon className="text-gray-600" />
@@ -23,7 +28,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center mt-4">
           <div className="flex space-x-4 text-sm text-gray-600">
             <a className="hover:text-gray-800" href="#">
-              Legal Stuff
+              Legal Rooms
             </a>
             <span>|</span>
             <a className="hover:text-gray-800" href="#">
@@ -31,7 +36,7 @@ export default function Footer() {
             </a>
             <span>|</span>
             <a className="hover:text-gray-800" href="#">
-              Security
+              Security of Information
             </a>
             {/* <span>|</span>
             <a className="hover:text-gray-800" href="#">
@@ -42,7 +47,7 @@ export default function Footer() {
               Manage Cookies
             </a> */}
           </div>
-          <div className="text-sm text-gray-600 mt-4 md:mt-0">
+          <div className="text-sm text-gray-600 mt-8 md:mt-4">
             © {new Date().getFullYear()} Cards Clarity. All rights reserved.
           </div>
         </div>

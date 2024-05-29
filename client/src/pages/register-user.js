@@ -8,7 +8,7 @@ const RegisterUser = () => {
         <TopNavbar />
         <div
           style={{ border: "3px solid #1a202c" }}
-          className="sm:w-[38rem] shadow-[0px_8px_0px_0px_#1a202c]  w-[95%] mx-auto my-4 overflow-hidden rounded-2xl bg-white sm:max-w-lg"
+          className="sm:w-[38rem] shadow-[0px_8px_0px_0px_#1a202c]   w-[95%] mx-auto my-4 overflow-hidden rounded-2xl bg-white sm:max-w-lg"
         >
           <div className=" px-10 py-10 text-center text-black">
             <p className="uppercase text-2xl font-semibold">
@@ -107,12 +107,41 @@ const RegisterUser = () => {
                 </div>
               </div>
             </div>
+            <div className="space-y-2">
+              <p className="text-gray-600">Choose your Avatar</p>
 
+              <div class="grid sm:grid-cols-4 grid-cols-3 gap-4">
+                {[1,2,4,5,6,7,8,9].map((ele, i) => {
+                  return (
+                    <>
+                      <div className="flex flex-col justify-center items-center">
+                        <div className="relative overflow-hidden flex border  rounded-full items-center justify-center w-20 h-20 bg-gray-50 px-4 py-3 font-medium text-gray-700">
+                          <input
+                            className="peer hidden"
+                            type="radio"
+                            name="amenties"
+                            id={`amenties${i}`}
+                          />
+                          <label
+                            className="peer-checked:border-[#FE797A] peer-checked:border-2 absolute top-0 h-full w-full cursor-pointer rounded-full border"
+                            for={`amenties${i}`}
+                          >
+                            {" "}
+                          </label>
+                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQekcrL1wdy13S8K9V7nqZ1UYhlAJzNsz1ilyH02U9dSw&s" />
+                        </div>
+                        <span className=" font-bold text-xs mt-2">{ele}</span>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+            </div>
             <Button
-              style={{ border: "1px solid #1a202c" }}
+              style={{ border: "1px solid #1a202c",marginBottom:"20px" , marginTop:"20px" }}
               target="_blank"
               variant="bordered"
-              className="shadow-[0px_3px_0px_0px_#1a202c] w-full py-3 mt-8 uppercase"
+              className="shadow-[0px_3px_0px_0px_#1a202c] w-full py-3  mt-8 uppercase"
             >
               Register Your Self
             </Button>

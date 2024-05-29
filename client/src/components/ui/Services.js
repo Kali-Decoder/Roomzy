@@ -17,39 +17,39 @@ export default function Services() {
     >
       <div id="bgbgbg2"></div>
       <div style={{ maxWidth: 800 }}>
-        <h2 className="uppercase text-slate-800 mt-14 color text-2xl font-black w-full text-center mb-4">
-          Credit Card Tools for You
+        <h2 className="uppercase text-slate-800 mt-14 color text-4xl font-black w-full text-center mb-8">
+          View Rooms in popular cities
         </h2>
         <div className="card-container">
           <ToolsCard
             className="card"
             src={ComingSoon}
-            title={"Credit Card Reviews"}
+            title={"Bangalore"}
           />
           <ToolsCard
             className="card"
             src={ComingSoon}
-            title={"Points to Dollars Converter"}
+            title={"Pune"}
           />
           <ToolsCard
             className="card"
             src={ComingSoon}
-            title={"Cashback Investment Calculator"}
+            title={"Delhi"}
           />
           <ToolsCard
             className="card"
             src={ComingSoon}
-            title={"Credit Card Comparison Tool"}
+            title={"Mumbai"}
           />
            <ToolsCard
             className="card"
             src={ComingSoon}
-            title={"Cashback Investment Calculator"}
+            title={"Hyderabad"}
           />
           <ToolsCard
             className="card"
             src={ComingSoon}
-            title={"Credit Card Comparison Tool"}
+            title={"Chennai"}
           />
         </div>
       </div>
