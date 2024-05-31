@@ -69,7 +69,7 @@ export default function PageNotFound() {
                 as={Link}
                 size="lg"
                 variant="flat"
-                href="mailto:cardsclarity@gmail.com"
+                href="mailto:cardsroomzy@gmail.com"
               >
                 Contact us
               </Button>

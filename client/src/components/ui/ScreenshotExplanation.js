@@ -7,7 +7,7 @@ export default function ScreenshotExplanation() {
         <div className="flex flex-col-reverse lg:flex-row items-center py-8 lg:py-16">
           <div className="lg:w-1/2" style={{ width: "45%" }}>
             <h1 className="text-3xl font-bold leading-tight text-gray-900 sm:text-4xl sm:leading-none lg:text-5xl">
-              Clarity is here to assist you with your payments and financial
+              roomzy is here to assist you with your payments and financial
               needs.
             </h1>
             <div className="mt-6 space-y-4">

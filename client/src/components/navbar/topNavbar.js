@@ -11,7 +11,7 @@ import {
   Button,
 } from "@nextui-org/react";
 //import logo as svg
-import { ReactComponent as Clarity } from "../../lib/logo2.svg";
+import { ReactComponent as roomzy } from "../../lib/logo2.svg";
 import MapIcon from '../../lib/icons/map-pin-simple-area-bold.svg';
 
 export default function TopNavbar() {

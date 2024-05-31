@@ -19,6 +19,7 @@ export default function App() {
         <Route path="/add-room-avail" element={<AddRoomAvail />} />
         <Route path="/register-user" element={<RegisterUser />} />
         <Route path="/questions" element={<Questionaries />} />
+        
       </Routes>
     </Router>
   );

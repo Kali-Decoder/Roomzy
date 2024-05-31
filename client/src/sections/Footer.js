@@ -48,7 +48,7 @@ export default function Footer() {
             </a> */}
           </div>
           <div className="text-sm text-gray-600 mt-8 md:mt-4">
-            © {new Date().getFullYear()} Cards Clarity. All rights reserved.
+            © {new Date().getFullYear()} Cards roomzy. All rights reserved.
           </div>
         </div>
       </div>

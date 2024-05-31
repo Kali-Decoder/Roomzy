@@ -29,9 +29,9 @@ export default function FAQ() {
         <AccordionItem
           style={{ padding: "4px 0" }}
           key="1"
-          title="How does Clarity help me earn more cashback?"
+          title="How does roomzy help me earn more cashback?"
         >
-          Clarity simplifies the process of earning cashback. We show you which
+          roomzy simplifies the process of earning cashback. We show you which
           of your credit cards will give you the highest cashback for your
           purchases, and we suggest new cards that could boost your rewards even
           further.
@@ -39,7 +39,7 @@ export default function FAQ() {
         <AccordionItem
           style={{ padding: "4px 0" }}
           key="2"
-          title="Do I need to understand complex algorithms to use Clarity?"
+          title="Do I need to understand complex algorithms to use roomzy?"
         >
           No complex algorithms here! We focus on providing straightforward,
           actionable advice so you can easily maximize your cashback rewards.
@@ -47,16 +47,16 @@ export default function FAQ() {
         <AccordionItem
           style={{ padding: "4px 0" }}
           key="3"
-          title="Is Clarity suitable for people who aren't tech-savvy?"
+          title="Is roomzy suitable for people who aren't tech-savvy?"
         >
-          Yes, Clarity is designed to be user-friendly for everyone. Our
+          Yes, roomzy is designed to be user-friendly for everyone. Our
           platform is intuitive, making it simple to start earning more cashback
           right away.
         </AccordionItem>
         <AccordionItem
           style={{ padding: "4px 0" }}
           key="4"
-          title="Will Clarity recommend credit cards that I don't need?"
+          title="Will roomzy recommend credit cards that I don't need?"
         >
           We aim to recommend cards that will genuinely improve your cashback
           earnings, without overwhelming you with unnecessary options.
@@ -64,18 +64,18 @@ export default function FAQ() {
         <AccordionItem
           style={{ padding: "4px 0" }}
           key="5"
-          title="How does Clarity remain unbiased in its recommendations?"
+          title="How does roomzy remain unbiased in its recommendations?"
         >
-          Clarity is not affiliated with any credit card companies, ensuring our
+          roomzy is not affiliated with any credit card companies, ensuring our
           recommendations are based solely on what's best for your cashback
           strategy.
         </AccordionItem>
         <AccordionItem
           style={{ padding: "4px 0" }}
           key="6"
-          title="Can Clarity help me if I'm new to credit cards?"
+          title="Can roomzy help me if I'm new to credit cards?"
         >
-          Absolutely! Clarity is a great tool for both new and experienced
+          Absolutely! roomzy is a great tool for both new and experienced
           credit card users to maximize their rewards.
         </AccordionItem>
         <AccordionItem
@@ -89,7 +89,7 @@ export default function FAQ() {
         <AccordionItem
           style={{ padding: "4px 0" }}
           key="8"
-          title="How do I get started with Clarity?"
+          title="How do I get started with roomzy?"
         >
           Sign up on our website for the beta test, once approved, add your
           credit cards, and we'll show you how to get the most cashback from
@@ -102,7 +102,7 @@ export default function FAQ() {
       <div style={{ textAlign: "center" }}>
         <Button
           as={Link}
-          href="mailto:cardsclarity@gmail.com"
+          href="mailto:cardsroomzy@gmail.com"
           target="__blank"
           className="shadow-[0px_3px_0px_0px_#1a202c]"
           style={{ border: "2px solid #1a202c", margin: "0 auto" }}
