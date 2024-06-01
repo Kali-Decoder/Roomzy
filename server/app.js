@@ -16,7 +16,7 @@ app.use(handleError);
 
 // routes
 app.use('/api/v1/user',userRouter);
-app.use('api/v1/rooms',roomRouter);
+app.use('/api/v1/rooms',roomRouter);
 
 
 export default app;

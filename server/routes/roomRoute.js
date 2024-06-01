@@ -4,7 +4,7 @@ import { createRoom,getAllRooms,getRoomById,updateRoom,deleteRoom } from "../con
 
 const router=express.Router();
 
-router.post('/', auth, createRoom);
+router.post('/create', auth, createRoom);
 router.get('/', auth, getAllRooms);
 router.get('/:id', auth, getRoomById);
 router.put('/:id', auth, updateRoom);
