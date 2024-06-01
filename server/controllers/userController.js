@@ -115,8 +115,8 @@ export const changePassword = async (req, res, next) => {
 
 export const getUserProfile = async (req, res, next) => {
     try {
-      const user = await User.findById(req.user.id);
-  
+      const user = await User.findById(req.user.id).populate('preferences');
+      
       if (!user) {
         return next(new ErrorHandler(404, 'User not found'));
       }
@@ -129,6 +129,7 @@ export const getUserProfile = async (req, res, next) => {
       next(error);
     }
   };
+  
 
   export const updateUserProfile = async (req, res, next) => {
     try {
