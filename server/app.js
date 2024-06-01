@@ -4,6 +4,7 @@ import { handleError } from './middlewares/error.js';
 import cors from 'cors';
 import userRouter from './routes/userRoute.js'
 import roomRouter from './routes/roomRoute.js'
+import expenseRouter from './routes/expenseRoute.js'
 
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(handleError);
 // routes
 app.use('/api/v1/user',userRouter);
 app.use('/api/v1/rooms',roomRouter);
+app.use('/api/v1/expenses',expenseRouter);
 
 
 export default app;
