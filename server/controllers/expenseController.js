@@ -82,3 +82,51 @@ export const settleExpense = async (req, res, next) => {
     next(error);
   }
 };
+
+export const shareExpense = async (req, res, next) => {
+  const { expenseId, userId } = req.body;
+
+  try {
+    const expense = await Expense.findById(expenseId);
+
+    if (!expense) {
+      return next(new ErrorHandler(404, 'Expense not found'));
+    }
+
+
+    if (expense.paid_by !== req.user.id) {
+      return next(new ErrorHandler(403, 'You are not authorized to share this expense'));
+    }
+
+    if (!expense.shared_by.includes(userId)) {
+      expense.shared_by.push(userId);
+      await expense.save();
+    }
+
+    res.status(200).json({ success: true, message: 'Expense shared successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+export const addOwnShare = async (req, res, next) => {
+  const { expenseId, userId, amount } = req.body;
+
+  try {
+  
+    const expense = await Expense.findById(expenseId);
+
+    if (!expense) {
+      return next(new ErrorHandler(404, 'Expense not found'));
+    }
+
+   
+    expense.shared_by.push({ user: userId, amount });
+    await expense.save();
+
+    res.status(200).json({ success: true, message: 'Your share added successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
