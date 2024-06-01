@@ -1,4 +1,4 @@
-import Room from "../model/room.model";
+import Room from "../model/room.model.js";
 import { ErrorHandler } from '../utils/errorHandler.js';
 
 export const createRoom = async (req, res, next) => {

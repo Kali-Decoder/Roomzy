@@ -1,4 +1,4 @@
-import Review from '../models/review.model.js';
+import Review from '../model/review.model.js';
 
 export const addReview = async (req, res, next) => {
   try {
@@ -26,4 +26,3 @@ export const getReviews = async (req, res, next) => {
     }
   };
 
-  

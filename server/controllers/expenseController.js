@@ -1,5 +1,5 @@
 import Expense from "../model/expense.model";
-import { ErrorHandler } from "../utils/errorHandler";
+import { ErrorHandler } from "../utils/errorHandler.js";
 
 export const addExpense = async (req, res, next) => {
     try {
@@ -27,4 +27,4 @@ export const addExpense = async (req, res, next) => {
     }
   };
 
-  
+  //todo: split balance logic,history data controller,

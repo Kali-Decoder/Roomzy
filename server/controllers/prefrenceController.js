@@ -1,5 +1,5 @@
-import Preference from "../model/preference.model";
-import { ErrorHandler } from "../utils/errorHandler";
+import Preference from "../model/preference.model.js";
+import { ErrorHandler } from "../utils/errorHandler.js";
 
 export const setPreferences = async (req, res, next) => {
     try {
@@ -31,4 +31,3 @@ export const setPreferences = async (req, res, next) => {
     }
   };
 
-  

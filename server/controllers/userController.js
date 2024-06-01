@@ -1,5 +1,5 @@
-import User from '../models/user.model.js';
-import sendTokenResponse from '../utils/sendTokenResponse.js';
+import User from '../model/user.model.js';
+import sendTokenResponse from '../utils/jwtToken.js';
 import { ErrorHandler } from '../utils/errorHandler.js';
 
 export const registerUser = async (req, res, next) => {
@@ -150,7 +150,7 @@ export const getUserProfile = async (req, res, next) => {
     }
   };
 
-  
+
 
 
 
