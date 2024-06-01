@@ -8,7 +8,6 @@ dotenv.config();
 
 const PORT = process.env.PORT || 8000;
 
-// MongoDB connection
 connectDB();
 
 const token="6637473201:AAG6H4SMtFQuKbCVhKImOSf2QQT_QblvvyU"
