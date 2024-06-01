@@ -1,32 +1,25 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
+import { connectDB } from './db.js';
+import app from './app.js';
 
 dotenv.config();
 
-const app = express();
-const port = process.env.PORT || 8000;
+
+const PORT = process.env.PORT || 8000;
 
 // MongoDB connection
-const mongoUri = process.env.MONGO_URI;
+connectDB();
 
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch((error) => {
-    console.error('Error connecting to MongoDB:', error);
-  });
-
-// Middleware
-app.use(express.json());
-
-// Ping route
-app.get('/ping', (req, res) => {
-  res.send('Hi, From Roomzy Server.');
+process.on('uncaughtException', err => {
+  console.error('Uncaught Exception:', err);
+  process.exit(1);
 });
 
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+  process.exit(1);
+});
+
+app.listen(PORT, () => {
+  console.log(`Running on PORT ${PORT}`);
 });
