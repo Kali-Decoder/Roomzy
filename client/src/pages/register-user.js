@@ -1,6 +1,7 @@
 import React from "react";
 import TopNavbar from "../components/navbar/topNavbar";
 import { Button } from "@nextui-org/react";
+
 const RegisterUser = () => {
   return (
     <>

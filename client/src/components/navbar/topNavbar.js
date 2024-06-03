@@ -42,12 +42,13 @@ export default function TopNavbar() {
           className="sm:hidden"
         /> */}
         <NavbarBrand href="/" as={Link}>
-          
           <span
             style={{ color: "black" }}
             className="font-extrabold text-3xl text-black text-inherit align-middle"
           >
-            Room<img src={MapIcon} alt="map" className="inline-block ml-1" />zy
+            Room
+            <img src={MapIcon} alt="map" className="inline-block ml-1" />
+            zy
           </span>
         </NavbarBrand>
       </NavbarContent>
@@ -84,6 +85,17 @@ export default function TopNavbar() {
             className="shadow-[0px_3px_0px_0px_#1a202c] "
           >
             Beta Registration
+          </Button>
+        </NavbarItem>
+        <NavbarItem>
+          <Button
+            as={Link}
+            href="/login"
+            style={{ border: "1px solid #1a202c" }}
+            variant="bordered"
+            className="shadow-[0px_3px_0px_0px_#1a202c] "
+          >
+            Login
           </Button>
         </NavbarItem>
       </NavbarContent>
