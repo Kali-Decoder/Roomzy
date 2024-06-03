@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import TopNavbar from "../components/navbar/topNavbar";
 import { Button } from "@nextui-org/react";
+import { login } from "../api/apiRequest";
 
 const LoginUser = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async () => {
+    const response = await login(email, password);
+    if (response.success) {
+      console.log("Login successful");
+    } else {
+      console.log("Login failed:", response.error);
+    }
+  };
+
   return (
     <>
       <div id="login_div">
@@ -26,6 +39,8 @@ const LoginUser = () => {
                 type="email"
                 placeholder="you@example.com"
                 id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </label>
 
@@ -36,6 +51,8 @@ const LoginUser = () => {
                 type="password"
                 placeholder="********"
                 id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </label>
 
@@ -45,9 +62,9 @@ const LoginUser = () => {
                 marginBottom: "20px",
                 marginTop: "20px",
               }}
-              target="_blank"
               variant="bordered"
               className="shadow-[0px_3px_0px_0px_#1a202c] w-full py-3 mt-8 uppercase"
+              onClick={handleLogin}
             >
               Login
             </Button>
