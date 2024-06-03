@@ -1,10 +1,15 @@
 import Room from "../model/room.model.js";
+import User from "../model/user.model.js";
 import { ErrorHandler } from '../utils/errorHandler.js';
 
 export const createRoom = async (req, res, next) => {
   try {
     console.log("createRoom")
-    const room = await Room.create({ ...req.body, user_id: req.user.id });
+    const room = await Room.create({
+      ...req.body,
+      user_id: req.user.id,
+      preferences: req.user.preferences,
+    });
 
     res.status(201).json({
       success: true,
