@@ -1,7 +1,7 @@
 import React from "react";
 import { Image } from "@nextui-org/react";
-import cardsInHands from "../lib/img/credit_cards_in_hands.png";
-import phoneCashback from "../lib/img/phone_received_cashback.png";
+import perfectMatch from "../lib/img/perfect_match.png";
+import socialConnections from "../lib/img/social_connection.png";
 import cardsTrophey from "../lib/img/cards_trophey.png";
 
 const ExplainBlock = ({ title, description, imageSrc, reverse }) => {
@@ -41,20 +41,20 @@ const App = () => {
   return (
     <>
       <ExplainBlock
-        title="The Struggle is Real"
-        description="Let's be honest, keeping track of all those different credit card rewards can be a real headache. Which card gives you the best cashback for groceries? What about gas? And don't even get us started on those annual fees..."
-        imageSrc={cardsInHands}
+        title="FIND YOUR PERFECT MATCH"
+        description="Navigating the world of roommate searches and PG accommodations can be overwhelming. With Roomzy, you don't have to worry about financial stability or compatibility issues. Our app provides access to the credit scores of potential roommates and PGs, ensuring you find financially reliable living partners who share your lifestyle and habits."
+        imageSrc={perfectMatch}
         reverse={false}
       />
       <ExplainBlock
-        title="Maximize Your Cashback Rewards"
-        description="That's where we come in! Get a clear overview of your cards and see exactly where you're earning (or missing out!). We'll highlight areas for improvement so you can make smarter choices."
-        imageSrc={phoneCashback}
+        title="SEAMLESS SOCIAL CONNECTIONS"
+        description="Roomzy makes finding a roommate easy and fun by leveraging your social connections. Discover compatible roommates at events or meetups with our unique social connection feature. Turn casual encounters into rewarding living arrangements with our Suggestion Partner Rewards program, based on shared interests and mutual friends."
+        imageSrc={socialConnections}
         reverse={true}
       />
       <ExplainBlock
-        title="Unbiased Card Rankings"
-        description="Forget those shady affiliate sites. Our rankings are 100% unbiased, giving you the real scoop on the best cashback cards out there."
+        title="SEAMLESS CONNECTIVITY AND FINANCIAL TRANSPARENCY"
+        description="Stay connected with potential roommates through Telegram. Roomzy's Profile Maintenance tools help you present your best self, simplifying living arrangements. Our platform offers robust expense management with a shared ledger for rooms, hotels, and more, ensuring financial transparency and peace of mind."
         imageSrc={cardsTrophey}
         reverse={false}
       />
