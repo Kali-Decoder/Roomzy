@@ -9,6 +9,7 @@ import "./output.css";
 import RegisterUser from "./pages/register-user";
 import Questionaries from "./pages/preference";
 import RecommendedUsers from "./pages/recommended-users";
+import LoginUser from "./pages/login";
 
 export default function App() {
   return (
@@ -20,7 +21,8 @@ export default function App() {
         <Route path="/add-room-avail" element={<AddRoomAvail />} />
         <Route path="/register-user" element={<RegisterUser />} />
         <Route path="/questions" element={<Questionaries />} />
-      <Route path="/generate-list" element={<RecommendedUsers />} />        
+        <Route path="/generate-list" element={<RecommendedUsers />} />  
+        <Route path="/login" element={<LoginUser />} />  
       </Routes>
     </Router>
   );
