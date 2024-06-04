@@ -63,7 +63,7 @@ const RecommendedUsers = () => {
 
   const openFilter = () => {
     setFilterBox(!filterBox);
-  }
+  };
 
   return (
     <>
@@ -85,14 +85,14 @@ const RecommendedUsers = () => {
           <div className="relative w-full">
             <div className="flex w-full absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"></div>
             <input
-              type="search"
+              type="text"
               id="default-search"
-              className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-red-400 focus:border-red-400 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-400 dark:focus:border-red-400"
+              className="block p-4 pl-10 pr-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-red-400 focus:border-red-400 appearance-none"
               placeholder="Search by location"
               required
             />
 
-            <div className="absolute inset-y-0 right-3 flex items-center pr-3 cursor-pointer">
+            <div className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer">
               <div
                 className="w-10 h-10 flex items-center justify-center bg-transparent border border-gray-300 rounded-full"
                 onClick={() => openFilter()}
