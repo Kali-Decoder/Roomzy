@@ -73,7 +73,7 @@ const RecommendedUsers = () => {
         className="grid mb-12 grid-cols-12 min-h-screen items-center max-w-screen-lg mx-auto px-5 gap-x-3 place-content-center"
       >
         <h1 className="capitalize col-span-12 text-left mb-5 text-3xl font-bold">
-          Clients List as Per your Recommended Tags
+          Listed Users
         </h1>
         <form className="col-span-12 md:col-span-6">
           {/* <label
