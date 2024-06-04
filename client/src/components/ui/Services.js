@@ -20,7 +20,7 @@ export default function Services() {
         <h2 className="uppercase text-slate-800 mt-14 color text-4xl font-black w-full text-center mb-8">
           View Rooms in popular cities
         </h2>
-        <div className="card-container">
+        <div className="container mx-auto grid grid-cols-1 justify-items-center sm:grid-cols-3 sm:gap-x-36 sm:gap-y-10 gap-y-4">
           <ToolsCard
             className="card"
             src={ComingSoon}

@@ -10,6 +10,7 @@ import RegisterUser from "./pages/register-user";
 import Questionaries from "./pages/preference";
 import RecommendedUsers from "./pages/recommended-users";
 import LoginUser from "./pages/login";
+import ListEvents from "./pages/list-events";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/questions" element={<Questionaries />} />
         <Route path="/generate-list" element={<RecommendedUsers />} />  
         <Route path="/login" element={<LoginUser />} />  
+        <Route path="/events" element={<ListEvents />} />
       </Routes>
     </Router>
   );
