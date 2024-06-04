@@ -11,7 +11,7 @@ const ListEvents = () => {
       chain: "Ton",
       location: "Delhi , India",
       tags: ["Ton", "Party", "Bootcamp", "Tact Smart Contracts"],
-      icon: "https://img.icons8.com/ios/50/000000/ethereum.png",
+      icon: "https://s3.coinmarketcap.com/static/img/portraits/6304d4f7dcf54d0fb59743ba.png",
     },
     {
       eventName: "Ethereum DevCon",
@@ -119,10 +119,74 @@ const ListEvents = () => {
         style={{ border: "3px solid #1a202c" }}
         className="cursor-pointer mx-auto my-4 max-w-xs rounded-xl px-6 py-10 shadow-[0px_4px_0px_0px_#1a202c]  text-gray-600"
       >
+        <div className="flex justify-between items-center">
         <div className="mb-6 w-12 h-12 flex justify-center items-center overflow-hidden shadow-xl rounded-full bg-blue-100 px-2 py-1 text-sm font-medium text-blue-700">
           <img src={event.icon} />
         </div>
-        <p className="mb-2 text-2xl">{event.eventName}</p>
+        <div className="flex gap-2">
+        <div className="mb-6 w-8 h-8 flex justify-center items-center overflow-hidden shadow-xl rounded-full bg-blue-100 px-2 py-1 text-sm font-medium text-blue-700">
+        <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#cc6161"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-calendar-check"
+            >
+              <path d="M8 2v4" />
+              <path d="M16 2v4" />
+              <rect width="18" height="18" x="3" y="4" rx="2" />
+              <path d="M3 10h18" />
+              <path d="m9 16 2 2 4-4" />
+            </svg>
+        </div>
+        <div className="mb-6 w-8 h-8 flex justify-center items-center overflow-hidden shadow-xl rounded-full bg-blue-100 px-2 py-1 text-sm font-medium text-blue-700">
+        <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#cc6161"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-calendar-check"
+            >
+              <path d="M8 2v4" />
+              <path d="M16 2v4" />
+              <rect width="18" height="18" x="3" y="4" rx="2" />
+              <path d="M3 10h18" />
+              <path d="m9 16 2 2 4-4" />
+            </svg>
+        </div>
+        <div className="mb-6 w-8 h-8 flex justify-center items-center overflow-hidden shadow-xl rounded-full bg-blue-100 px-2 py-1 text-sm font-medium text-blue-700">
+        <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#cc6161"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-calendar-check"
+            >
+              <path d="M8 2v4" />
+              <path d="M16 2v4" />
+              <rect width="18" height="18" x="3" y="4" rx="2" />
+              <path d="M3 10h18" />
+              <path d="m9 16 2 2 4-4" />
+            </svg>
+        </div>
+        </div>
+        </div>
+        <p className="mb-2 text-2xl text-black">{event.eventName}</p>
         <p className="mb-2 text-md text-gray-800 font-serif">
           ​{event.description}
         </p>
@@ -203,7 +267,7 @@ const ListEvents = () => {
       <section className="container mx-auto sm:px-20 px-2">
         <div className="mx-auto grid  0 px-4 py-2 grid-cols-1 md:grid-cols-2 md:px-8 lg:grid-cols-3 gap-x-2">
           <div className=" flex justify-center items-center">
-            <h2 className="text-3xl font-medium text-center uppercase text-black">
+            <h2 className="text-5xl font-bold text-center tracking-wider uppercase text-black">
               Technical <br />
               Events.
               <br />
