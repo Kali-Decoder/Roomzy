@@ -70,7 +70,7 @@ const RecommendedUsers = () => {
       <TopNavbar />
       <div
         id="app"
-        className="grid mb-12 grid-cols-12 min-h-screen items-center max-w-screen-lg mx-auto px-5 gap-x-3 place-content-center"
+        className="grid mb-12 grid-cols-12 min-h-screen items-center max-w-screen-lg mx-auto px-5 gap-x-3 place-content-center justify-center"
       >
         <h1 className="capitalize col-span-12 text-left mb-5 text-3xl font-bold">
           Listed Users
