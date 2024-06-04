@@ -11,7 +11,7 @@ import ExplainBlocks from "../sections/ExplainBlocks";
 
 export default function Main() {
   return (
-    <div id="app">
+    <div>
       <TopNavbar />
       <Hero />
       <ExplanationHero />

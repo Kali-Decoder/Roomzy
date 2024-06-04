@@ -8,9 +8,7 @@
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
 }
-#app {
-  overflow-x: hidden;
-}
+
 :root {
   --clr-gray-light: #d7dfe2;
   --clr-gray-med: #616b74;
