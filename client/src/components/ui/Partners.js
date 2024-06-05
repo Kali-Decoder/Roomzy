@@ -25,31 +25,31 @@ export default function Partners() {
 
   const banks = [
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Bank_of_America_logo.svg/2560px-Bank_of_America_logo.svg.png",
-      alt: "Bank of America",
+      src: "https://ton.app/media/5c99e268-7c6e-4712-bc9c-1aa244ca0166.jpg?w=1000&q=50",
+      alt: "TON Keeper Wallet",
     },
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Chase_logo_2007.svg/1200px-Chase_logo_2007.svg.png",
-      alt: "Chase",
+      src: "https://ton.app/media/d2db8af3-b5fa-458b-a721-7142b2c82112.png?w=1000&q=50",
+      alt: "MyTon Wallet",
     },
     {
-      src: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Citibank.svg/2560px-Citibank.svg.png",
-      alt: "Citibank",
+      src: "https://ton.app/media/89f2c6f5-6b18-4f4b-9b57-1912397345dc.png?w=1000&q=50",
+      alt: "TonHub",
     },
     {
-      src: Amex,
-      alt: "American Express",
+      src: "https://ton.app/media/a59c4405-1086-456e-8100-9dc1e5763ff4.jpg?w=1000&q=50",
+      alt: "Trust Wallet",
     },
   ];
 
   return (
     <div style={styles}>
       <div className="h-full max-w-6xl px-8 pb-12 mx-auto md:px-12 lg:px-32">
-        <div className="px-6 mx-auto max-w-7xl lg:px-8">
-          <h2 className="text-lg leading-8 text-center text-gray-900">
-            We work with your favorite banks.
+        <div className="px-6 mx-auto max-w-7xl flex justify-center items-center flex-col lg:px-8">
+          <h2 className="text-xl uppercase leading-8 text-center text-gray-900">
+            We work with your favorite Telegram Wallets.
           </h2>
-          <div className="grid gridpartners">
+          <div className="gap-4 mt-5 flex">
             {banks.map((bank, index) => (
               <div key={index}>
                 <Image

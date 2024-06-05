@@ -24,8 +24,8 @@ export default function Hero() {
         }}
       >
         <div id="bgbgbg"></div>
-        <p className="text-center uppercase text-lg font-light">
-          Not you have Room Partner?
+        <p className="text-center uppercase text-lg mt-5 font-light">
+          Searching for Room or Roommate?
         </p>
         <div className=" w-full mt-4">
           <h1
