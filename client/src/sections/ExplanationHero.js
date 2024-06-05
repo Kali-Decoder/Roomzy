@@ -1,5 +1,8 @@
 import { Button, Card, CardBody, Image, Link } from "@nextui-org/react";
-import HeroImage from "../lib/img/hero.png";
+import first from "../lib/img/5.webp";
+import second from "../lib/img/6.webp";
+import third from "../lib/img/9.webp";
+import fifth from "../lib/img/3.jpeg";
 import HeroImageMobile from "../lib/img/hero-mobile.png";
 import Step1 from "../lib/img/step1.png";
 import Step2 from "../lib/img/step2.png";
@@ -33,22 +36,14 @@ export default function ExplanationHero() {
           justifyContent: isMobile ? "center" : "unset",
         }}
       >
-        <Image
-          alt="Product"
-          className="h-auto lg:w-auto"
-          height="600"
-          src={isMobile ? HeroImageMobile : HeroImage}
-          style={{
-            aspectRatio: isMobile ? "unset" : "860/630",
-            objectFit: isMobile ? "contain" : "cover",
-            width: isMobile ? "100%" : "95vw",
-            maxWidth: isMobile ? "500px" : "1100px",
-            height: isMobile ? "auto" : undefined,
-          }}
-        />
+        <div class="grid gap-0 sm:grid-cols-1 justify-items-center container mx-auto lg:grid-cols-2">
+          <img src={first} alt="Image 1" class="w-80 h-auto order-2 sm:order-1 rounded" />
+          <img src={second} alt="Image 2" class="w-80 h-auto order-3  sm:order-2 rounded" />
+          <img src={third} alt="Image 3" class="w-100 h-auto order-1  sm:order-3 rounded" />
+        </div>
       </div>
 
-      <div className="pt-8 lg:absolute lg:right-10 lg:-bottom-40">
+      <div className="pt-8 lg:absolute lg:right-10 mb-10 lg:-bottom-40">
         <Card
           aria-describedby="product-explanation"
           className="shadow-[0px_5px_0px_0px_#1a202c] lg:pt-0 flex items-center justify-center p-4 mx-auto lg:mx-0 mb-8 lg:mb-0"
@@ -72,7 +67,7 @@ export default function ExplanationHero() {
               </li>
               <li className="flex items-center">
                 <Image src={Step3} className="text-green-400 mr-2 h-8" />
-                <span>And Boom 💥 Find  your Roommates</span>
+                <span>And Boom 💥 Find your Roommates</span>
               </li>
               <li className="flex items-center">
                 <Image src={Step4} className="text-yellow-300 mr-2 h-8" />

@@ -46,7 +46,7 @@ export default function Partners() {
     <div style={styles}>
       <div className="h-full max-w-6xl px-8 pb-12 mx-auto md:px-12 lg:px-32">
         <div className="px-6 mx-auto max-w-7xl flex justify-center items-center flex-col lg:px-8">
-          <h2 className="text-xl uppercase leading-8 text-center text-gray-900">
+          <h2 className="text-xl uppercase leading-8 font-mono text-center text-gray-900">
             We work with your favorite Telegram Wallets.
           </h2>
           <div className="gap-4 mt-5 flex">

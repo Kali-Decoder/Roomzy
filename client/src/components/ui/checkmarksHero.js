@@ -5,19 +5,19 @@ export default function CheckmarksHero() {
       <div className="flex items-center space-x-2">
         <CheckIcon className="text-blue-500" />
         <span className="text-xs sm:text-sm font-medium text-gray-700">
-          No banking logins
+          Matching
         </span>
       </div>
       <div className="flex items-center space-x-2">
         <CheckIcon className="text-blue-500" />
         <span className="text-xs sm:text-sm font-medium text-gray-700">
-          No data selling
+          Direct Messaging
         </span>
       </div>
       <div className="flex items-center space-x-2">
         <CheckIcon className="text-blue-500" />
         <span className="text-xs sm:text-sm font-medium text-gray-700">
-          100% secure
+          Earn Rewards
         </span>
       </div>
     </div>

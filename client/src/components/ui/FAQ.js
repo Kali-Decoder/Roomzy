@@ -18,7 +18,7 @@ export default function FAQ() {
         width: "95vw",
       }}
     >
-      <h2 className="uppercase text-slate-800 color text-2xl font-black w-full text-center mb-4">
+      <h2 className="uppercase font-mono text-slate-800 color text-2xl font-black w-full text-center mb-4">
         you ask - we answer!
       </h2>
       <Accordion

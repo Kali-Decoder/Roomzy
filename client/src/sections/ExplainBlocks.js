@@ -26,10 +26,10 @@ const ExplainBlock = ({ title, description, imageSrc, reverse }) => {
         </div>
         <div className="flex items-center p-8">
           <div>
-            <h2 className="font-black uppercase text-2xl md:text-2xl mb-4">
+            <h2 className="text-black px-2  bg-blue-300 uppercase text-2xl md:text-2xl mb-4">
               {title}
             </h2>
-            <p>{description}</p>
+            <p className="bg-yellow-100 px-3 font-mono py-2">{description}</p>
           </div>
         </div>
       </div>
