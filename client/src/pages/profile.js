@@ -1,14 +1,15 @@
 import React from "react";
 import TopNavbar from "../components/navbar/topNavbar";
+import Preferences from "../components/ui/Preference";
 
 const ProfilePage = () => {
   return (
     <>
       <TopNavbar />
       <div className="container mx-auto flex-col items-center flex mt-4">
-        <div class="py-8 px-8 sm:w-1/3 w-[100%] hover:shadow-xl cursor-pointer mt-10 mx-auto bg-white rounded-xl sm:border-3 border-dotted  space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
+        <div class="py-4 px-8 flex flex-row justify-between sm:w-1/3 w-[100%] hover:shadow-xl cursor-pointer mt-10 mx-auto bg-white rounded-xl sm:border-3 border-dotted  space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6">
           <img
-            class="block mx-auto h-24 rounded-full sm:mx-0 sm:shrink-0"
+            class="block h-24 rounded-full sm:mx-0 sm:shrink-0"
             src="https://tailwindcss.com/img/erin-lindford.jpg"
             alt="Woman's Face"
           />
@@ -40,7 +41,7 @@ const ProfilePage = () => {
             <div class="mt-4 flex items-center rounded-lg bg-gray-100 py-1 px-2 text-gray-600">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="mr-2 h-6 w-6 shrink-0 text-indigo-600"
+                class="mr-2 h-6 w-6 shrink-0 text-red-300"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -58,7 +59,7 @@ const ProfilePage = () => {
             <div class="mt-4 flex items-center rounded-lg bg-gray-100 py-1 px-2 text-gray-600">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="mr-2 h-6 w-6 shrink-0 text-indigo-600"
+                class="mr-2 h-6 w-6 shrink-0 text-red-300"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -78,7 +79,7 @@ const ProfilePage = () => {
             <div class="mt-4 flex items-center rounded-lg bg-gray-100 py-1 px-2 text-gray-600">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="mr-2 h-6 w-6 shrink-0 text-indigo-600"
+                class="mr-2 h-6 w-6 shrink-0 text-red-300"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -149,37 +150,7 @@ const ProfilePage = () => {
             </div>
           </div>
 
-          <div class="max-w-md  border-3 border-dotted rounded-lg bg-white p-6 pb-10 text-gray-900">
-            <p class="text-lg font-medium">Traffic Sources</p>
-            <div class="mt-4">
-              <p class="float-left mb-2">Direct</p>
-              <span class="float-right mb-2">20,00</span>
-              <div class="h-1.5 w-full overflow-hidden rounded-full bg-gray-50">
-                <div class="h-full w-10/12 overflow-hidden rounded-full bg-indigo-600"></div>
-              </div>
-            </div>
-            <div class="mt-4">
-              <p class="float-left mb-2">Referral</p>
-              <span class="float-right mb-2">2,000</span>
-              <div class="h-1.5 w-full overflow-hidden rounded-full bg-gray-50">
-                <div class="h-full w-4/12 overflow-hidden rounded-full bg-indigo-600"></div>
-              </div>
-            </div>
-            <div class="mt-4">
-              <p class="float-left mb-2">Google</p>
-              <span class="float-right mb-2">1,500</span>
-              <div class="h-1.5 w-full overflow-hidden rounded-full bg-gray-50">
-                <div class="h-full w-3/12 overflow-hidden rounded-full bg-indigo-600"></div>
-              </div>
-            </div>
-            <div class="mt-4">
-              <p class="float-left mb-2">Facebook</p>
-              <span class="float-right mb-2">260</span>
-              <div class="h-1.5 w-full overflow-hidden rounded-full bg-gray-50">
-                <div class="h-full w-1/12 overflow-hidden rounded-full bg-indigo-600"></div>
-              </div>
-            </div>
-          </div>
+          <Preferences />
         </div>
       </div>
     </>

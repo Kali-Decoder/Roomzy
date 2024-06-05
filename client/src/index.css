@@ -12,9 +12,9 @@
 
 #profile-progress {
   border: 1em solid white;
-  border-right-color: #4a00e0;
-  border-top-color: #4a00e0;
-  border-bottom-color: #4a00e0;
+  border-right-color: #ff7a7a;
+  border-top-color: #ff7a7a;
+  border-bottom-color: #ff7a7a;
   animation: thickening 1s 0.5s linear normal;
   border-left-color: white;
   border-radius: 50%;
