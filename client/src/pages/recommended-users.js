@@ -3,8 +3,11 @@ import LocationIcon from "../lib/icons/location.svg";
 import TelegramIcon from "../lib/icons/telegram.svg";
 import FilterIcon from "../lib/icons/filter.svg";
 import TopNavbar from "../components/navbar/topNavbar";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@nextui-org/react";
 
 const RecommendedUsers = () => {
+  const navigate = useNavigate();
   const [activeTag, setActiveTag] = useState("all");
   const tags = ["all", "male", "female"];
   const [filterBox, setFilterBox] = useState(false);
@@ -127,8 +130,11 @@ const RecommendedUsers = () => {
             return (
               <div
                 key={user.telegram_username}
-                style={{ border: "3px solid #1a202c" }}
-                className="col-span-12 shadow-[0px_4px_0px_0px_#1a202c] md:col-span-6 lg:col-span-4 sm:flex rounded-lg p-5 gap-5 h-full border border-transparent cursor-pointer hover:shadow-lg "
+                style={{
+                  border: "3px solid #1a202c",
+                  transition: "transform 0.3s ease-in-out",
+                }}
+                className="col-span-12 shadow-[0px_4px_0px_0px_#1a202c] md:col-span-6 lg:col-span-4 sm:flex rounded-lg p-5 gap-5 h-full border border-transparent cursor-pointer hover:shadow-lg hover:transform hover:scale-105"
               >
                 <img
                   src={user.photo}
@@ -188,15 +194,22 @@ const RecommendedUsers = () => {
                       </span>
                     </div>
                   </div>
-
-                  <div className="flex flex-row items-center justify-between">
+                  <div className="flex flex-row w-full items-center justify-between">
                     <span className="block text-sm">
                       <b>{user.distance}</b>{" "}
                       <span className="text-xs">from your search</span>
                     </span>
-                    <button className="bg-red-300 text-[14px] text-black font-md font-semibold py-1 px-4 rounded-lg hover:bg-red-400 hover:shadow-lg transition duration-300 ease-in-out">
-                      Details
-                    </button>
+                    <Button
+                      onClick={() => navigate("/listing-details")}
+                      style={{
+                        border: "1px solid #1a202c",
+                      }}
+                      target="_blank"
+                      variant="bordered"
+                      className="shadow-[0px_3px_0px_0px_#1a202c] w-[40%] py-3 mt-3 uppercase"
+                    >
+                      View Details
+                    </Button>
                   </div>
                 </div>
               </div>

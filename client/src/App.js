@@ -12,6 +12,8 @@ import RecommendedUsers from "./pages/recommended-users";
 import LoginUser from "./pages/login";
 import ListEvents from "./pages/list-events";
 import ProfilePage from "./pages/profile";
+import ListingDetails from "./pages/listing-details";
+
 
 export default function App() {
   return (
@@ -27,6 +29,7 @@ export default function App() {
         <Route path="/login" element={<LoginUser />} />  
         <Route path="/events" element={<ListEvents />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/listing-details" element={<ListingDetails />} />
       </Routes>
     </Router>
   );
