@@ -45,13 +45,13 @@ export default function Hero() {
           <Button
             as={Link}
             size="lg"
-            href="https://forms.gle/kcRvqnSBm1XSQVfa7"
-            target="__blank"
+            href="/add-room-avail"
+     
             variant="bordered"
             className="shadow-[0px_3px_0px_0px_#1a202c] "
             style={{ border: "2px solid #1a202c" }}
           >
-            Beta Registration
+            Add Your Room Now
           </Button>
           <Button onClick={handleLearnMoreClick} size="lg" variant="flat">
             Learn more
