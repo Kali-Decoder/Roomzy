@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
   date_of_birth: { type: Date },
   profile_picture_url: { type: String },
   bio: { type: String },
-  preferences: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Preference' }],
+  preferences: { type: mongoose.Schema.Types.ObjectId, ref: 'Preference' },
   created_at: { type: Date, default: Date.now },
 });
 

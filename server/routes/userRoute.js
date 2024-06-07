@@ -11,7 +11,7 @@ router.get('/logout', logoutUser);
 router.put('/changePassword', auth, changePassword);  
 router.get('/profile', auth, getUserProfile);
 router.put('/profile', auth, updateUserProfile);
-router.post('/preferences', auth, setPreferences);
+router.put('/preferences', auth, setPreferences);
 router.get('/preferences', auth, getPreferences);
 
 export default router;
