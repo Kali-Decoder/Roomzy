@@ -86,14 +86,17 @@ const AddRoomAvail = () => {
         alert("No token found. Please log in.");
         return;
       }
-      const response = await fetch("https://freely-mate.vercel.app/api/v1/rooms/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWUxMWQwNmViODQ4MmY0YjhlYmYwNiIsImlhdCI6MTcxNzc4Njk1MywiZXhwIjoxNzE4MzkxNzUzfQ.KEvkR8W_hGqr6lCVOXqRObT2PQkUx94zNmxA_8X3fN8`
-        },
-        body: JSON.stringify(transformedData),
-      });
+      const response = await fetch(
+        "http://localhost:4000/api/v1/rooms/create",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(transformedData),
+        }
+      );
 
       if (response.ok) {
         alert("Room details added successfully!");
