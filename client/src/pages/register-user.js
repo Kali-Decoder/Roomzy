@@ -1,8 +1,22 @@
 import React from "react";
 import TopNavbar from "../components/navbar/topNavbar";
 import { Button } from "@nextui-org/react";
-
+import { TonConnectButton } from "@tonconnect/ui-react";
+import { useTonConnectUI } from "@tonconnect/ui-react";
+import { useTonConnect } from "../hooks/useTonConnect";
 const RegisterUser = () => {
+  const { connected, sender } = useTonConnect();
+
+  async function makeAnTransaction() {
+    try {
+      await sender.send({
+        to: "UQCHptP27Vq6Gl13oUSzgqssWj1OYUpdREd-N2jbF7xrkkr4",
+        amount: 2,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <>
       <div id="review_div">
@@ -29,8 +43,10 @@ const RegisterUser = () => {
                 placeholder="Nikku.jr.Dev"
               />
             </label>
-            
-
+            <TonConnectButton />
+            <button className="px-3 py-1 rounded-lg border mt-3" onClick={()=>{
+              makeAnTransaction();
+            }}>Send Money</button>
             <div className="space-y-4">
               <p className="text-gray-600 mt-3">Gender</p>
               <div class="grid sm:grid-cols-2 grid-cols-2 gap-2">
@@ -112,7 +128,7 @@ const RegisterUser = () => {
               <p className="text-gray-600">Choose your Avatar</p>
 
               <div class="grid sm:grid-cols-4 grid-cols-3 gap-4">
-                {[1,2,4,5,6,7,8,9].map((ele, i) => {
+                {[1, 2, 4, 5, 6, 7, 8, 9].map((ele, i) => {
                   return (
                     <>
                       <div className="flex flex-col justify-center items-center">
@@ -139,7 +155,11 @@ const RegisterUser = () => {
               </div>
             </div>
             <Button
-              style={{ border: "1px solid #1a202c",marginBottom:"20px" , marginTop:"20px" }}
+              style={{
+                border: "1px solid #1a202c",
+                marginBottom: "20px",
+                marginTop: "20px",
+              }}
               target="_blank"
               variant="bordered"
               className="shadow-[0px_3px_0px_0px_#1a202c] w-full py-3  mt-8 uppercase"

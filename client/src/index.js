@@ -5,12 +5,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { NextUIProvider } from "@nextui-org/react";
 import { Analytics } from "@vercel/analytics/react";
-
+import { TonConnectUIProvider } from "@tonconnect/ui-react";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <NextUIProvider>
-      <App />
+      <TonConnectUIProvider manifestUrl="http://localhost:5173//tonconnect-manifest.json">
+        <App />
+      </TonConnectUIProvider>
+
       <Analytics />
     </NextUIProvider>
   </React.StrictMode>
