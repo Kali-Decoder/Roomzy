@@ -204,7 +204,6 @@ const RecommendedUsers = () => {
                       style={{
                         border: "1px solid #1a202c",
                       }}
-                      target="_blank"
                       variant="bordered"
                       className="shadow-[0px_3px_0px_0px_#1a202c] w-[40%] py-3 mt-3 uppercase"
                     >

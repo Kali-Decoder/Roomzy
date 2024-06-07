@@ -140,7 +140,6 @@ const RegisterUser = () => {
             </div>
             <Button
               style={{ border: "1px solid #1a202c",marginBottom:"20px" , marginTop:"20px" }}
-              target="_blank"
               variant="bordered"
               className="shadow-[0px_3px_0px_0px_#1a202c] w-full py-3  mt-8 uppercase"
             >

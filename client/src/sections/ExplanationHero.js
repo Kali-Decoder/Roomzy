@@ -77,7 +77,6 @@ export default function ExplanationHero() {
             <Button
               as={Link}
               href="https://forms.gle/kcRvqnSBm1XSQVfa7"
-              target="__blank"
               className="shadow-[0px_3px_0px_0px_#1a202c] mt-4"
               style={{ border: "2px solid #1a202c" }}
               variant="bordered"

@@ -59,7 +59,6 @@ const Questionaries = () => {
               marginBottom: "20px",
               marginTop: "20px",
             }}
-            target="_blank"
             variant="bordered"
             className="shadow-[0px_3px_0px_0px_#1a202c] py-3  mt-12 uppercase"
           >
