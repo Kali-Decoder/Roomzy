@@ -13,6 +13,7 @@ import LoginUser from "./pages/login";
 import ListEvents from "./pages/list-events";
 import ProfilePage from "./pages/profile";
 import ListingDetails from "./pages/listing-details";
+import Bill from "./components/billing/Bill";
 
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/events" element={<ListEvents />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/listing-details" element={<ListingDetails />} />
+        <Route path="/billing" element={<Bill/>} />
       </Routes>
     </Router>
   );

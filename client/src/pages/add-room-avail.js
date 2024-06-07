@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import TopNavbar from "../components/navbar/topNavbar";
-import MapIcon from '../lib/icons/map-pin-simple-area-bold.svg';
 import { Button } from "@nextui-org/react";
 const AddRoomAvail = () => {
   const highlights = [
@@ -26,6 +25,100 @@ const AddRoomAvail = () => {
     "AC",
     "Parking",
   ];
+
+  const [formData, setFormData] = useState({
+    address: "",
+    city: "",
+    state: "",
+    country: "",
+    pincode: "",
+    lookingFor: "",
+    maxRoommates: "",
+    highlights: [],
+    availableFrom: "",
+    availableTill: "",
+    amenities: [],
+  });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    if (type === "checkbox") {
+      if (checked) {
+        setFormData({
+          ...formData,
+          [name]: [...formData[name], value],
+        });
+      } else {
+        setFormData({
+          ...formData,
+          [name]: formData[name].filter((item) => item !== value),
+        });
+      }
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const transformedData = {
+        members_max: formData.maxRoommates,
+        address: formData.address,
+        city: formData.city,
+        state: formData.state,
+        pin_code: formData.pincode,
+        country: formData.country,
+        price: formData.price,
+        looking_for:formData.lookingFor,
+        available_from: formData.availableFrom,
+        available_to: formData.availableTill,
+        highlights: formData.highlights,
+        amenities: formData.amenities, 
+      };
+      console.log(transformedData);
+      const token=localStorage.getItem('token');
+      console.log(token);
+      if (!token) {
+        alert("No token found. Please log in.");
+        return;
+      }
+      const response = await fetch("https://freely-mate.vercel.app/api/v1/rooms/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NWUxMWQwNmViODQ4MmY0YjhlYmYwNiIsImlhdCI6MTcxNzc4Njk1MywiZXhwIjoxNzE4MzkxNzUzfQ.KEvkR8W_hGqr6lCVOXqRObT2PQkUx94zNmxA_8X3fN8`
+        },
+        body: JSON.stringify(transformedData),
+      });
+
+      if (response.ok) {
+        alert("Room details added successfully!");
+        setFormData({
+          address: "",
+          city: "",
+          state: "",
+          country: "",
+          pincode: "",
+          lookingFor: "",
+          maxRoommates: "",
+          highlights: [],
+          availableFrom: "",
+          availableTill: "",
+          amenities: [],
+        });
+      } else {
+        alert("Error adding room details.");
+      }
+    } catch (error) {
+      alert("Network error.");
+    }
+  };
+
+
   return (
     <>
       <div id="review_div">
@@ -44,37 +137,81 @@ const AddRoomAvail = () => {
           </div>
 
           <div className="space-y-4 px-8 py-4">
-            <label className="block" for="name">
-              <p className="text-gray-600">Add your Location</p>
+            <label className="block" htmlFor="address">
+              <p className="text-gray-600">Add your Address</p>
               <input
                 className="w-full mt-2 rounded-md border bg-white px-2 py-3 outline-none ring-[#FE797A] focus:ring-1"
                 type="text"
+                name="address"
                 placeholder="Location"
+                value={formData.address}
+                onChange={handleChange}
               />
             </label>
-            <label className="block" for="name">
-              <p className="text-gray-600">Email Address</p>
-              <input
-                className="w-full mt-2 rounded-md border bg-white px-2 py-3 outline-none ring-[#FE797A] focus:ring-1"
-                type="email"
-                placeholder="Enter your email"
-              />
-            </label>
-
+            <div className="flex gap-4 flex-row justify-between items-center">           
+            <label className="block" htmlFor="city">
+                <p className="text-gray-600">City</p>
+                <input
+                  className="w-full mt-2 rounded-md border bg-white px-2 py-3 outline-none ring-[#FE797A] focus:ring-1"
+                  type="text"
+                  name="city"
+                  placeholder="City"
+                  value={formData.city}
+                  onChange={handleChange}
+                />
+              </label>
+              <label className="block" htmlFor="state">
+                <p className="text-gray-600">State</p>
+                <input
+                  className="w-full mt-2 rounded-md border bg-white px-2 py-3 outline-none ring-[#FE797A] focus:ring-1"
+                  type="text"
+                  name="state"
+                  placeholder="State"
+                  value={formData.state}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+            <div className="flex gap-4 flex-row justify-between items-center">           
+            <label className="block" htmlFor="country">
+                <p className="text-gray-600">Country</p>
+                <input
+                  className="w-full mt-2 rounded-md border bg-white px-2 py-3 outline-none ring-[#FE797A] focus:ring-1"
+                  type="text"
+                  name="country"
+                  placeholder="Country"
+                  value={formData.country}
+                  onChange={handleChange}
+                />
+              </label>
+              <label className="block" htmlFor="pincode">
+                <p className="text-gray-600">Pincode</p>
+                <input
+                  className="w-full mt-2 rounded-md border bg-white px-2 py-3 outline-none ring-[#FE797A] focus:ring-1"
+                  type="text"
+                  name="pincode"
+                  placeholder="Pincode"
+                  value={formData.pincode}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
             <div className="space-y-2">
               <p className="text-gray-600">Looking For </p>
               <div class="grid sm:grid-cols-2 grid-cols-2 gap-2">
                 <div className="relative flex md:w-36 w-full items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
                   <input
-                    className="peer hidden"
-                    type="radio"
-                    name="framework"
-                    id="framework1"
-                    checked
+                     className="peer hidden"
+                     type="radio"
+                     name="lookingFor"
+                     id="lookingForMale"
+                     value="Male"
+                     checked={formData.lookingFor === "Male"}
+                     onChange={handleChange}
                   />
                   <label
                     className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
-                    for="framework1"
+                    htmlFor="lookingForMale"
                   >
                     {" "}
                   </label>
@@ -85,8 +222,11 @@ const AddRoomAvail = () => {
                   <input
                     className="peer hidden"
                     type="radio"
-                    name="framework"
-                    id="framework2"
+                    name="lookingFor"
+                    id="lookingForFemale"
+                    value="Female"
+                    checked={formData.lookingFor === "Female"}
+                    onChange={handleChange}
                   />
                   <label
                     className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
@@ -101,8 +241,11 @@ const AddRoomAvail = () => {
                   <input
                     className="peer hidden"
                     type="radio"
-                    name="framework"
-                    id="framework3"
+                    name="lookingFor"
+                    id="lookingForAny"
+                    value="Any"
+                    checked={formData.lookingFor === "Any"}
+                    onChange={handleChange}
                   />
                   <label
                     className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
@@ -117,56 +260,64 @@ const AddRoomAvail = () => {
             </div>
 
             <div className="space-y-2">
-              <p className="text-gray-600">Occupancy </p>
-              <div class="grid sm:grid-cols-2 grid-cols-2 gap-2">
+              <p className="text-gray-600">Max roommates needed </p>
+              <div class="grid sm:grid-cols-3 grid-cols-2 gap-2">
                 <div className="relative flex  items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
                   <input
                     className="peer hidden"
                     type="radio"
-                    name="framework"
-                    id="framework4"
-                    checked
+                    name="maxRoommates"
+                    id="maxRoommates1"
+                    value="1"
+                    checked={formData.maxRoommates === "1"}
+                    onChange={handleChange}
                   />
                   <label
                     className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
-                    for="framework4"
+                    htmlFor="maxRoommates1"
                   >
                     {" "}
                   </label>
                   <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-orange-600 ring-offset-2"></div>
-                  <span>SINGLE</span>
+                  <span>1</span>
                 </div>
                 <div className="relative flex items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
                   <input
                     className="peer hidden"
                     type="radio"
-                    name="framework"
-                    id="framework5"
+                    name="maxRoommates"
+                    id="maxRoommates2"
+                    value="2"
+                    checked={formData.maxRoommates === "2"}
+                    onChange={handleChange}
                   />
                   <label
                     className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
-                    for="framework5"
+                    htmlFor="maxRoommates2"
                   >
                     {" "}
                   </label>
                   <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-sky-500 ring-offset-2"></div>
-                  <span className="mx-4">SHARED</span>
+                  <span className="mx-4">2</span>
                 </div>
                 <div className="relative flex items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
                   <input
                     className="peer hidden"
                     type="radio"
-                    name="framework"
-                    id="framework6"
+                    name="maxRoommates"
+                    id="maxRoommates3"
+                    value="3"
+                    checked={formData.maxRoommates === "3"}
+                    onChange={handleChange}
                   />
                   <label
                     className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
-                    for="framework6"
+                    for="maxRoommates3"
                   >
                     {" "}
                   </label>
                   <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-sky-500 ring-offset-2"></div>
-                  <span className="mx-4">ANY</span>
+                  <span className="mx-4">3</span>
                 </div>
               </div>
             </div>
@@ -176,16 +327,19 @@ const AddRoomAvail = () => {
             <div class="grid sm:grid-cols-2 grid-cols-1 gap-4">
               {highlights.map((ele, i) => {
                 return (
-                  <div className="relative flex w-46 items-center rounded bg-gray-50 py-3 px-4 pl-14 font-medium text-gray-700">
+                  <div key={i} className="relative flex w-46 items-center rounded bg-gray-50 py-3 px-4 pl-14 font-medium text-gray-700">
                     <input
                       className="peer hidden"
                       type="checkbox"
-                      name={`title+ ${i}`}
-                      id={`title+ ${i}`}
+                      name="highlights"
+                      id={`highlight-${i}`}
+                      value={ele}
+                      checked={formData.highlights.includes(ele)}
+                      onChange={handleChange}
                     />
                     <label
                       className="absolute left-0 top-0 h-full w-full cursor-pointer rounded-md border peer-checked:border-[#FE797A] peer-checked:bg-[#FE797A]"
-                      for={`title+ ${i}`}
+                      htmlFor={`highlight-${i}`}
                     >
                       {" "}
                     </label>
@@ -199,21 +353,23 @@ const AddRoomAvail = () => {
             </div>
 
             <div className="space-y-2">
-              <p className="text-gray-600">
-                Do you want to make your mobile visible to others{" "}
-              </p>
+              {/* <p className="text-gray-600">
+                Do you want to make your mobile number visible to others{" "}
+              </p> */}
 
-              <div className="relative flex md:w-36 w-full items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
+              {/* <div className="relative flex md:w-36 w-full items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
                 <input
                   className="peer hidden"
                   type="radio"
-                  name="framework"
-                  id="framework10"
-                  checked
+                  name="mobileVisibility"
+                  id="mobileVisibilityYes"
+                  value="public"
+                  checked={formData.mobileVisibility === "public"}
+                  onChange={handleChange}
                 />
                 <label
                   className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
-                  for="framework10"
+                  htmlFor="mobileVisibilityYes"
                 >
                   {" "}
                 </label>
@@ -224,12 +380,15 @@ const AddRoomAvail = () => {
                 <input
                   className="peer hidden"
                   type="radio"
-                  name="framework"
-                  id="frameworK11"
+                  name="mobileVisibility"
+                  id="mobileVisibilityNo"
+                  value="private"
+                  checked={formData.mobileVisibility === "private"}
+                  onChange={handleChange}
                 />
                 <label
                   className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
-                  for="framework11"
+                  for="mobileVisibilityNo"
                 >
                   {" "}
                 </label>
@@ -239,7 +398,30 @@ const AddRoomAvail = () => {
               <p className="text-xs mt-3">
                 NOTE* : If your phone number is private other can ontact you
                 through telegram
-              </p>
+              </p> */}
+              <label className="block" htmlFor="availableFrom">
+              <p className="text-gray-600">Available From</p>
+              <input
+                className="w-full mt-2 rounded-md border bg-white px-2 py-3 outline-none ring-[#FE797A] focus:ring-1"
+                type="date"
+                name="availableFrom"
+                id="availableFrom"
+                value={formData.availableFrom}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label className="block" htmlFor="availableTill">
+              <p className="text-gray-600">Available Till</p>
+              <input
+                className="w-full mt-2 rounded-md border bg-white px-2 py-3 outline-none ring-[#FE797A] focus:ring-1"
+                type="date"
+                name="availableTill"
+                id="availableTill"
+                value={formData.availableTill}
+                onChange={handleChange}
+              />
+            </label>
             </div>
 
             <div className="space-y-2">
@@ -248,14 +430,17 @@ const AddRoomAvail = () => {
               <div class="grid sm:grid-cols-3 grid-cols-2 gap-4">
                 {amenties.map((ele, i) => {
                   return (
-                    <>
-                      <div className="flex flex-col justify-center items-center">
+                  
+                      <div  key={i}  className="flex flex-col justify-center items-center">
                         <div className="relative overflow-hidden flex border  rounded-full items-center justify-center w-25 h-25 bg-gray-50 px-4 py-3 font-medium text-gray-700">
                           <input
                             className="peer hidden"
                             type="checkbox"
-                            name="amenties"
-                            id={`amenties${i}`}
+                            name="amenities"
+                            id={`amenities${i}`}
+                            value={ele}
+                            checked={formData.amenities.includes(ele)}
+                            onChange={handleChange}
                           />
                           <label
                             className="peer-checked:border-[#FE797A] peer-checked:border-2 absolute top-0 h-full w-full cursor-pointer rounded-full border"
@@ -263,20 +448,20 @@ const AddRoomAvail = () => {
                           >
                             {" "}
                           </label>
-                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQekcrL1wdy13S8K9V7nqZ1UYhlAJzNsz1ilyH02U9dSw&s" />
+                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQekcrL1wdy13S8K9V7nqZ1UYhlAJzNsz1ilyH02U9dSw&s" alt="img" />
                         </div>
                         <span className=" font-bold text-xs mt-2">{ele}</span>
                       </div>
-                    </>
+                  
                   );
                 })}
               </div>
             </div>
             <Button
               style={{ border: "1px solid #1a202c" }}
-              target="_blank"
               variant="bordered"
-              className="shadow-[0px_3px_0px_0px_#1a202c] "
+              className="shadow-[0px_3px_0px_0px_#1a202c] w-full"
+              onClick={handleSubmit}
             >
               Add Room
             </Button>
@@ -284,181 +469,7 @@ const AddRoomAvail = () => {
         </div>
       </div>
 
-      <div
-        class="max-w-xl mx-auto p-6 bg-white rounded shadow-[0px_8px_0px_0px_#1a202c] my-6"
-        style={{ border: "3px solid #1a202c" }}
-        id="invoice"
-      >
-        <div class="grid grid-cols-2 items-center">
-          <div>
-            <span
-              style={{ color: "black" }}
-              className="font-extrabold text-3xl text-black text-inherit align-middle"
-            >
-              Room
-              <img src={MapIcon} alt="map" className="inline-block ml-1" />
-              zy
-            </span>
-          </div>
-
-          <div class="text-right">
-            <p>Tailwind Inc.</p>
-            <p class="text-gray-500 text-sm">sales@tailwindcss.com</p>
-            <p class="text-gray-500 text-sm mt-1">+41-442341232</p>
-            <p class="text-gray-500 text-sm mt-1">VAT: 8657671212</p>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-2 items-center mt-8">
-          <div>
-            <p class="font-bold text-gray-800">Bill to :</p>
-            <p class="text-gray-500">
-              Laravel LLC.
-              <br />
-              102, San-Fransico, CA, USA
-            </p>
-            <p class="text-gray-500">info@laravel.com</p>
-          </div>
-
-          <div class="text-right">
-            <p class="">
-              Invoice number:
-              <span class="text-gray-500">INV-2023786123</span>
-            </p>
-            <p>
-              Invoice date: <span class="text-gray-500">03/07/2023</span>
-              <br />
-              Due date:<span class="text-gray-500">31/07/2023</span>
-            </p>
-          </div>
-        </div>
-
-        <div class="-mx-4 mt-8 flow-root sm:mx-0">
-          <table class="min-w-full">
-            <thead class="border-b border-gray-300 text-gray-900">
-              <tr>
-                <th
-                  scope="col"
-                  class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
-                >
-                  Items
-                </th>
-                
-                <th
-                  scope="col"
-                  class="py-3.5 pl-3 pr-4 text-right text-sm font-semibold text-gray-900 sm:pr-0"
-                >
-                  Amount
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-b border-gray-200">
-                <td class="max-w-2/3 py-5 pl-4 pr-3 text-sm sm:pl-0">
-                  <div class="font-medium text-gray-900">
-                    E-commerce Platform
-                  </div>
-                  <div class="mt-1 truncate text-gray-500">
-                    Laravel based e-commerce platform.
-                  </div>
-                </td>
-               
-                <td class="py-5 pl-3 pr-4 text-right text-sm text-gray-500 sm:pr-0">
-                  $5,000.00
-                </td>
-              </tr>
-
-              <tr class="border-b border-gray-200">
-                <td class="max-w-0 py-5 pl-4 pr-3 text-sm sm:pl-0">
-                  <div class="font-medium text-gray-900">Frontend Design</div>
-                  <div class="mt-1 truncate text-gray-500">
-                    Frontend design using Vue.js and Tailwind CSS.
-                  </div>
-                </td>
-               
-                <td class="py-5 pl-3 pr-4 text-right text-sm text-gray-500 sm:pr-0">
-                  $5,000.00
-                </td>
-              </tr>
-             
-            </tbody>
-            <tfoot>
-              <tr>
-                <th
-                  scope="row"
-                  colspan="3"
-                  class=" pl-4 pr-3 pt-6 text-right text-sm font-normal text-gray-500 sm:table-cell sm:pl-0"
-                >
-                  Subtotal
-                </th>
-                <th
-                  scope="row"
-                  class="pl-6 pr-3 pt-6 text-left text-sm font-normal text-gray-500 sm:hidden"
-                >
-                  Subtotal
-                </th>
-                <td class="pl-3 pr-6 pt-6 text-right text-sm text-gray-500 sm:pr-0">
-                  $10,500.00
-                </td>
-              </tr>
-              <tr>
-                <th
-                  scope="row"
-                  colspan="3"
-                  class=" pl-4 pr-3 pt-4 text-right text-sm font-normal text-gray-500 sm:table-cell sm:pl-0"
-                >
-                  Tax
-                </th>
-                <th
-                  scope="row"
-                  class="pl-6 pr-3 pt-4 text-left text-sm font-normal text-gray-500 sm:hidden"
-                >
-                  Tax
-                </th>
-                <td class="pl-3 pr-6 pt-4 text-right text-sm text-gray-500 sm:pr-0">
-                  $1,050.00
-                </td>
-              </tr>
-              <tr>
-                <th
-                  scope="row"
-                  colspan="3"
-                  class=" pl-4 pr-3 pt-4 text-right text-sm font-normal text-gray-500 sm:table-cell sm:pl-0"
-                >
-                  Discount
-                </th>
-                <th
-                  scope="row"
-                  class="pl-6 pr-3 pt-4 text-left text-sm font-normal text-gray-500 sm:hidden"
-                >
-                  Discount
-                </th>
-                <td class="pl-3 pr-6 pt-4 text-right text-sm text-gray-500 sm:pr-0">
-                  - 10%
-                </td>
-              </tr>
-              <tr>
-                <th
-                  scope="row"
-                  colspan="3"
-                  class=" pl-4 pr-3 pt-4 text-right text-sm font-semibold text-gray-900 sm:table-cell sm:pl-0"
-                >
-                  Total
-                </th>
-                <th
-                  scope="row"
-                  class="pl-6 pr-3 pt-4 text-left text-sm font-semibold text-gray-900 sm:hidden"
-                >
-                  Total
-                </th>
-                <td class="pl-3 pr-4 pt-4 text-right text-sm font-semibold text-gray-900 sm:pr-0">
-                  $11,550.00
-                </td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-      </div>
+     
     </>
   );
 };

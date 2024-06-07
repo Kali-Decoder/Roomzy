@@ -103,7 +103,6 @@ export default function FAQ() {
         <Button
           as={Link}
           href="mailto:cardsroomzy@gmail.com"
-          target="__blank"
           className="shadow-[0px_3px_0px_0px_#1a202c]"
           style={{ border: "2px solid #1a202c", margin: "0 auto" }}
           variant="bordered"
