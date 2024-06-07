@@ -13,7 +13,8 @@ const roomSchema = new mongoose.Schema({
   price: { type: Number, required: true },
   available_from: { type: Date },
   available_to: { type: Date },
-  preferences: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Preference' }],
+  roommates: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  highlights: [{ type: String }],
   amenities: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Amenity' }],
   created_at: { type: Date, default: Date.now },
 });
@@ -21,3 +22,4 @@ const roomSchema = new mongoose.Schema({
 const Room = mongoose.model('Room', roomSchema);
 
 export default Room;
+
