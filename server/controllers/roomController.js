@@ -8,7 +8,6 @@ export const createRoom = async (req, res, next) => {
     const room = await Room.create({
       ...req.body,
       user_id: req.user.id,
-      preferences: req.user.preferences,
     });
 
     res.status(201).json({
