@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
   full_name: { type: String, required: true },
   mobile_number: { type: String, required: true },
   mobile_visibility: {type: Boolean, default: true},
-  gender: { type: String, enum: ["Male", "Female", "Other"] },
+  gender: { type: String, enum: ["Male", "Female", "Any"] },
   date_of_birth: { type: Date },
   profile_picture_url: { type: String },
   bio: { type: String },
