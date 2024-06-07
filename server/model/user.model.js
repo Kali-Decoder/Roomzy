@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema({
   password_hash: { type: String, required: true },
   full_name: { type: String, required: true },
   mobile_number: { type: String, required: true },
+  mobile_visibility: {type: Boolean, default: true},
   gender: { type: String, enum: ["Male", "Female", "Other"] },
   date_of_birth: { type: Date },
   profile_picture_url: { type: String },
