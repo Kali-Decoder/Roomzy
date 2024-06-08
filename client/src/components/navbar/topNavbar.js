@@ -3,7 +3,10 @@ import MapIcon from "../../lib/icons/map-pin-simple-area-bold.svg";
 export default function TopNavbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const [navbarSize, setNavbarSize] = React.useState(false);
-
+   const [activeTab, setActiveTab] = React.useState(() => {
+     // Get active tab from localStorage if available, else default to "home"
+     return localStorage.getItem("activeTab") || "home";
+   });
   React.useEffect(() => {
     const handleResize = () => {
       setNavbarSize(window.innerWidth < 600);
@@ -17,13 +20,25 @@ export default function TopNavbar() {
     };
   }, []);
 
-    const scrollToContact = () => {
-      const contactSection = document.getElementById("contact-section");
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" });
-      }
+   React.useEffect(() => {
+     // Save active tab to localStorage whenever it changes
+     localStorage.setItem("activeTab", activeTab);
+   }, [activeTab]);
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact-section");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
-  
+
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById("about-section");
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+
   return (
     <>
       <nav className="relative px-4 py-4 container mx-auto flex justify-between items-center bg-white">
@@ -56,7 +71,17 @@ export default function TopNavbar() {
         </div>
         <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
           <li>
-            <a className="text-sm text-gray-400 hover:text-gray-500 cursor-pointer" href="/">
+            <a
+              className={`text-sm ${
+                activeTab === "home"
+                  ? "font-bold text-blue-600"
+                  : "text-gray-400"
+              } hover:text-gray-500 cursor-pointer`}
+              onClick={() => {
+                setActiveTab("home");
+              }}
+              href="/"
+            >
               Home
             </a>
           </li>
@@ -77,7 +102,48 @@ export default function TopNavbar() {
             </svg>
           </li>
           <li>
-            <a className="text-sm text-blue-600 font-bold cursor-pointer" href="/events">
+            <a
+              className={`text-sm ${
+                activeTab === "listings"
+                  ? "font-bold text-blue-600"
+                  : "text-gray-400"
+              } hover:text-gray-500 cursor-pointer`}
+              onClick={() => {
+                setActiveTab("listings");
+              }}
+              href="/generate-list"
+            >
+              Listings
+            </a>
+          </li>
+          <li className="text-gray-300">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="currentColor"
+              className="w-4 h-4 current-fill"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+              />
+            </svg>
+          </li>
+          <li>
+            <a
+              className={`text-sm ${
+                activeTab === "events"
+                  ? "font-bold text-blue-600"
+                  : "text-gray-400"
+              } hover:text-gray-500 cursor-pointer`}
+              onClick={() => {
+                setActiveTab("events");
+              }}
+              href="/events"
+            >
               Events
             </a>
           </li>
@@ -99,10 +165,17 @@ export default function TopNavbar() {
           </li>
           <li>
             <a
-              className="text-sm text-gray-400 hover:text-gray-500 cursor-pointer"
-              href="/generate-list"
+              className={`text-sm ${
+                activeTab === "about us"
+                  ? "font-bold text-blue-600"
+                  : "text-gray-400"
+              } hover:text-gray-500 cursor-pointer`}
+              onClick={() => {
+                setActiveTab("about us");
+                scrollToAbout();
+              }}
             >
-              Listings
+              About
             </a>
           </li>
 
@@ -124,8 +197,15 @@ export default function TopNavbar() {
           </li>
           <li>
             <a
-              className="text-sm text-gray-400 hover:text-gray-500 cursor-pointer"
-              onClick={scrollToContact}
+              className={`text-sm ${
+                activeTab === "contact"
+                  ? "font-bold text-blue-600"
+                  : "text-gray-400"
+              } hover:text-gray-500 cursor-pointer`}
+              onClick={() => {
+                setActiveTab("contact");
+                scrollToContact();
+              }}
             >
               Contact
             </a>

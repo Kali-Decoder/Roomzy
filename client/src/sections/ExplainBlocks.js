@@ -39,7 +39,7 @@ const ExplainBlock = ({ title, description, imageSrc, reverse }) => {
 
 const App = () => {
   return (
-    <>
+    <div id="about-section">
       <ExplainBlock
         title="FIND YOUR PERFECT MATCH"
         description="Navigating the world of roommate searches and PG accommodations can be overwhelming. With Roomzy, you don't have to worry about financial stability or compatibility issues. Our app provides access to the credit scores of potential roommates and PGs, ensuring you find financially reliable living partners who share your lifestyle and habits."
@@ -58,7 +58,7 @@ const App = () => {
         imageSrc={cardsTrophey}
         reverse={false}
       />
-    </>
+    </div>
   );
 };
 
