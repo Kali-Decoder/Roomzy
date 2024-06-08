@@ -16,7 +16,7 @@ const roomSchema = new mongoose.Schema({
   available_to: { type: Date },
   roommates: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   highlights: [{ type: String }],
-  amenities: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Amenity' }],
+  amenities: [],
   created_at: { type: Date, default: Date.now },
 });
 
