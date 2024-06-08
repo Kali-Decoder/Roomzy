@@ -67,7 +67,7 @@ const RecommendedUsers = ({title}) => {
   const handleGetUsers = async () => {
     try {
      const token = localStorage.getItem("token");
-     const response = await fetch("http://localhost:4000/api/v1/rooms", {
+     const response = await fetch("https://freely-mate.vercel.app/api/v1/rooms", {
        method: "GET",
        headers: {
          "Content-Type": "application/json",

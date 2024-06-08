@@ -90,7 +90,7 @@ const AddRoomAvail = () => {
         return;
       }
       const response = await fetch(
-        "http://localhost:4000/api/v1/rooms/create",
+        "https://freely-mate.vercel.app/api/v1/rooms/create",
         {
           method: "POST",
           headers: {
