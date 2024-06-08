@@ -1,10 +1,24 @@
-import React, { useState } from "react";
 
-import { Button } from "@nextui-org/react"; 
-import {useNavigate} from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
+import TopNavbar from "../components/navbar/topNavbar";
+import { Button } from "@nextui-org/react";
+import { useTonConnect } from "../hooks/useTonConnect";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 const RegisterUser = () => {
   const navigate = useNavigate();
+  const { connected, sender } = useTonConnect();
+
+  async function makeAnTransaction() {
+    try {
+      await sender.send({
+        to: "UQCHptP27Vq6Gl13oUSzgqssWj1OYUpdREd-N2jbF7xrkkr4",
+        amount: 2,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const [formData, setFormData] = useState({
     fullName: "",
     username: "",
@@ -28,7 +42,7 @@ const RegisterUser = () => {
   };
 
   const handleSubmit = async (e) => {
-    let id = toast.loading('Registering...');
+    let id = toast.loading("Registering...");
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
@@ -61,13 +75,11 @@ const RegisterUser = () => {
       );
 
       if (response.ok) {
-       
-
-      //  if (formData.whoYouAre === "NEED ROOM WITH ROOMMATE") {
-      //    navigate("/generate-list");
-      //  } else if (formData.whoYouAre === "NEED ROOMMATE FOR ROOM") {
-      //    navigate("/add-room-avail");
-      //  }
+        //  if (formData.whoYouAre === "NEED ROOM WITH ROOMMATE") {
+        //    navigate("/generate-list");
+        //  } else if (formData.whoYouAre === "NEED ROOMMATE FOR ROOM") {
+        //    navigate("/add-room-avail");
+        //  }
 
         setFormData({
           fullName: "",
@@ -83,10 +95,9 @@ const RegisterUser = () => {
         });
 
         navigate("/questions");
-        toast.success('User registered successfully', {id});
+        toast.success("User registered successfully", { id });
       } else {
-       
-        toast.error('Error registering User.', {id});
+        toast.error("Error registering User.", { id });
       }
     } catch (error) {
       console.log(error);
@@ -96,7 +107,6 @@ const RegisterUser = () => {
   return (
     <>
       <div id="review_div">
-        
         <form onSubmit={handleSubmit}>
           <div
             style={{ border: "3px solid #1a202c" }}

@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 import { Button } from "@nextui-org/react";
 import TickIcon from "../lib/icons/tick.svg";
 import { useLocation } from "react-router-dom";
-
+import { TonConnectButton } from "@tonconnect/ui-react";
+import { useTonConnectUI } from "@tonconnect/ui-react";
 const highlightStyle = {
-  
   backgroundColor: "#F3F4F6",
   padding: "0.5rem 1rem",
   borderRadius: "1rem",
@@ -23,15 +23,15 @@ const Profile = () => {
   useEffect(() => {
     const fetchDetails = async () => {
       try {
-
-         const token = localStorage.getItem("token");
+        const token = localStorage.getItem("token");
         const response = await fetch(
-          `https://freely-mate.vercel.app/api/v1/rooms/${room_id}`, {
-           method: "GET",
-           headers: {
-             "Content-Type": "application/json",
-             Authorization: `Bearer ${token}`,
-           },
+          `https://freely-mate.vercel.app/api/v1/rooms/${room_id}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
           }
         );
         const res = await response.json();
@@ -47,7 +47,6 @@ const Profile = () => {
   return (
     <>
       <div id="listing_div">
-        
         <div className="grid sm:grid-cols-2 grid-cols-1 border gap-4 mx-auto container justify-items-center">
           <div className="flex flex-col sm:w-[24rem] ">
             <div
@@ -81,6 +80,7 @@ const Profile = () => {
                     Chat
                   </Button>
                 </div>
+                <TonConnectButton />
               </div>
             </div>
           </div>
@@ -132,7 +132,7 @@ const Profile = () => {
                     >
                       <img
                         src="https://via.placeholder.com/150"
-                      alt={`preference ${index}`}
+                        alt={`preference ${index}`}
                         className="w-20 h-20 rounded-full border"
                       />
                       <span className="text-center mt-4">{preference}</span>
@@ -179,6 +179,14 @@ const Profile = () => {
                   </div>
                 ))}
               </div>
+
+              <Button
+                style={{ border: "1px solid #1a202c" }}
+                variant="bordered"
+                className="shadow-[0px_3px_0px_0px_#1a202c] w-32 py-3 uppercase"
+              >
+                Pay to Book
+              </Button>
             </div>
           </div>
         </div>
