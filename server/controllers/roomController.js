@@ -20,17 +20,46 @@ export const createRoom = async (req, res, next) => {
 };
 
 export const getAllRooms = async (req, res, next) => {
-    try {
-      const rooms = await Room.find();
-  
-      res.status(200).json({
-        success: true,
-        data: rooms
-      });
-    } catch (error) {
-      next(error);
+  try {
+    const { gender, minRent, maxRent, city, availableFrom, availableTo } = req.query;
+    let filter = {};
+
+
+    if (gender) {
+      const users = await User.find({ gender: gender });
+      const userIds = users.map(user => user._id);
+      filter.user_id = { $in: userIds };
     }
-  };
+
+
+    if (minRent || maxRent) {
+      filter.price = {};
+      if (minRent) filter.price.$gte = minRent;
+      if (maxRent) filter.price.$lte = maxRent;
+    }
+
+    if (city) {
+      filter.city = city;
+    }
+
+    if (availableFrom || availableTo) {
+      filter.available_from = {};
+      filter.available_to = {};
+      if (availableFrom) filter.available_from.$gte = new Date(availableFrom);
+      if (availableTo) filter.available_to.$lte = new Date(availableTo);
+    }
+
+    const rooms = await Room.find(filter).populate('user_id');
+
+    res.status(200).json({
+      success: true,
+      data: rooms
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 
   export const getRoomById = async (req, res, next) => {
     try {
