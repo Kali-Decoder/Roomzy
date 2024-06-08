@@ -6,11 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@nextui-org/react";
 import Filter from "../components/user-list/Filter";
 
-
-const RecommendedUsers = ({title}) => {
+const RecommendedUsers = ({ title }) => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [users, setUsers] = useState([]);
+  const randomMatch = () => Math.floor(Math.random() * 50) + 51;
   // const users = [
   //   {
   //     firstname: "Lelah",
@@ -66,14 +66,14 @@ const RecommendedUsers = ({title}) => {
 
   const handleGetUsers = async () => {
     try {
-     const token = localStorage.getItem("token");
-     const response = await fetch("http://localhost:4000/api/v1/rooms", {
-       method: "GET",
-       headers: {
-         "Content-Type": "application/json",
-         Authorization: `Bearer ${token}`,
-       },
-     });
+      const token = localStorage.getItem("token");
+      const response = await fetch("http://localhost:4000/api/v1/rooms", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const res = await response.json();
       // Transform the data to match the expected user structure
       const transformedUsers = res.data.map((item) => ({
@@ -84,30 +84,28 @@ const RecommendedUsers = ({title}) => {
         distance: "5 km",
         rent: item.price,
         photo: item.user_id.profile_picture_url,
-        room_id: item._id
+        room_id: item._id,
       }));
       console.log(transformedUsers);
       setUsers(transformedUsers);
+    } catch (error) {
+      console.log(error);
     }
-    catch (error) {
-      console.log(error)
-    }
-  }
+  };
 
   useEffect(() => {
     handleGetUsers();
   }, []);
 
-
-   const filteredUsers = users.filter((user) => {
-     const name = user.full_name?.toLowerCase();
-     const location = user.location?.toLowerCase();
-     const rent = user.rent?.toString();
-     const query = searchQuery?.toLowerCase();
-     return (
-       name.includes(query) || location.includes(query) || rent.includes(query)
-     );
-   });
+  const filteredUsers = users.filter((user) => {
+    const name = user.full_name?.toLowerCase();
+    const location = user.location?.toLowerCase();
+    const rent = user.rent?.toString();
+    const query = searchQuery?.toLowerCase();
+    return (
+      name.includes(query) || location.includes(query) || rent.includes(query)
+    );
+  });
 
   return (
     <div className="items-center md:mx-12 px-5">
@@ -142,18 +140,39 @@ const RecommendedUsers = ({title}) => {
                 border: "3px solid #1a202c",
                 transition: "transform 0.3s ease-in-out",
               }}
-              className="col-span-12 shadow-[0px_4px_0px_0px_#1a202c] md:col-span-6 lg:col-span-4 sm:flex rounded-lg p-5 gap-5 h-full border border-transparent cursor-pointer hover:shadow-lg hover:transform hover:scale-105 min-w-[340px]"
+              className="col-span-12 shadow-[0px_4px_0px_0px_#1a202c] md:col-span-6 lg:col-span-4 sm:flex rounded-lg p-5 gap-5 h-full border border-transparent cursor-pointer hover:shadow-lg hover:transform hover:scale-105 min-w-[340px] max-w-[430px] w-full"
             >
-              <img
-                src={user.photo}
-                alt={user.firstname}
-                className="rounded-full w-20 h-20 object-cover"
-              />
+              <div className="flex flex-row sm:flex-col items-center justify-between">
+                <img
+                  src={user.photo}
+                  alt={user.firstname}
+                  className="rounded-full w-20 h-20 object-cover"
+                />
+                <div className="flex flex-col items-center justify-end gap-2">
+                  <span className="text-gray-500 text-sm">Match</span>
+                  <div
+                    className="w-12 h-12 m-auto grid place-items-center text-sm font-bold"
+                    style={{
+                      position: "relative",
+                      borderRadius: "50%",
+                      border: "0.25em solid white",
+                      borderRightColor: "#ff7a7a",
+                      borderTopColor: "#ff7a7a",
+                      borderBottomColor: "#ff7a7a",
+                      borderLeftColor: "white",
+                      // background: `conic-gradient(#ff7a7a ${user.match}%, white ${user.match}%)`,
+                    }}
+                  >
+                    {`${randomMatch()}%`}
+                  </div>
+                </div>
+              </div>
+
               <div className="mt-3 sm:mt-0 w-full">
-                <div className="flex flex-row items-center justify-between w-full">
+                <div className="flex flex-row items-center justify-between w-full gap-4">
                   <h2 className="text-lg font-semibold">{user.full_name}</h2>
 
-                  <div className="flex bg-red-300 w-auto px-4 py-1 rounded-xl items-center gap-2">
+                  <div className="flex bg-red-300 w-auto px-2 sm:px-4 py-1 rounded-xl items-center gap-2">
                     <span className="text-[14px] font-semibold tracking-wider">
                       {user.telegram_username}
                     </span>
@@ -194,9 +213,11 @@ const RecommendedUsers = ({title}) => {
                     <span className="text-xs">from your search</span>
                   </span>
                   <Button
-                    onClick={() => navigate("/listing-details", {
-                      state: { room_id: user.room_id },
-                    })}
+                    onClick={() =>
+                      navigate("/listing-details", {
+                        state: { room_id: user.room_id },
+                      })
+                    }
                     style={{
                       border: "1px solid #1a202c",
                     }}
@@ -216,4 +237,3 @@ const RecommendedUsers = ({title}) => {
 };
 
 export default RecommendedUsers;
-
