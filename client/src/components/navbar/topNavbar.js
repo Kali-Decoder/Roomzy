@@ -77,7 +77,7 @@ export default function TopNavbar() {
               to="/"
               className={`text-sm ${
                 activeTab === "home"
-                  ? "font-bold text-blue-600"
+                  ? "font-bold text-red-300"
                   : "text-gray-400"
               } hover:text-gray-500 cursor-pointer`}
               onClick={() => {
@@ -87,71 +87,63 @@ export default function TopNavbar() {
               Home
             </Link>
           </li>
-          <li className="text-gray-300">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              className="w-4 h-4 current-fill"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
-              />
-            </svg>
-          </li>
+          {location.pathname === "/" && ( // Render About and Contact links only on "/"
+            <>
+              <li>
+                <Link
+                  to="/"
+                  className={`text-sm ${
+                    activeTab === "about us"
+                      ? "font-bold text-red-300"
+                      : "text-gray-400"
+                  } hover:text-gray-500 cursor-pointer`}
+                  onClick={() => {
+                    setActiveTab("about us");
+                    scrollToAbout();
+                  }}
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/"
+                  className={`text-sm ${
+                    activeTab === "contact"
+                      ? "font-bold text-red-300"
+                      : "text-gray-400"
+                  } hover:text-gray-500 cursor-pointer`}
+                  onClick={() => {
+                    setActiveTab("contact");
+                    scrollToContact();
+                  }}
+                >
+                  Contact
+                </Link>
+              </li>
+            </>
+          )}
           <li>
-            <a className="text-sm text-red-400 font-bold" href="#">
-              About Us
-            </a>
-          </li>
-          <li className="text-gray-300">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              className="w-4 h-4 current-fill"
-              viewBox="0 0 24 24"
+            <Link
+              to="/generate-list"
+              className={`text-sm ${
+                activeTab === "listings"
+                  ? "font-bold text-red-300"
+                  : "text-gray-400"
+              } hover:text-gray-500 cursor-pointer`}
+              onClick={() => {
+                setActiveTab("listings");
+              }}
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
-              />
-            </svg>
-          </li>
-          <li>
-            <a className="text-sm text-gray-400 hover:text-gray-500" href="#">
-              Features
-            </a>
-          </li>
-
-          <li className="text-gray-300">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              className="w-4 h-4 current-fill"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
-              />
-            </svg>
+              Listings
+            </Link>
           </li>
           <li>
             <Link
               to="/events"
               className={`text-sm ${
                 activeTab === "events"
-                  ? "font-bold text-blue-600"
+                  ? "font-bold text-red-300"
                   : "text-gray-400"
               } hover:text-gray-500 cursor-pointer`}
               onClick={() => {
@@ -224,7 +216,7 @@ export default function TopNavbar() {
               <li className="mb-1">
                 <a
                   className="block p-4 text-sm font-semibold text-gray-400 hover:bg-red-50 hover:text-red-300 rounded"
-                  href="#"
+                  href="/"
                 >
                   Home
                 </a>
@@ -234,7 +226,8 @@ export default function TopNavbar() {
                   <li className="mb-1">
                     <Link
                       to="/"
-                      className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+                      className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-red-300 rounded"
+                      onClick={scrollToAbout}
                     >
                       About Us
                     </Link>
@@ -242,7 +235,8 @@ export default function TopNavbar() {
                   <li className="mb-1">
                     <Link
                       to="/"
-                      className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+                      className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-red-300 rounded"
+                      onClick={scrollToContact}
                     >
                       Contact
                     </Link>
@@ -252,7 +246,7 @@ export default function TopNavbar() {
               <li className="mb-1">
                 <a
                   className="block p-4 text-sm font-semibold text-gray-400 hover:bg-red-50 hover:text-red-300 rounded"
-                  href="#"
+                  href="/events"
                 >
                   Events
                 </a>
@@ -260,7 +254,7 @@ export default function TopNavbar() {
               <li className="mb-1">
                 <a
                   className="block p-4 text-sm font-semibold text-gray-400 hover:bg-red-50 hover:text-red-300 rounded"
-                  href="#"
+                  href="/generate-list"
                 >
                   Listing
                 </a>
