@@ -4,15 +4,9 @@ import { Button } from "@nextui-org/react";
 import { TonConnectButton } from "@tonconnect/ui-react";
 import { useTonConnectUI } from "@tonconnect/ui-react";
 import { useTonConnect } from "../hooks/useTonConnect";
-import avatar1 from "../lib/img/avatar1.avif";
-import avatar2 from "../lib/img/avatar2.jpeg";
-import avatar3 from "../lib/img/avatar3.avif";
-import avatar4 from "../lib/img/avatar4.jpeg";
-import avatar5 from "../lib/img/avatar5.avif";
-import avatar6 from "../lib/img/avatar.jpeg";
 const RegisterUser = () => {
   const { connected, sender } = useTonConnect();
-  const avatars = [avatar1, avatar2, avatar3, avatar4, avatar5,avatar6];
+
   async function makeAnTransaction() {
     try {
       await sender.send({
@@ -151,7 +145,7 @@ const RegisterUser = () => {
                           >
                             {" "}
                           </label>
-                          <img src={avatars[i]} className="w-[100%]"  />
+                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQekcrL1wdy13S8K9V7nqZ1UYhlAJzNsz1ilyH02U9dSw&s" />
                         </div>
                         <span className=" font-bold text-xs mt-2">{ele}</span>
                       </div>
