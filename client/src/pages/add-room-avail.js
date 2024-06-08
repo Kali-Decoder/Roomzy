@@ -1,8 +1,17 @@
 import React, { useState } from "react";
-
 import { Button } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
+import TV from "../lib/img/amenities/tv.png";
+import Fridge from "../lib/img/amenities/fridge.png";
+import Kitchen from "../lib/img/amenities/kitchen.png";
+import Wifi from "../lib/img/amenities/wifi.png";
+import WashingMachine from "../lib/img/amenities/washing_machine.png";
+import AC from "../lib/img/amenities/air_conditioner.png";
+import Parking from "../lib/img/amenities/parking.png";
+import Cook from "../lib/img/amenities/cook.png";
+import PowerBackup from "../lib/img/amenities/power_backup.png";
+
 const AddRoomAvail = () => {
   const navigate = useNavigate();
   const highlights = [
@@ -19,14 +28,16 @@ const AddRoomAvail = () => {
     "Gym nearby",
   ];
 
-  const amenties = [
-    "TV",
-    "Fridge",
-    "Kitchen",
-    "Wifi",
-    "Washing Machine",
-    "AC",
-    "Parking",
+  const amenities = [
+    { title: "TV", img: TV },
+    { title: "Fridge", img: Fridge },
+    { title: "Kitchen", img: Kitchen },
+    { title: "Wifi", img: Wifi },
+    { title: "Washing Machine", img: WashingMachine },
+    { title: "AC", img: AC },
+    { title: "Parking", img: Parking },
+    { title: "Cook", img: Cook },
+    { title: "Power Backup", img: PowerBackup },
   ];
 
   const [formData, setFormData] = useState({
@@ -435,10 +446,10 @@ const AddRoomAvail = () => {
             </div>
 
             <div className="space-y-2">
-              <p className="text-gray-600">Amenties</p>
+              <p className="text-gray-600">Amenities</p>
 
               <div class="grid sm:grid-cols-3 grid-cols-2 gap-4">
-                {amenties.map((ele, i) => {
+                {amenities.map((ele, i) => {
                  return (
                    <div
                      key={i}
@@ -465,11 +476,11 @@ const AddRoomAvail = () => {
                          {" "}
                        </label>
                        <img
-                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQekcrL1wdy13S8K9V7nqZ1UYhlAJzNsz1ilyH02U9dSw&s"
+                         src={ele.img}
                          alt="img"
                        />
                      </div>
-                     <span className=" font-bold text-xs mt-2">{ele}</span>
+                     <span className=" font-bold text-xs mt-2">{ele.title}</span>
                    </div>
                  );
 
