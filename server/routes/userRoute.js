@@ -1,5 +1,5 @@
 import express from "express";
-import { registerUser,loginUser,logoutUser,changePassword,getUserProfile,updateUserProfile} from "../controllers/userController.js";
+import { registerUser,loginUser,logoutUser,changePassword,getUserProfile,updateUserProfile, getUsernameByUserId, getRewardByUsername} from "../controllers/userController.js";
 import { setPreferences,getPreferences } from "../controllers/prefrenceController.js";
 import { auth } from "../middlewares/auth.js";
 
@@ -13,5 +13,8 @@ router.get('/profile', auth, getUserProfile);
 router.put('/profile', auth, updateUserProfile);
 router.put('/preferences', auth, setPreferences);
 router.get('/preferences', auth, getPreferences);
+router.get('/:userId/username', auth, getUsernameByUserId);
+router.get('/:username/rewards', auth, getRewardByUsername);
+router.get('/:username/wallet', auth, getRewardByUsername);
 
 export default router;

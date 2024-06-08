@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TopNavbar from "../components/navbar/topNavbar";
+
 import { Button } from "@nextui-org/react"; 
 import {useNavigate} from "react-router-dom";
 
@@ -90,7 +90,7 @@ const RegisterUser = () => {
   return (
     <>
       <div id="review_div">
-        <TopNavbar />
+        
         <form onSubmit={handleSubmit}>
           <div
             style={{ border: "3px solid #1a202c" }}

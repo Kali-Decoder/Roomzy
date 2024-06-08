@@ -149,22 +149,27 @@ export const getUserProfile = async (req, res, next) => {
   }
 };
 
-export const updateUserProfile = async (req, res, next) => {
-  try {
-    const user = await User.findByIdAndUpdate(req.user.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
-
-    if (!user) {
-      return next(new ErrorHandler(404, "User not found"));
+  export const updateUserProfile = async (req, res, next) => {
+    try {
+      const user = await User.findByIdAndUpdate(req.user.id, req.body, {
+        new: true,
+        runValidators: true
+      });
+  
+      if (!user) {
+        return next(new ErrorHandler(404, 'User not found'));
+      }
+  
+      res.status(200).json({
+        success: true,
+        data: user
+      });
+    } catch (error) {
+      next(error);
     }
+  };
 
-    res.status(200).json({
-      success: true,
-      data: user,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
+
+
+
+

@@ -23,10 +23,12 @@ const userSchema = new mongoose.Schema({
   mobile_visibility: {type: Boolean, default: true},
   gender: { type: String, enum: ["MALE", "FEMALE"] },
   date_of_birth: { type: Date },
+  rewards:{type: String, default:"0"},
   profile_picture_url: { type: String },
   bio: { type: String },
   preferences: { type: mongoose.Schema.Types.ObjectId, ref: 'Preference' },
   rewards: { type: Number, default: 0 },
+  wallet_address:{type:String},
   created_at: { type: Date, default: Date.now },
 });
 
