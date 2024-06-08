@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import TopNavbar from "../components/navbar/topNavbar";
-import { Button} from "@nextui-org/react";
+import { Button } from "@nextui-org/react"; 
+import {useNavigate} from "react-router-dom";
 
 const RegisterUser = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: "",
     username: "",
@@ -11,6 +13,7 @@ const RegisterUser = () => {
     dateOfBirth: "",
     gender: "MALE",
     mobileVisibility: true,
+    whoYouAre: "NEED ROOM WITH ROOMMATE",
     avatar: 1,
     password: "",
     confirmPassword: "",
@@ -58,7 +61,12 @@ const RegisterUser = () => {
 
       if (response.ok) {
         alert("User registered successfully");
-        window.location.href = "/login";
+       if (formData.whoYouAre === "NEED ROOM WITH ROOMMATE") {
+         navigate("/generate-list");
+       } else if (formData.whoYouAre === "NEED ROOMMATE FOR ROOM") {
+         navigate("/add-room-avail");
+       }
+
         setFormData({
           fullName: "",
           username: "",
@@ -248,9 +256,14 @@ const RegisterUser = () => {
                     type="radio"
                     name="mobileVisibility"
                     id="mobileVisibilityYes"
-                    value="public"
+                    value={true}
                     checked={formData.mobileVisibility === true}
-                    onChange={handleChange}
+                    onChange={() =>
+                      setFormData((prevFormData) => ({
+                        ...prevFormData,
+                        mobileVisibility: true,
+                      }))
+                    }
                   />
                   <label
                     className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
@@ -266,9 +279,14 @@ const RegisterUser = () => {
                     type="radio"
                     name="mobileVisibility"
                     id="mobileVisibilityNo"
-                    value="private"
+                    value={false}
                     checked={formData.mobileVisibility === false}
-                    onChange={handleChange}
+                    onChange={() =>
+                      setFormData((prevFormData) => ({
+                        ...prevFormData,
+                        mobileVisibility: false,
+                      }))
+                    }
                   />
                   <label
                     className="peer-checked:border-[#FE797A] absolute top-0 h-full w-full cursor-pointer rounded-full border"
@@ -346,7 +364,7 @@ const RegisterUser = () => {
                 }}
                 variant="bordered"
                 className="shadow-[0px_3px_0px_0px_#1a202c] w-full py-3 mt-8 uppercase"
-               type="submit"
+                type="submit"
               >
                 Register Your Self
               </Button>
