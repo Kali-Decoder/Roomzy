@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import TopNavbar from "../components/navbar/topNavbar";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import TelegramIcon from "../lib/icons/telegram_logo.jpeg";
+import DiscordIcon from "../lib/icons/discord_logo.svg";
+import WebsiteIcon from "../lib/icons/website_logo.svg";
 
 const ListEvents = () => {
   const navigate = useNavigate();
@@ -122,12 +125,12 @@ const ListEvents = () => {
         className="cursor-pointer mx-auto my-4 max-w-xs rounded-xl px-6 py-10 shadow-[0px_4px_0px_0px_#1a202c]  text-gray-600"
       >
         <div className="flex justify-between items-center">
-        <div className="mb-6 w-12 h-12 flex justify-center items-center overflow-hidden shadow-xl rounded-full bg-blue-100 px-2 py-1 text-sm font-medium text-blue-700">
-          <img src={event.icon} />
-        </div>
-        <div className="flex gap-2">
-        <div className="mb-6 w-8 h-8 flex justify-center items-center overflow-hidden shadow-xl rounded-full bg-blue-100 px-2 py-1 text-sm font-medium text-blue-700">
-        <svg
+          <div className="mb-6 w-12 h-12 flex justify-center items-center overflow-hidden shadow-xl rounded-full bg-blue-100 px-2 py-1 text-sm font-medium text-blue-700">
+            <img src={event.icon} />
+          </div>
+          <div className="flex gap-2">
+            <div className="mb-6 w-8 h-8 flex justify-center items-center overflow-hidden shadow-xl rounded-full bg-blue-100 px-2 py-1 text-sm font-medium text-blue-700">
+              {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -144,49 +147,16 @@ const ListEvents = () => {
               <rect width="18" height="18" x="3" y="4" rx="2" />
               <path d="M3 10h18" />
               <path d="m9 16 2 2 4-4" />
-            </svg>
-        </div>
-        <div className="mb-6 w-8 h-8 flex justify-center items-center overflow-hidden shadow-xl rounded-full bg-blue-100 px-2 py-1 text-sm font-medium text-blue-700">
-        <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#cc6161"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-calendar-check"
-            >
-              <path d="M8 2v4" />
-              <path d="M16 2v4" />
-              <rect width="18" height="18" x="3" y="4" rx="2" />
-              <path d="M3 10h18" />
-              <path d="m9 16 2 2 4-4" />
-            </svg>
-        </div>
-        <div className="mb-6 w-8 h-8 flex justify-center items-center overflow-hidden shadow-xl rounded-full bg-blue-100 px-2 py-1 text-sm font-medium text-blue-700">
-        <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#cc6161"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-calendar-check"
-            >
-              <path d="M8 2v4" />
-              <path d="M16 2v4" />
-              <rect width="18" height="18" x="3" y="4" rx="2" />
-              <path d="M3 10h18" />
-              <path d="m9 16 2 2 4-4" />
-            </svg>
-        </div>
-        </div>
+            </svg> */}
+              <img src={TelegramIcon} alt="telegram"/>
+            </div>
+            <div className="mb-6 w-8 h-8 flex justify-center items-center overflow-hidden shadow-xl rounded-full bg-blue-100 px-2 py-1 text-sm font-medium text-blue-700">
+              <img src={DiscordIcon} alt="discord"/>
+            </div>
+            <div className="mb-6 w-8 h-8 flex justify-center items-center overflow-hidden shadow-xl rounded-full bg-blue-100 px-2 py-1 text-sm font-medium text-blue-700">
+              <img src={WebsiteIcon} alt="website"/>
+            </div>
+          </div>
         </div>
         <p className="mb-2 text-2xl text-black">{event.eventName}</p>
         <p className="mb-2 text-md text-gray-800 font-serif">
@@ -242,7 +212,10 @@ const ListEvents = () => {
             );
           })}
         </div>
-        <button className="flex mt-8 items-center space-x-2 rounded-md border-2 border-blue-500 px-4 py-2 font-medium text-blue-600 transition hover:bg-blue-500 hover:text-white" onClick={() => navigate('/generate-list')}>
+        <button
+          className="flex mt-8 items-center space-x-2 rounded-md border-2 border-blue-500 px-4 py-2 font-medium text-blue-600 transition hover:bg-blue-500 hover:text-white"
+          onClick={() => navigate("/generate-list")}
+        >
           <span> Find Perfect Roomate </span>
           <span>
             <svg
