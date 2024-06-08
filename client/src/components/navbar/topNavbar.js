@@ -43,8 +43,8 @@ export default function TopNavbar() {
 
   return (
     <>
-      <nav className="relative px-4 py-4 container mx-auto flex justify-between items-center bg-white">
-        <Link to="/" className="text-3xl font-bold leading-none">
+      <nav className="relative px-4 py-4 mx-auto flex justify-between items-center bg-white">
+        <a className="text-3xl font-bold leading-none" href="/">
           <div className="flex mt-1">
             <span
               style={{ color: "black" }}
@@ -59,7 +59,7 @@ export default function TopNavbar() {
         <div className="lg:hidden">
           <button
             onClick={() => setNavbarOpen(true)}
-            className="navbar-burger flex items-center text-blue-600 p-3"
+            className="navbar-burger flex items-center text-red-400 p-3"
           >
             <svg
               className="block h-4 w-4 fill-current"
@@ -87,56 +87,64 @@ export default function TopNavbar() {
               Home
             </Link>
           </li>
-          {location.pathname === "/" && ( // Render About and Contact links only on "/"
-            <>
-              <li>
-                <Link
-                  to="/"
-                  className={`text-sm ${
-                    activeTab === "about us"
-                      ? "font-bold text-blue-600"
-                      : "text-gray-400"
-                  } hover:text-gray-500 cursor-pointer`}
-                  onClick={() => {
-                    setActiveTab("about us");
-                    scrollToAbout();
-                  }}
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/"
-                  className={`text-sm ${
-                    activeTab === "contact"
-                      ? "font-bold text-blue-600"
-                      : "text-gray-400"
-                  } hover:text-gray-500 cursor-pointer`}
-                  onClick={() => {
-                    setActiveTab("contact");
-                    scrollToContact();
-                  }}
-                >
-                  Contact
-                </Link>
-              </li>
-            </>
-          )}
-          <li>
-            <Link
-              to="/generate-list"
-              className={`text-sm ${
-                activeTab === "listings"
-                  ? "font-bold text-blue-600"
-                  : "text-gray-400"
-              } hover:text-gray-500 cursor-pointer`}
-              onClick={() => {
-                setActiveTab("listings");
-              }}
+          <li className="text-gray-300">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="currentColor"
+              className="w-4 h-4 current-fill"
+              viewBox="0 0 24 24"
             >
-              Listings
-            </Link>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+              />
+            </svg>
+          </li>
+          <li>
+            <a className="text-sm text-red-400 font-bold" href="#">
+              About Us
+            </a>
+          </li>
+          <li className="text-gray-300">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="currentColor"
+              className="w-4 h-4 current-fill"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+              />
+            </svg>
+          </li>
+          <li>
+            <a className="text-sm text-gray-400 hover:text-gray-500" href="#">
+              Features
+            </a>
+          </li>
+
+          <li className="text-gray-300">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="currentColor"
+              className="w-4 h-4 current-fill"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"
+              />
+            </svg>
           </li>
           <li>
             <Link
@@ -166,8 +174,8 @@ export default function TopNavbar() {
         <Link
           className={` ${
             navbarSize ? "hidden" : "block"
-          }   py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200`}
-          to="/register-user"
+          }   py-2 px-6 bg-red-400 hover:bg-red-400 text-sm text-white font-bold rounded-xl transition duration-200`}
+          href="/register-user"
         >
           Sign Up
         </Link>
@@ -214,9 +222,9 @@ export default function TopNavbar() {
           <div>
             <ul>
               <li className="mb-1">
-                <Link
-                  to="/"
-                  className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+                <a
+                  className="block p-4 text-sm font-semibold text-gray-400 hover:bg-red-50 hover:text-red-300 rounded"
+                  href="#"
                 >
                   Home
                 </Link>
@@ -242,17 +250,17 @@ export default function TopNavbar() {
                 </>
               )}
               <li className="mb-1">
-                <Link
-                  to="/events"
-                  className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+                <a
+                  className="block p-4 text-sm font-semibold text-gray-400 hover:bg-red-50 hover:text-red-300 rounded"
+                  href="#"
                 >
                   Events
                 </Link>
               </li>
               <li className="mb-1">
-                <Link
-                  to="/generate-list"
-                  className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+                <a
+                  className="block p-4 text-sm font-semibold text-gray-400 hover:bg-red-50 hover:text-red-300 rounded"
+                  href="#"
                 >
                   Listing
                 </Link>
@@ -266,9 +274,9 @@ export default function TopNavbar() {
                 </Link>
               </li>
               <li className="mb-1">
-                <Link
-                  to="/register-user"
-                  className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl"
+                <a
+                  className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-red-400 hover:bg-red-700  rounded-xl"
+                  href="/register-user"
                 >
                   Sign Up
                 </Link>

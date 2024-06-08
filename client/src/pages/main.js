@@ -11,7 +11,7 @@ import ExplainBlocks from "../sections/ExplainBlocks";
 
 export default function Main() {
   return (
-    <div>
+    <div className="overflow-x-hidden !w-fill !mx-auto">
       <TopNavbar />
       <Hero />
       <ExplanationHero />
