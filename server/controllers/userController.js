@@ -220,7 +220,11 @@ export const getIdByUsername = async (req, res, next) => {
       return res.status(404).json({ success: false, message: 'User not found' });
     }
     console.log(user.wallet_address)
-    return { id: user._id, walletAddress: user.wallet_address };
+    const data={ id: user._id, walletAddress: user.wallet_address }
+    res.status(200).json({
+      success: true,
+      data: data
+    });
   } catch (error) {
     throw new Error(error.message);
   }
