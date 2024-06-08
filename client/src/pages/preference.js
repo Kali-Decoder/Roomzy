@@ -2,10 +2,11 @@ import React, { useState } from "react";
 
 import { Button } from "@nextui-org/react";
 import toast, { Toaster } from 'react-hot-toast';
+import { useNavigate } from "react-router-dom";
 const Questionaries = () => {
   const [selectedPreferences, setSelectedPreferences] = useState([]);
 
-
+  const navigator = useNavigate();
   const handleCheckboxChange = (preference) => {
     setSelectedPreferences((prevSelected) => {
       if (prevSelected.includes(preference)) {
@@ -19,7 +20,7 @@ const Questionaries = () => {
   const addPreferences = async () => {
     let id = toast.loading('Updating preferences...');
     const response = await fetch("http://localhost:4000/api/v1/user/preferences", {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         "Authorization": "Bearer " + localStorage.getItem("token"),
@@ -28,6 +29,7 @@ const Questionaries = () => {
     });
     const data = await response.json();
     toast.success('Preferences updated successfully!', { id });
+    navigator("/profile");
     console.log(data);
   }
   const prefers = [

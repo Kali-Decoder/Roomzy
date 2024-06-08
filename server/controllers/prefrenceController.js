@@ -7,6 +7,7 @@ export const setPreferences = async (req, res, next) => {
     const userId = req.user.id;
     const newPreferences = req.body;
 
+    console.log(newPreferences,userId);
     const preference = await Preference.findOneAndUpdate(
       { user_id: userId }, 
       { $set: newPreferences },

@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import toast from "react-hot-toast";
 import Preferences from "../components/ui/Preference";
 import { UserContext } from "../context/userContext";
 
 const ProfilePage = () => {
   const { user } = useContext(UserContext);
+ 
   const handleCopyLink = () => {
-    let id = toast.loading("Generating referral link...");
+    
     if (user && user._id) {
       const referralLink = `https://roomzy-two.vercel.app/register-user?referralLink=${user._id}`;
       navigator.clipboard
@@ -18,7 +19,7 @@ const ProfilePage = () => {
           console.error("Failed to copy the link: ", err);
         });
     } else {
-      toast.error("Failed to generate referral link",{id});
+      toast.error("Failed to generate referral link");
     }
   };
   return (
@@ -182,7 +183,7 @@ const ProfilePage = () => {
             </div>
           </div>
 
-          <Preferences />
+          <Preferences preferences = {user?.preferences?.preferences || []} />
         </div>
       </div>
     </>
