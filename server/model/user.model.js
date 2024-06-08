@@ -27,6 +27,7 @@ const userSchema = new mongoose.Schema({
   profile_picture_url: { type: String },
   bio: { type: String },
   preferences: { type: mongoose.Schema.Types.ObjectId, ref: 'Preference' },
+  rewards: { type: Number, default: 0 },
   wallet_address:{type:String},
   created_at: { type: Date, default: Date.now },
 });
