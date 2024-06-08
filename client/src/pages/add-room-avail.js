@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import TopNavbar from "../components/navbar/topNavbar";
 import { Button } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
+
 const AddRoomAvail = () => {
+  const navigate = useNavigate();
   const highlights = [
     "Attached washroom",
     "Market nearby",
@@ -100,6 +103,8 @@ const AddRoomAvail = () => {
 
       if (response.ok) {
         alert("Room details added successfully!");
+
+        navigate('/events');
         setFormData({
           address: "",
           city: "",
@@ -432,31 +437,40 @@ const AddRoomAvail = () => {
 
               <div class="grid sm:grid-cols-3 grid-cols-2 gap-4">
                 {amenties.map((ele, i) => {
-                  return (
-                  
-                      <div  key={i}  className="flex flex-col justify-center items-center">
-                        <div className="relative overflow-hidden flex border  rounded-full items-center justify-center w-25 h-25 bg-gray-50 px-4 py-3 font-medium text-gray-700">
-                          <input
-                            className="peer hidden"
-                            type="checkbox"
-                            name="amenities"
-                            id={`amenities${i}`}
-                            value={ele}
-                            checked={formData.amenities.includes(ele)}
-                            onChange={handleChange}
-                          />
-                          <label
-                            className="peer-checked:border-[#FE797A] peer-checked:border-2 absolute top-0 h-full w-full cursor-pointer rounded-full border"
-                            for={`amenties${i}`}
-                          >
-                            {" "}
-                          </label>
-                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQekcrL1wdy13S8K9V7nqZ1UYhlAJzNsz1ilyH02U9dSw&s" alt="img" />
-                        </div>
-                        <span className=" font-bold text-xs mt-2">{ele}</span>
-                      </div>
-                  
-                  );
+                 return (
+                   <div
+                     key={i}
+                     className="flex flex-col justify-center items-center"
+                   >
+                     <div className="relative overflow-hidden flex border rounded-full items-center justify-center w-25 h-25 bg-gray-50 px-4 py-3 font-medium text-gray-700">
+                       <input
+                         className="peer hidden"
+                         type="checkbox"
+                         name="amenities"
+                         id={`amenities${i}`}
+                         value={ele}
+                         checked={formData.amenities.includes(ele)}
+                         onChange={handleChange}
+                       />
+                       <label
+                         className={`peer-checked:border-[#FE797A] peer-checked:border-2 absolute top-0 h-full w-full cursor-pointer rounded-full border ${
+                           formData.amenities.includes(ele)
+                             ? "peer-checked"
+                             : ""
+                         }`}
+                         htmlFor={`amenities${i}`}
+                       >
+                         {" "}
+                       </label>
+                       <img
+                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQekcrL1wdy13S8K9V7nqZ1UYhlAJzNsz1ilyH02U9dSw&s"
+                         alt="img"
+                       />
+                     </div>
+                     <span className=" font-bold text-xs mt-2">{ele}</span>
+                   </div>
+                 );
+
                 })}
               </div>
             </div>

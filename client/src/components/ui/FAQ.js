@@ -49,9 +49,9 @@ export default function FAQ() {
           key="3"
           title="Is roomzy suitable for people who aren't tech-savvy?"
         >
-          Yes, roomzy is designed to be user-friendly for everyone. Our
-          platform is intuitive, making it simple to start earning more cashback
-          right away.
+          Yes, roomzy is designed to be user-friendly for everyone. Our platform
+          is intuitive, making it simple to start earning more cashback right
+          away.
         </AccordionItem>
         <AccordionItem
           style={{ padding: "4px 0" }}
@@ -75,8 +75,8 @@ export default function FAQ() {
           key="6"
           title="Can roomzy help me if I'm new to credit cards?"
         >
-          Absolutely! roomzy is a great tool for both new and experienced
-          credit card users to maximize their rewards.
+          Absolutely! roomzy is a great tool for both new and experienced credit
+          card users to maximize their rewards.
         </AccordionItem>
         <AccordionItem
           style={{ padding: "4px 0" }}
@@ -99,7 +99,7 @@ export default function FAQ() {
       <Spacer y={8} />
       <p className="text-center">Still have any questions?</p>
       <Spacer y={2} />
-      <div style={{ textAlign: "center" }}>
+      <div id="contact-section" style={{ textAlign: "center" }}>
         <Button
           as={Link}
           href="mailto:cardsroomzy@gmail.com"

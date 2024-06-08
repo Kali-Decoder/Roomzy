@@ -3,7 +3,17 @@ import sendTokenResponse from '../utils/jwtToken.js';
 import { ErrorHandler } from '../utils/errorHandler.js';
 
 export const registerUser = async (req, res, next) => {
-  const { username, email, password, first_name, last_name, gender, date_of_birth, profile_picture_url, bio } = req.body;
+  const {
+    username,
+    email,
+    password,
+    full_name,
+    mobile_number,
+    mobile_visibility,
+    gender,
+    date_of_birth,
+    profile_picture_url,
+  } = req.body;
 
   try {
     const userExists = await User.findOne({ email });
@@ -16,12 +26,12 @@ export const registerUser = async (req, res, next) => {
       username,
       email,
       password_hash: password,
-      first_name,
-      last_name,
+      full_name,
+      mobile_number,
+      mobile_visibility,
       gender,
       date_of_birth,
       profile_picture_url,
-      bio,
     });
 
     sendTokenResponse(user, 201, res);
