@@ -1,6 +1,6 @@
-import User from '../model/user.model.js';
-import sendTokenResponse from '../utils/jwtToken.js';
-import { ErrorHandler } from '../utils/errorHandler.js';
+import User from "../model/user.model.js";
+import sendTokenResponse from "../utils/jwtToken.js";
+import { ErrorHandler } from "../utils/errorHandler.js";
 
 export const registerUser = async (req, res, next) => {
   const {
@@ -15,11 +15,13 @@ export const registerUser = async (req, res, next) => {
     profile_picture_url,
   } = req.body;
 
+  const referralUserId = req.query.referral;
+  console.log(referralUserId);
   try {
     const userExists = await User.findOne({ email });
 
     if (userExists) {
-      return next(new ErrorHandler(400, 'User already exists with this email'));
+      return next(new ErrorHandler(400, "User already exists with this email"));
     }
 
     const user = await User.create({
@@ -34,12 +36,17 @@ export const registerUser = async (req, res, next) => {
       profile_picture_url,
     });
 
+    if (referralUserId) {
+      const referrer = await User.findById(referralUserId);
+      console.log(referrer);
+      referrer.rewards += 10;
+      await referrer.save();
+    }
     sendTokenResponse(user, 201, res);
   } catch (error) {
     next(error);
   }
 };
-
 export const loginUser = async (req, res, next) => {
     const { email, password } = req.body;
   
@@ -126,7 +133,6 @@ export const changePassword = async (req, res, next) => {
 export const getUserProfile = async (req, res, next) => {
     try {
       const user = await User.findById(req.user.id).populate('preferences');
-      console.log("inside profile")
       if (!user) {
         return next(new ErrorHandler(404, 'User not found'));
       }
