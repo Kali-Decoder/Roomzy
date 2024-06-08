@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@nextui-org/react";
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
+
 import NightOwl from "../lib/img/preferences/owl.png";
 import PartyLover from "../lib/img/preferences/party.png";
 import EarlyBird from "../lib/img/preferences/bird.png";

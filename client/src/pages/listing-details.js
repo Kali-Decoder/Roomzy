@@ -1,10 +1,33 @@
 import React, { useEffect, useState } from "react";
-
 import { Button } from "@nextui-org/react";
 import TickIcon from "../lib/icons/tick.svg";
 import { useLocation } from "react-router-dom";
 import { TonConnectButton } from "@tonconnect/ui-react";
 import { useTonConnectUI } from "@tonconnect/ui-react";
+
+import TV from "../lib/img/amenities/tv.png";
+import Fridge from "../lib/img/amenities/fridge.png";
+import Kitchen from "../lib/img/amenities/kitchen.png";
+import Wifi from "../lib/img/amenities/wifi.png";
+import WashingMachine from "../lib/img/amenities/washing_machine.png";
+import AC from "../lib/img/amenities/air_conditioner.png";
+import Parking from "../lib/img/amenities/parking.png";
+import Cook from "../lib/img/amenities/cook.png";
+import PowerBackup from "../lib/img/amenities/power_backup.png";
+
+import NightOwl from "../lib/img/preferences/owl.png";
+import PartyLover from "../lib/img/preferences/party.png";
+import EarlyBird from "../lib/img/preferences/bird.png";
+import Studious from "../lib/img/preferences/books.png";
+import FitnessFreak from "../lib/img/preferences/dumbbell.png";
+import PetLover from "../lib/img/preferences/pet_lover.png";
+import Vegan from "../lib/img/preferences/vegan.png";
+import NonAlcoholic from "../lib/img/preferences/non_alcoholic.png";
+import Sporty from "../lib/img/preferences/sporty.png";
+import MusicLover from "../lib/img/preferences/music_lover.png";
+import Wanderer from "../lib/img/preferences/wanderer.png";
+import NonSmoker from "../lib/img/preferences/non_smoker.png";
+
 const highlightStyle = {
   backgroundColor: "#F3F4F6",
   padding: "0.5rem 1rem",
@@ -13,6 +36,44 @@ const highlightStyle = {
   fontSize: "0.75rem",
   fontWeight: 600,
 };
+
+const amenities = [
+  { title: "TV", img: TV },
+  { title: "Fridge", img: Fridge },
+  { title: "Kitchen", img: Kitchen },
+  { title: "Wifi", img: Wifi },
+  { title: "Washing Machine", img: WashingMachine },
+  { title: "AC", img: AC },
+  { title: "Parking", img: Parking },
+  { title: "Cook", img: Cook },
+  { title: "Power Backup", img: PowerBackup },
+];
+
+const prefers = [
+  { title: "Night Owl", img: NightOwl },
+  { title: "Party Lover", img: PartyLover },
+  { title: "Early Bird", img: EarlyBird },
+  { title: "Studious", img: Studious },
+  { title: "Fitness Freak", img: FitnessFreak },
+  { title: "Pet Lover", img: PetLover },
+  { title: "Vegan", img: Vegan },
+  { title: "Non Alcoholic", img: NonAlcoholic },
+  { title: "Sporty", img: Sporty },
+  { title: "Music Lover", img: MusicLover },
+  { title: "Wanderer", img: Wanderer },
+  { title: "Non Smoker", img: NonSmoker },
+];
+
+const getAmenityImage = (title) => {
+  const amenity = amenities.find((item) => item.title === title);
+  return amenity ? amenity.img : "https://via.placeholder.com/150";
+};
+
+const getPreferenceImage = (title) => {
+  const preference = prefers.find((item) => item.title === title);
+  return preference ? preference.img : "https://via.placeholder.com/150";
+};
+
 
 const Profile = () => {
   const location = useLocation();
@@ -131,7 +192,7 @@ const Profile = () => {
                       className="flex flex-col justify-center items-center"
                     >
                       <img
-                        src="https://via.placeholder.com/150"
+                        src={getPreferenceImage(preference)}
                         alt={`preference ${index}`}
                         className="w-20 h-20 rounded-full border"
                       />
@@ -171,7 +232,7 @@ const Profile = () => {
                     className="flex flex-col justify-center items-center"
                   >
                     <img
-                      src="https://via.placeholder.com/150"
+                      src={getAmenityImage(amenity)}
                       alt="Amenity"
                       className="w-20 h-20 rounded-full border"
                     />
