@@ -49,7 +49,7 @@ const RegisterUser = () => {
       };
       console.log(transformedData);
       const response = await fetch(
-        "http://localhost:4000/api/v1/user/register",
+        "https://freely-mate.vercel.app/api/v1/user/register",
         {
           method: "POST",
           headers: {
@@ -61,11 +61,12 @@ const RegisterUser = () => {
 
       if (response.ok) {
         alert("User registered successfully");
-       if (formData.whoYouAre === "NEED ROOM WITH ROOMMATE") {
-         navigate("/generate-list");
-       } else if (formData.whoYouAre === "NEED ROOMMATE FOR ROOM") {
-         navigate("/add-room-avail");
-       }
+
+      //  if (formData.whoYouAre === "NEED ROOM WITH ROOMMATE") {
+      //    navigate("/generate-list");
+      //  } else if (formData.whoYouAre === "NEED ROOMMATE FOR ROOM") {
+      //    navigate("/add-room-avail");
+      //  }
 
         setFormData({
           fullName: "",
@@ -79,6 +80,8 @@ const RegisterUser = () => {
           password: "",
           confirmPassword: "",
         });
+
+        navigate("/questions");
       } else {
         alert("Error registering User.");
       }
