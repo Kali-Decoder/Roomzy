@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
@@ -76,6 +76,10 @@ const AddRoomAvail = () => {
       });
     }
   };
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
 
   const handleSubmit = async (e) => {
     let id = toast.loading('Submitting...');
@@ -459,15 +463,15 @@ const AddRoomAvail = () => {
                        <input
                          className="peer hidden"
                          type="checkbox"
-                         name="amenities"
                          id={`amenities${i}`}
-                         value={ele}
-                         checked={formData.amenities.includes(ele)}
+                         name="amenities"
+                         value={ele.title}
+                         checked={formData.amenities.includes(ele.title)}
                          onChange={handleChange}
                        />
                        <label
                          className={`peer-checked:border-[#FE797A] peer-checked:border-2 absolute top-0 h-full w-full cursor-pointer rounded-full border ${
-                           formData.amenities.includes(ele)
+                           formData.amenities.includes(ele.title)
                              ? "peer-checked"
                              : ""
                          }`}
@@ -475,12 +479,11 @@ const AddRoomAvail = () => {
                        >
                          {" "}
                        </label>
-                       <img
-                         src={ele.img}
-                         alt="img"
-                       />
+                       <img src={ele.img} alt={ele.title} />
                      </div>
-                     <span className=" font-bold text-xs mt-2">{ele.title}</span>
+                     <span className=" font-bold text-xs mt-2">
+                       {ele.title}
+                     </span>
                    </div>
                  );
 

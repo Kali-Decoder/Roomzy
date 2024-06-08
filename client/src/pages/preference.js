@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { Button } from "@nextui-org/react";
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
@@ -16,21 +16,36 @@ import MusicLover from "../lib/img/preferences/music_lover.png";
 import Wanderer from "../lib/img/preferences/wanderer.png";
 import NonSmoker from "../lib/img/preferences/non_smoker.png";
 
+  const prefers = [
+    { title: "Night Owl", img: NightOwl },
+    { title: "Party Lover", img: PartyLover },
+    { title: "Early Bird", img: EarlyBird },
+    { title: "Studious", img: Studious },
+    { title: "Fitness Freak", img: FitnessFreak },
+    { title: "Pet Lover", img: PetLover },
+    { title: "Vegan", img: Vegan },
+    { title: "Non Alcoholic", img: NonAlcoholic },
+    { title: "Sporty", img: Sporty },
+    { title: "Music Lover", img: MusicLover },
+    { title: "Wanderer", img: Wanderer },
+    { title: "Non Smoker", img: NonSmoker },
+  ];
+
 
 const Questionaries = () => {
   const [selectedPreferences, setSelectedPreferences] = useState([]);
 
   const navigator = useNavigate();
-  const handleCheckboxChange = (preference) => {
-    setSelectedPreferences((prevSelected) => {
-      if (prevSelected.includes(preference)) {
-        return prevSelected.filter((item) => item !== preference);
-      } else {
-        return [...prevSelected, preference];
-      }
-    });
-    console.log(selectedPreferences);
-  };
+  // const handleCheckboxChange = (preference) => {
+  //   setSelectedPreferences((prevSelected) => {
+  //     if (prevSelected.includes(preference)) {
+  //       return prevSelected.filter((item) => item !== preference);
+  //     } else {
+  //       return [...prevSelected, preference];
+  //     }
+  //   });
+  //   console.log(selectedPreferences);
+  // };
   const addPreferences = async () => {
     let id = toast.loading('Updating preferences...');
     const response = await fetch("http://localhost:4000/api/v1/user/preferences", {
@@ -46,20 +61,22 @@ const Questionaries = () => {
     navigator("/profile");
     console.log(data);
   }
-  const prefers = [
-    { title: "Night Owl", img: NightOwl },
-    { title: "Party Lover", img: PartyLover },
-    { title: "Early Bird", img: EarlyBird },
-    { title: "Studious", img: Studious },
-    { title: "Fitness Freak", img: FitnessFreak },
-    { title: "Pet Lover", img: PetLover },
-    { title: "Vegan", img: Vegan },
-    { title: "Non Alcoholic", img: NonAlcoholic },
-    { title: "Sporty", img: Sporty },
-    { title: "Music Lover", img: MusicLover },
-    { title: "Wanderer", img: Wanderer },
-    {title: "Non Smoker", img: NonSmoker },
-  ];
+
+  const handleChange = (e) => {
+    const {value, checked } = e.target;
+    setSelectedPreferences((prevSelected) => {
+      if (checked) {
+        return [...prevSelected, value];
+      } else {
+        return prevSelected.filter((item) => item !== value);
+      }
+    });
+  };
+
+  useEffect(() => {
+    console.log(selectedPreferences);
+  }, [selectedPreferences])
+
 
   return (
     <>
@@ -83,9 +100,10 @@ const Questionaries = () => {
                         className="peer hidden"
                         type="checkbox"
                         name="preferences"
+                        value={ele.title}
                         id={`preferences${i}`}
-                        checked={selectedPreferences.includes(ele)}
-                        onChange={() => handleCheckboxChange(ele)}
+                        checked={selectedPreferences.includes(ele.title)}
+                        onChange={handleChange}
                       />
                       <label
                         className="peer-checked:border-[#FE797A] peer-checked:border-4 absolute top-0 h-full w-full cursor-pointer rounded-full border"
@@ -93,7 +111,7 @@ const Questionaries = () => {
                       >
                         {" "}
                       </label>
-                      <img src={ele.img} alt="img" />
+                      <img src={ele.img} alt={ele.title} />
                     </div>
                     <span className=" uppercase text-sm mt-2 text-red-400 font-bold">
                       {ele.title}
