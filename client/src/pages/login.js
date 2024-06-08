@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import TopNavbar from "../components/navbar/topNavbar";
 import { Button } from "@nextui-org/react";
 import { login } from "../api/apiRequest";
+import { useNavigate } from "react-router-dom";
 
 const LoginUser = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -11,6 +13,7 @@ const LoginUser = () => {
     const response = await login(email, password);
     if (response.success) {
       console.log("Login successful");
+      navigate('/events')
     } else {
       console.log("Login failed:", response.error);
     }
