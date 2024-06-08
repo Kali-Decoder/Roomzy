@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import TopNavbar from "../components/navbar/topNavbar";
+import {useNavigate} from "react-router-dom";
 
 const ListEvents = () => {
+  const navigate = useNavigate();
   const events = [
     {
       eventName: "TON | Bootcamp 2024 ",
@@ -240,7 +242,7 @@ const ListEvents = () => {
             );
           })}
         </div>
-        <button className="flex mt-8 items-center space-x-2 rounded-md border-2 border-blue-500 px-4 py-2 font-medium text-blue-600 transition hover:bg-blue-500 hover:text-white">
+        <button className="flex mt-8 items-center space-x-2 rounded-md border-2 border-blue-500 px-4 py-2 font-medium text-blue-600 transition hover:bg-blue-500 hover:text-white" onClick={() => navigate('/generate-list')}>
           <span> Find Perfect Roomate </span>
           <span>
             <svg

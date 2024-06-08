@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import TopNavbar from "../components/navbar/topNavbar";
 import { Button } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
+
 const AddRoomAvail = () => {
+  const navigate = useNavigate();
   const highlights = [
     "Attached washroom",
     "Market nearby",
@@ -100,6 +103,8 @@ const AddRoomAvail = () => {
 
       if (response.ok) {
         alert("Room details added successfully!");
+
+        navigate('/events');
         setFormData({
           address: "",
           city: "",
