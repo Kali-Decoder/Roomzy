@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import TelegramIcon from "../lib/icons/telegram_logo.jpeg";
 import DiscordIcon from "../lib/icons/discord_logo.svg";
 import WebsiteIcon from "../lib/icons/website_logo.svg";
-import {useNavigate} from "react-router-dom";
 
 const ListEvents = () => {
   const navigate = useNavigate();
