@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <NextUIProvider>
-      <TonConnectUIProvider manifestUrl="http://localhost:5173//tonconnect-manifest.json">
+      <TonConnectUIProvider manifestUrl="https://ide.nujan.io/assets/ton/tonconnect-manifest.json">
         <App />
       </TonConnectUIProvider>
 

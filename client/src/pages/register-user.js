@@ -43,7 +43,7 @@ const RegisterUser = () => {
                 placeholder="Nikku.jr.Dev"
               />
             </label>
-            <TonConnectButton />
+            <TonConnectButton   />
             <button className="px-3 py-1 rounded-lg border mt-3" onClick={()=>{
               makeAnTransaction();
             }}>Send Money</button>
