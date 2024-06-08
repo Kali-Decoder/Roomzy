@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LocationIcon from "../lib/icons/location.svg";
 import TelegramIcon from "../lib/icons/telegram.svg";
 import TopNavbar from "../components/navbar/topNavbar";
@@ -6,78 +6,114 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@nextui-org/react";
 import Filter from "../components/user-list/Filter";
 
+
 const RecommendedUsers = ({title}) => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
-  const users = [
-    {
-      firstname: "Lelah",
-      lastname: "Nicholson",
-      telegram_username: "@lelah",
-      location: "Troy, MI",
-      gender_preference: "female",
-      distance: "5 miles",
-      rent: 10000,
-      photo: "https://randomuser.me/api/portraits/women/79.jpg",
-    },
-    {
-      firstname: "Jane",
-      lastname: "Nicholson",
-      telegram_username: "@jane",
-      location: "Austin, TX",
-      gender_preference: "female",
-      distance: "10 miles",
-      rent: 12000,
-      photo: "https://randomuser.me/api/portraits/women/68.jpg",
-    },
-    {
-      firstname: "James",
-      lastname: "Webb",
-      telegram_username: "@james",
-      location: "Fort Worth, TX",
-      gender_preference: "male",
-      distance: "15 miles",
-      rent: 15000,
-      photo: "https://randomuser.me/api/portraits/men/32.jpg",
-    },
-    {
-      firstname: "Deborah",
-      lastname: "Smith",
-      telegram_username: "@deborah",
-      location: "Cincinnati, OH",
-      gender_preference: "female",
-      distance: "20 miles",
-      rent: 11000,
-      photo: "https://randomuser.me/api/portraits/women/19.jpg",
-    },
-    {
-      firstname: "Leo",
-      lastname: "Gold",
-      telegram_username: "@leo",
-      location: "Austin, TX",
-      gender_preference: "male",
-      distance: "25 miles",
-      rent: 13000,
-      photo: "https://randomuser.me/api/portraits/men/40.jpg",
-    },
-  ];
+  const [users, setUsers] = useState([]);
+  // const users = [
+  //   {
+  //     firstname: "Lelah",
+  //     lastname: "Nicholson",
+  //     telegram_username: "@lelah",
+  //     location: "Troy, MI",
+  //     gender_preference: "female",
+  //     distance: "5 miles",
+  //     rent: 10000,
+  //     photo: "https://randomuser.me/api/portraits/women/79.jpg",
+  //   },
+  //   {
+  //     firstname: "Jane",
+  //     lastname: "Nicholson",
+  //     telegram_username: "@jane",
+  //     location: "Austin, TX",
+  //     gender_preference: "female",
+  //     distance: "10 miles",
+  //     rent: 12000,
+  //     photo: "https://randomuser.me/api/portraits/women/68.jpg",
+  //   },
+  //   {
+  //     firstname: "James",
+  //     lastname: "Webb",
+  //     telegram_username: "@james",
+  //     location: "Fort Worth, TX",
+  //     gender_preference: "male",
+  //     distance: "15 miles",
+  //     rent: 15000,
+  //     photo: "https://randomuser.me/api/portraits/men/32.jpg",
+  //   },
+  //   {
+  //     firstname: "Deborah",
+  //     lastname: "Smith",
+  //     telegram_username: "@deborah",
+  //     location: "Cincinnati, OH",
+  //     gender_preference: "female",
+  //     distance: "20 miles",
+  //     rent: 11000,
+  //     photo: "https://randomuser.me/api/portraits/women/19.jpg",
+  //   },
+  //   {
+  //     firstname: "Leo",
+  //     lastname: "Gold",
+  //     telegram_username: "@leo",
+  //     location: "Austin, TX",
+  //     gender_preference: "male",
+  //     distance: "25 miles",
+  //     rent: 13000,
+  //     photo: "https://randomuser.me/api/portraits/men/40.jpg",
+  //   },
+  // ];
 
-  const filteredUsers = users.filter((user) => {
-    const name = `${user.firstname} ${user.lastname}`.toLowerCase();
-    const location = user.location.toLowerCase();
-    const rent = user.rent.toString().toLowerCase();
-    return (
-      name.includes(searchQuery.toLowerCase()) ||
-      location.includes(searchQuery.toLowerCase()) ||
-      rent.includes(searchQuery.toLowerCase())
-    );
-  });
+  const handleGetUsers = async () => {
+    try {
+     const token = localStorage.getItem("token");
+     const response = await fetch("http://localhost:4000/api/v1/rooms", {
+       method: "GET",
+       headers: {
+         "Content-Type": "application/json",
+         Authorization: `Bearer ${token}`,
+       },
+     });
+      const res = await response.json();
+      // Transform the data to match the expected user structure
+      const transformedUsers = res.data.map((item) => ({
+        full_name: item.user_id.full_name,
+        telegram_username: item.user_id.username,
+        location: `${item.city}, ${item.state}`,
+        gender_preference: item.looking_for,
+        distance: "5 km",
+        rent: item.price,
+        photo: item.user_id.profile_picture_url,
+        room_id: item._id
+      }));
+      console.log(transformedUsers);
+      setUsers(transformedUsers);
+    }
+    catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    handleGetUsers();
+  }, []);
+
+
+   const filteredUsers = users.filter((user) => {
+     const name = user.full_name?.toLowerCase();
+     const location = user.location?.toLowerCase();
+     const rent = user.rent?.toString();
+     const query = searchQuery?.toLowerCase();
+     return (
+       name.includes(query) || location.includes(query) || rent.includes(query)
+     );
+   });
 
   return (
-    <div className="items-center md:mx-12 mx-2 px-5">
+    <div className="items-center md:mx-12 px-5">
       <TopNavbar />
 
-      <div className=" min-h-screen items-center mt-4 md:mx-4 px-2 gap-x-3">
+      <div className=" min-h-screen items-center mt-4 md:mx-4 gap-x-3">
         <h1 className="capitalize text-left mb-5 text-2xl font-bold">
           {title}
         </h1>
@@ -85,7 +121,6 @@ const RecommendedUsers = ({title}) => {
           <Filter />
           <div className=" md:col-span-6">
             <div className="relative w-full">
-              
               <input
                 type="text"
                 id="default-search"
@@ -107,7 +142,7 @@ const RecommendedUsers = ({title}) => {
                 border: "3px solid #1a202c",
                 transition: "transform 0.3s ease-in-out",
               }}
-              className="col-span-12 shadow-[0px_4px_0px_0px_#1a202c] md:col-span-6 lg:col-span-4 sm:flex rounded-lg p-5 gap-5 h-full border border-transparent cursor-pointer hover:shadow-lg hover:transform hover:scale-105"
+              className="col-span-12 shadow-[0px_4px_0px_0px_#1a202c] md:col-span-6 lg:col-span-4 sm:flex rounded-lg p-5 gap-5 h-full border border-transparent cursor-pointer hover:shadow-lg hover:transform hover:scale-105 min-w-[340px]"
             >
               <img
                 src={user.photo}
@@ -116,9 +151,7 @@ const RecommendedUsers = ({title}) => {
               />
               <div className="mt-3 sm:mt-0 w-full">
                 <div className="flex flex-row items-center justify-between w-full">
-                  <h2 className="text-lg font-semibold">
-                    {user.firstname} {user.lastname}
-                  </h2>
+                  <h2 className="text-lg font-semibold">{user.full_name}</h2>
 
                   <div className="flex bg-red-300 w-auto px-4 py-1 rounded-xl items-center gap-2">
                     <span className="text-[14px] font-semibold tracking-wider">
@@ -134,37 +167,36 @@ const RecommendedUsers = ({title}) => {
 
                 <div className="flex flex-row items-center gap-2 mt-2">
                   <img src={LocationIcon} alt="map" className="w-5 h-5" />
-                  <span className="text-gray-500 text-sm">
-                    {user.location}
-                  </span>
+                  <span className="text-gray-500 text-sm">{user.location}</span>
                 </div>
-                <div className="flex flex-row items-center gap-2 mt-2">
-                  <span className="block text-gray-500 text-[12px]">
-                    Rent
-                  </span>
-                  <span className="block text-gray-800 text-sm font-semibold">
-                    ₹{user.rent}
-                  </span>
-                </div>
-                <div className="flex flex-row items-center justify-between w-full">
-                  <div className="grid grid-cols-3 my-4 gap-4 xs:my-2">
-                    <div className="flex flex-col">
-                      <span className="block text-gray-500 text-[12px]">
-                        Gender Preference
-                      </span>
-                      <span className="block text-gray-800 text-sm font-semibold first-letter:capitalize">
-                        {user.gender_preference}
-                      </span>
-                    </div>
+                <div className="grid grid-cols-2 my-4 gap-4 xs:my-2">
+                  <div className="flex flex-col">
+                    <span className="block text-gray-500 text-[12px]">
+                      Rent
+                    </span>
+                    <span className="block text-gray-800 text-sm font-semibold">
+                      ₹{user.rent || 5000}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col">
+                    <span className="block text-gray-500 text-[12px]">
+                      Looking for
+                    </span>
+                    <span className="block text-gray-800 text-sm font-semibold first-letter:capitalize">
+                      {user.gender_preference}
+                    </span>
                   </div>
                 </div>
-                <div className="flex flex-row w-full items-center justify-between">
-                  <span className="block text-sm">
+                <div className="flex flex-row w-full items-center justify-between ">
+                  <span className="block text-sm ">
                     <b>{user.distance}</b>{" "}
                     <span className="text-xs">from your search</span>
                   </span>
                   <Button
-                    onClick={() => navigate("/listing-details")}
+                    onClick={() => navigate("/listing-details", {
+                      state: { room_id: user.room_id },
+                    })}
                     style={{
                       border: "1px solid #1a202c",
                     }}

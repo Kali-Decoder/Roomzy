@@ -1,5 +1,6 @@
 import Room from "../model/room.model.js";
 import User from "../model/user.model.js";
+import Preference from "../model/preference.model.js";
 import { ErrorHandler } from '../utils/errorHandler.js';
 
 export const createRoom = async (req, res, next) => {
@@ -63,8 +64,11 @@ export const getAllRooms = async (req, res, next) => {
 
   export const getRoomById = async (req, res, next) => {
     try {
-      const room = await Room.findById(req.params.id);
-  
+     const room = await Room.findById(req.params.id).populate({
+       path: "user_id",
+       populate: { path: "preferences" },
+     });
+      
       if (!room) {
         return next(new ErrorHandler(404, 'Room not found'));
       }
