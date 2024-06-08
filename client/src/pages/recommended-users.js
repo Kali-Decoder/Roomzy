@@ -172,14 +172,14 @@ const RecommendedUsers = ({ title }) => {
                 <div className="flex flex-row items-center justify-between w-full gap-4">
                   <h2 className="text-lg font-semibold">{user.full_name}</h2>
 
-                  <div className="flex bg-red-300 w-auto px-2 sm:px-4 py-1 rounded-xl items-center gap-2">
+                  <div className="flex bg-red-300 w-fit-content px-2 sm:px-8 py-1 rounded-xl items-center gap-2">
                     <span className="text-[14px] font-semibold tracking-wider">
                       {user.telegram_username}
                     </span>
                     <img
                       src={TelegramIcon}
                       alt="telegram"
-                      className="w-5 h-5"
+                      className="w-5 h-5 mr-1"
                     />
                   </div>
                 </div>

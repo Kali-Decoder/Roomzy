@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import TopNavbar from "../components/navbar/topNavbar";
 import { useNavigate } from "react-router-dom";
 import TelegramIcon from "../lib/icons/telegram_logo.jpeg";
 import DiscordIcon from "../lib/icons/discord_logo.svg";
@@ -124,7 +123,6 @@ const ListEvents = () => {
         style={{ border: "3px solid #1a202c" }}
         className="cursor-pointer mx-auto my-4 max-w-xs rounded-xl px-6 py-10 shadow-[0px_4px_0px_0px_#1a202c]  text-gray-600"
       >
-        <TopNavbar/>
         <div className="flex justify-between items-center">
           <div className="mb-6 w-12 h-12 flex justify-center items-center overflow-hidden shadow-xl rounded-full bg-blue-100 px-2 py-1 text-sm font-medium text-blue-700">
             <img src={event.icon} />
