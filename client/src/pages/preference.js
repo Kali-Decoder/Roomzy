@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Button } from "@nextui-org/react";
-
+import toast, { Toaster } from 'react-hot-toast';
 const Questionaries = () => {
   const [selectedPreferences, setSelectedPreferences] = useState([]);
 
@@ -17,6 +17,7 @@ const Questionaries = () => {
     console.log(selectedPreferences);
   };
   const addPreferences = async () => {
+    let id = toast.loading('Updating preferences...');
     const response = await fetch("http://localhost:4000/api/v1/user/preferences", {
       method: "POST",
       headers: {
@@ -26,6 +27,7 @@ const Questionaries = () => {
       body: JSON.stringify({ preferences: selectedPreferences }),
     });
     const data = await response.json();
+    toast.success('Preferences updated successfully!', { id });
     console.log(data);
   }
   const prefers = [

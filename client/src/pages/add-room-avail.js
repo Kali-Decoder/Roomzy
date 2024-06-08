@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Button } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
-
+import toast, { Toaster } from 'react-hot-toast';
 const AddRoomAvail = () => {
   const navigate = useNavigate();
   const highlights = [
@@ -44,6 +44,7 @@ const AddRoomAvail = () => {
   });
 
   const handleChange = (e) => {
+   
     const { name, value, type, checked } = e.target;
     if (type === "checkbox") {
       if (checked) {
@@ -66,6 +67,7 @@ const AddRoomAvail = () => {
   };
 
   const handleSubmit = async (e) => {
+    let id = toast.loading('Submitting...');
     e.preventDefault();
     try {
       const transformedData = {
@@ -102,7 +104,7 @@ const AddRoomAvail = () => {
       );
 
       if (response.ok) {
-        alert("Room details added successfully!");
+        toast.success('Room details added successfully.', { id });
 
         navigate('/events');
         setFormData({
@@ -119,7 +121,7 @@ const AddRoomAvail = () => {
           amenities: [],
         });
       } else {
-        alert("Error adding room details.");
+        toast.error('Error adding room details.', { id });
       }
     } catch (error) {
       alert("Network error.");

@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { NextUIProvider } from "@nextui-org/react";
 import { Analytics } from "@vercel/analytics/react";
 import { UserContextWrapper } from "./context/userContext";
-
+import { Toaster } from 'react-hot-toast';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -14,6 +14,7 @@ root.render(
     <NextUIProvider>
       <App />
       <Analytics />
+      <Toaster />
     </NextUIProvider>
     </UserContextWrapper>
   </React.StrictMode>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Button } from "@nextui-org/react"; 
 import {useNavigate} from "react-router-dom";
-
+import toast, { Toaster } from 'react-hot-toast';
 const RegisterUser = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -28,6 +28,7 @@ const RegisterUser = () => {
   };
 
   const handleSubmit = async (e) => {
+    let id = toast.loading('Registering...');
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
@@ -60,7 +61,7 @@ const RegisterUser = () => {
       );
 
       if (response.ok) {
-        alert("User registered successfully");
+       
 
       //  if (formData.whoYouAre === "NEED ROOM WITH ROOMMATE") {
       //    navigate("/generate-list");
@@ -82,8 +83,10 @@ const RegisterUser = () => {
         });
 
         navigate("/questions");
+        toast.success('User registered successfully', {id});
       } else {
-        alert("Error registering User.");
+       
+        toast.error('Error registering User.', {id});
       }
     } catch (error) {
       console.log(error);

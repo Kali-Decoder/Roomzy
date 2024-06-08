@@ -3,18 +3,21 @@ import React, { useState } from "react";
 import { Button } from "@nextui-org/react";
 import { login } from "../api/apiRequest";
 import { useNavigate } from "react-router-dom";
-
+import toast, { Toaster } from 'react-hot-toast';
 const LoginUser = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
+    let id= toast.loading('Logging in...');
     const response = await login(email, password);
     if (response.success) {
       console.log("Login successful");
+      toast.success('Login successful', {id});
       navigate('/events')
     } else {
+      toast.error('Login failed', {id});
       console.log("Login failed:", response.error);
     }
   };
