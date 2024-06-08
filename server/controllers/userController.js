@@ -192,9 +192,7 @@ export const getUsernameByUserId = async (req, res, next) => {
 
 export const getRewardByUsername = async (req, res, next) => {
   try {
-    if(!req.user.id){
-      return res.status(401).json({ success: false, message: 'Unauthorized' });
-    }
+  
     const { username } = req.params;
 
     const user = await User.findOne({ username });
@@ -214,15 +212,14 @@ export const getRewardByUsername = async (req, res, next) => {
   }
 };
 
-export const getIdByUsername = async (username) => {
+export const getIdByUsername = async (req, res, next) => {
   try {
-    if(!req.user.id){
-      return res.status(401).json({ success: false, message: 'Unauthorized' });
-    }
+    const { username } = req.params;
     const user = await User.findOne({ username });
     if (!user) {
       return res.status(404).json({ success: false, message: 'User not found' });
     }
+    console.log(user.wallet_address)
     return { id: user._id, walletAddress: user.wallet_address };
   } catch (error) {
     throw new Error(error.message);

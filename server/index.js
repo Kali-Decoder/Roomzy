@@ -10,14 +10,14 @@ const PORT = process.env.PORT || 8000;
 
 connectDB();
 
-// const token="6637473201:AAG6H4SMtFQuKbCVhKImOSf2QQT_QblvvyU"
+const token="6637473201:AAG6H4SMtFQuKbCVhKImOSf2QQT_QblvvyU"
 
-// const web_link="https://roomzy-two.vercel.app"
-// const bot = new Telegraf(token)
+const web_link="https://roomzy-two.vercel.app"
+const bot = new Telegraf(token)
 
-// bot.start((ctx) => ctx.reply('Welcome to Roomzy',{reply_markup:{keyboard:[[{text:"web app",web_app:{url:web_link}}]]}}))
+bot.start((ctx) => ctx.reply('Welcome to Roomzy',{reply_markup:{keyboard:[[{text:"web app",web_app:{url:web_link}}]]}}))
 
-// bot.launch()
+bot.launch()
 
 process.on('uncaughtException', err => {
   console.error('Uncaught Exception:', err);
