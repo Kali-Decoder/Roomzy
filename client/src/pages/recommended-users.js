@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LocationIcon from "../lib/icons/location.svg";
 import TelegramIcon from "../lib/icons/telegram.svg";
-import TopNavbar from "../components/navbar/topNavbar";
+
 import { useNavigate } from "react-router-dom";
 import { Button } from "@nextui-org/react";
 import Filter from "../components/user-list/Filter";
@@ -111,7 +111,7 @@ const RecommendedUsers = ({title}) => {
 
   return (
     <div className="items-center md:mx-12 px-5">
-      <TopNavbar />
+      
 
       <div className=" min-h-screen items-center mt-4 md:mx-4 gap-x-3">
         <h1 className="capitalize text-left mb-5 text-2xl font-bold">

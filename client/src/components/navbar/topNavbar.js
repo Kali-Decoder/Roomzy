@@ -1,6 +1,8 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom"; // Import Link and useLocation from react-router-dom
+import React, { useEffect,useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom"; // Import Link and useLocation from react-router-dom
 import MapIcon from "../../lib/icons/map-pin-simple-area-bold.svg";
+import ProfileIcon from "./ProfileIcon";
+import { UserContext } from "../../context/userContext";
 
 export default function TopNavbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -10,6 +12,15 @@ export default function TopNavbar() {
   });
   const [prevPathname, setPrevPathname] = React.useState("/");
   const location = useLocation(); // Get the current location using useLocation()
+
+  const navigate = useNavigate();
+  const [token, setToken] = React.useState(null);
+
+
+  useEffect(() => {
+    let tokenHere = localStorage.getItem("token");
+    setToken(tokenHere);
+  }, [navigate]);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -28,25 +39,25 @@ export default function TopNavbar() {
     localStorage.setItem("activeTab", activeTab);
   }, [activeTab]);
 
-   React.useEffect(() => {
-     if (location.pathname !== prevPathname) {
-       setPrevPathname(location.pathname);
-       // Update active tab based on pathname change
-       switch (location.pathname) {
-         case "/":
-           setActiveTab("home");
-           break;
-         case "/generate-list":
-           setActiveTab("listings");
-           break;
-         case "/events":
-           setActiveTab("events");
-           break;
-         default:
-           break;
-       }
-     }
-   }, [location.pathname, prevPathname]);
+  React.useEffect(() => {
+    if (location.pathname !== prevPathname) {
+      setPrevPathname(location.pathname);
+      // Update active tab based on pathname change
+      switch (location.pathname) {
+        case "/":
+          setActiveTab("home");
+          break;
+        case "/generate-list":
+          setActiveTab("listings");
+          break;
+        case "/events":
+          setActiveTab("events");
+          break;
+        default:
+          break;
+      }
+    }
+  }, [location.pathname, prevPathname]);
 
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact-section");
@@ -175,23 +186,29 @@ export default function TopNavbar() {
             </Link>
           </li>
         </ul>
-        <Link
-          className={` ${
-            navbarSize ? "hidden" : "block"
-          } lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-xl transition duration-200`}
-          to="/login"
-        >
-          Sign In
-        </Link>
+        {token ? (
+          <ProfileIcon />
+        ) : (
+          <div  className="flex flex-row items-center gap-2">
+            <Link
+              className={` ${
+                navbarSize ? "hidden" : "block"
+              } lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-xl transition duration-200`}
+              to="/login"
+            >
+              Sign In
+            </Link>
 
-        <Link
-          className={` ${
-            navbarSize ? "hidden" : "block"
-          }   py-2 px-6 bg-red-400 hover:bg-red-400 text-sm text-white font-bold rounded-xl transition duration-200`}
-          href="/register-user"
-        >
-          Sign Up
-        </Link>
+            <Link
+              className={` ${
+                navbarSize ? "hidden" : "block"
+              }   py-2 px-6 bg-red-400 hover:bg-red-400 text-sm text-white font-bold rounded-xl transition duration-200`}
+              to="/register-user"
+            >
+              Sign Up
+            </Link>
+          </div>
+        )}
       </nav>
       <div
         className={`navbar-menu relative z-50 ${navbarOpen ? "" : "hidden"}`}
@@ -224,9 +241,9 @@ export default function TopNavbar() {
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M6 18L18 6M6 6l12 12"
                 ></path>
               </svg>
@@ -245,7 +262,7 @@ export default function TopNavbar() {
                   Home
                 </Link>
               </li>
-              {location.pathname === "/" && ( 
+              {location.pathname === "/" && (
                 <>
                   <li className="mb-1">
                     <Link
@@ -289,22 +306,28 @@ export default function TopNavbar() {
                   Listing
                 </Link>
               </li>
-              <li className="mb-1">
-                <Link
-                  to="/login"
-                  className="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold  bg-gray-50 hover:bg-gray-100 rounded-xl"
-                >
-                  Sign in
-                </Link>
-              </li>
-              <li className="mb-1">
-                <a
-                  className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-red-400 hover:bg-red-700  rounded-xl"
-                  href="/register-user"
-                >
-                  Sign Up
-                </a>
-              </li>
+              {token ? (
+                <ProfileIcon />
+              ) : (
+                <div className="flex flex-row items-center gap-2">
+                  <li className="mb-1">
+                    <Link
+                      to="/login"
+                      className="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold  bg-gray-50 hover:bg-gray-100 rounded-xl"
+                    >
+                      Sign in
+                    </Link>
+                  </li>
+                  <li className="mb-1">
+                    <Link
+                      className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-red-400 hover:bg-red-700  rounded-xl"
+                      to="/register-user"
+                    >
+                      Sign Up
+                    </Link>
+                  </li>
+                </div>
+              )}
             </ul>
           </div>
         </nav>
