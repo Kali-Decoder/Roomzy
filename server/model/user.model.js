@@ -20,15 +20,18 @@ const userSchema = new mongoose.Schema({
   password_hash: { type: String, required: true },
   full_name: { type: String, required: true },
   mobile_number: { type: String, required: true },
-  mobile_visibility: {type: Boolean, default: true},
-  gender: { type: String, enum: ["MALE", "FEMALE"] },
+  mobile_visibility: { type: Boolean, default: true },
+  gender: {
+    type: String,
+    enum: ["MALE", "FEMALE","male", "female", "Male", "Female"],
+  },
   date_of_birth: { type: Date },
-  rewards:{type: String, default:"0"},
+  rewards: { type: String, default: "0" },
   profile_picture_url: { type: String },
   bio: { type: String },
-  preferences: { type: mongoose.Schema.Types.ObjectId, ref: 'Preference' },
+  preferences: { type: mongoose.Schema.Types.ObjectId, ref: "Preference" },
   rewards: { type: Number, default: 0 },
-  wallet_address:{type:String},
+  wallet_address: { type: String },
   created_at: { type: Date, default: Date.now },
 });
 
