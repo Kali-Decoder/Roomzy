@@ -84,8 +84,9 @@ const RecommendedUsers = ({title}) => {
         distance: "5 km",
         rent: item.price,
         photo: item.user_id.profile_picture_url,
+        room_id: item._id
       }));
-
+      console.log(transformedUsers);
       setUsers(transformedUsers);
     }
     catch (error) {
@@ -193,7 +194,9 @@ const RecommendedUsers = ({title}) => {
                     <span className="text-xs">from your search</span>
                   </span>
                   <Button
-                    onClick={() => navigate("/listing-details")}
+                    onClick={() => navigate("/listing-details", {
+                      state: { room_id: user.room_id },
+                    })}
                     style={{
                       border: "1px solid #1a202c",
                     }}

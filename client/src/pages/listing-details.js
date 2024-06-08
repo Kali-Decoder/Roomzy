@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import TopNavbar from "../components/navbar/topNavbar";
 import { Button } from "@nextui-org/react";
 import TickIcon from "../lib/icons/tick.svg";
+import { useLocation } from "react-router-dom";
 
 const highlightStyle = {
   
@@ -14,6 +15,35 @@ const highlightStyle = {
 };
 
 const Profile = () => {
+  const location = useLocation();
+  const room_id = location.state.room_id;
+  console.log(room_id);
+  const [details, setDetails] = useState({});
+
+  useEffect(() => {
+    const fetchDetails = async () => {
+      try {
+
+         const token = localStorage.getItem("token");
+        const response = await fetch(
+          `http://localhost:4000/api/v1/rooms/${room_id}`, {
+           method: "GET",
+           headers: {
+             "Content-Type": "application/json",
+             Authorization: `Bearer ${token}`,
+           },
+          }
+        );
+        const res = await response.json();
+        console.log(res.data);
+        setDetails(res.data);
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+      }
+    };
+
+    fetchDetails();
+  }, [room_id]);
   return (
     <>
       <div id="listing_div">
@@ -27,7 +57,10 @@ const Profile = () => {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-8 py-8">
                 <div className="flex-shrink-0">
                   <img
-                    src="https://via.placeholder.com/150"
+                    src={
+                      details.user_id?.profile_picture_url ||
+                      "https://via.placeholder.com/150"
+                    }
                     alt="Profile"
                     className="w-32 h-32 rounded-full border"
                   />
@@ -59,7 +92,7 @@ const Profile = () => {
               <p className="uppercase text-xl font-semibold text-center">
                 Location
               </p>
-              <p className="mt-4 text-center">San Francisco, CA</p>
+              <p className="mt-4 text-center">{`${details.city}, ${details.state}`}</p>
               <hr className="border-dashed border-2 border-gray-400 my-4" />
               <p className="uppercase text-xl font-semibold text-center">
                 Basic Info
@@ -67,165 +100,84 @@ const Profile = () => {
               <div className="mt-4 grid grid-cols-2 gap-4 text-gray-600">
                 <div>
                   <p className="font-semibold">Gender</p>
-                  <p>Female</p>
+                  <p>{details.user_id?.gender}</p>
                 </div>
                 <div>
                   <p className="font-semibold">Approx Rent</p>
-                  <p>$1500/month</p>
+                  <p>₹{details.price}</p>
                 </div>
                 <div>
                   <p className="font-semibold">Occupancy</p>
-                  <p>2</p>
+                  <p>{details.members_max}</p>
                 </div>
                 <div>
-                  <p className="font-semibold">Looking For</p>
-                  <p>Roommate</p>
+                  <p className="font-semibold">Availability</p>
+                  <p>{`${new Date(
+                    details.available_from
+                  ).toLocaleDateString()} - ${new Date(
+                    details.available_to
+                  ).toLocaleDateString()}`}</p>
                 </div>
               </div>
               <hr className="border-dashed border-2 border-gray-400 my-4" />
               <p className="uppercase text-xl font-semibold text-center">
                 Preferences
               </p>
-              <div className="mt-4 grid grid-cols-3 gap-4 text-gray-600">
-                <div className="flex flex-col justify-center items-center">
-                  <img
-                    src="https://via.placeholder.com/150"
-                    alt="Preference"
-                    className="w-20 h-20 rounded-full border"
-                  />
-                  <span className="text-center mt-4">Preference Name</span>
-                </div>
-                <div className="flex flex-col justify-center items-center">
-                  <img
-                    src="https://via.placeholder.com/150"
-                    alt="Preference"
-                    className="w-20 h-20 rounded-full border"
-                  />
-                  <span className="text-center mt-4">Preference Name</span>
-                </div>
-                <div className="flex flex-col justify-center items-center">
-                  <img
-                    src="https://via.placeholder.com/150"
-                    alt="Preference"
-                    className="w-20 h-20 rounded-full border"
-                  />
-                  <span className="text-center mt-4">Preference Name</span>
-                </div>
-                <div className="flex flex-col justify-center items-center">
-                  <img
-                    src="https://via.placeholder.com/150"
-                    alt="Preference"
-                    className="w-20 h-20 rounded-full border"
-                  />
-                  <span className="text-center mt-4">Preference Name</span>
-                </div>
-                <div className="flex flex-col justify-center items-center">
-                  <img
-                    src="https://via.placeholder.com/150"
-                    alt="Preference"
-                    className="w-20 h-20 rounded-full border"
-                  />
-                  <span className="text-center mt-4">Preference Name</span>
-                </div>
+              <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4 text-gray-600">
+                {details.user_id?.preferences?.preferences.map(
+                  (preference, index) => (
+                    <div
+                      key={index}
+                      className="flex flex-col justify-center items-center"
+                    >
+                      <img
+                        src="https://via.placeholder.com/150"
+                      alt={`preference ${index}`}
+                        className="w-20 h-20 rounded-full border"
+                      />
+                      <span className="text-center mt-4">{preference}</span>
+                    </div>
+                  )
+                )}
               </div>
               <hr className="border-dashed border-2 border-gray-400 my-4" />
               <p className="uppercase text-xl font-semibold text-center">
                 Highlights
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                <div
-                  style={highlightStyle}
-                  className="flex flex-row items-center gap-2"
-                >
-                  <img
-                    src={TickIcon}
-                    className="w-4 h-4 mr-2"
-                    alt="Tick Icon"
-                  />
-                  <span>Non Alcoholic</span>
-                </div>
-                <div
-                  style={highlightStyle}
-                  className="flex flex-row items-center gap-2"
-                >
-                  <img
-                    src={TickIcon}
-                    className="w-4 h-4 mr-2"
-                    alt="Tick Icon"
-                  />
-                  <span>Fitness Freak</span>
-                </div>
-                <div
-                  style={highlightStyle}
-                  className="flex flex-row items-center gap-2"
-                >
-                  <img
-                    src={TickIcon}
-                    className="w-4 h-4 mr-2"
-                    alt="Tick Icon"
-                  />
-                  <span>Sporty</span>
-                </div>
-                <div
-                  style={highlightStyle}
-                  className="flex flex-row items-center gap-2"
-                >
-                  <img
-                    src={TickIcon}
-                    className="w-4 h-4 mr-2"
-                    alt="Tick Icon"
-                  />
-                  <span>Night Owl</span>
-                </div>
-                <div
-                  style={highlightStyle}
-                  className="flex flex-row items-center gap-2"
-                >
-                  <img
-                    src={TickIcon}
-                    className="w-4 h-4 mr-2"
-                    alt="Tick Icon"
-                  />
-                  <span>Party Lover</span>
-                </div>
+                {details.highlights?.map((highlight, index) => (
+                  <div
+                    key={index}
+                    style={highlightStyle}
+                    className="flex flex-row items-center gap-2"
+                  >
+                    <img
+                      src={TickIcon}
+                      className="w-4 h-4 mr-2"
+                      alt="Tick Icon"
+                    />
+                    <span>{highlight}</span>
+                  </div>
+                ))}
               </div>
               <hr className="border-dashed border-2 border-gray-400 my-4" />
               <p className="uppercase text-xl font-semibold text-center">
                 Amenities
               </p>
-              <div className="mt-4 grid grid-cols-3 gap-4 text-gray-600">
-                <div className="flex flex-col justify-center items-center">
-                  <img
-                    src="https://via.placeholder.com/150"
-                    alt="Preference"
-                    className="w-20 h-20 rounded-full border"
-                  />
-                  <span className="text-center mt-4">Amenity Name</span>
-                </div>
-                <div className="flex flex-col justify-center items-center">
-                  <img
-                    src="https://via.placeholder.com/150"
-                    alt="Preference"
-                    className="w-20 h-20 rounded-full border"
-                  />
-                  <span className="text-center mt-4">Amenity Name</span>
-                </div>
-                <div className="flex flex-col justify-center items-center">
-                  <img
-                    src="https://via.placeholder.com/150"
-                    alt="Preference"
-                    className="w-20 h-20 rounded-full border"
-                  />
-                  <span className="text-center mt-4">Amenity Name</span>
-                </div>
-                <div className="flex flex-col justify-center items-center">
-                  <img
-                    src="https://via.placeholder.com/150"
-                    alt="Preference"
-                    className="w-20 h-20 rounded-full border"
-                  />
-                  <span className="text-center mt-4">Amenity Name</span>
-                </div>
+              <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4 text-gray-600">
+                {details.amenities?.map((amenity, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col justify-center items-center"
+                  >
+                    <img
+                      src="https://via.placeholder.com/150"
+                      alt="Amenity"
+                      className="w-20 h-20 rounded-full border"
+                    />
+                    <span className="text-center mt-4">{amenity}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
