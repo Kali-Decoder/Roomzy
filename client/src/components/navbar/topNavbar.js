@@ -55,7 +55,7 @@ export default function TopNavbar() {
               zy
             </span>
           </div>
-        </Link>
+        </a>
         <div className="lg:hidden">
           <button
             onClick={() => setNavbarOpen(true)}
@@ -227,7 +227,7 @@ export default function TopNavbar() {
                   href="#"
                 >
                   Home
-                </Link>
+                </a>
               </li>
               {location.pathname === "/" && ( // Render About and Contact links only on "/"
                 <>
@@ -255,7 +255,7 @@ export default function TopNavbar() {
                   href="#"
                 >
                   Events
-                </Link>
+                </a>
               </li>
               <li className="mb-1">
                 <a
@@ -263,7 +263,7 @@ export default function TopNavbar() {
                   href="#"
                 >
                   Listing
-                </Link>
+                </a>
               </li>
               <li className="mb-1">
                 <Link
@@ -279,7 +279,7 @@ export default function TopNavbar() {
                   href="/register-user"
                 >
                   Sign Up
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
