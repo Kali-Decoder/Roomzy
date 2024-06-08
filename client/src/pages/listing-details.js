@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { TonConnectButton } from "@tonconnect/ui-react";
 import { useTonConnectUI } from "@tonconnect/ui-react";
 
-import TV from "../lib/img/amenities/TV.png";
+import TV from "../lib/img/amenities/tv.png";
 import Fridge from "../lib/img/amenities/fridge.png";
 import Kitchen from "../lib/img/amenities/kitchen.png";
 import Wifi from "../lib/img/amenities/wifi.png";
