@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TopNavbar from "../components/navbar/topNavbar";
+
 import {useNavigate} from "react-router-dom";
 
 const ListEvents = () => {
@@ -134,9 +134,9 @@ const ListEvents = () => {
               viewBox="0 0 24 24"
               fill="none"
               stroke="#cc6161"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               class="lucide lucide-calendar-check"
             >
               <path d="M8 2v4" />
@@ -154,9 +154,9 @@ const ListEvents = () => {
               viewBox="0 0 24 24"
               fill="none"
               stroke="#cc6161"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               class="lucide lucide-calendar-check"
             >
               <path d="M8 2v4" />
@@ -174,9 +174,9 @@ const ListEvents = () => {
               viewBox="0 0 24 24"
               fill="none"
               stroke="#cc6161"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               class="lucide lucide-calendar-check"
             >
               <path d="M8 2v4" />
@@ -201,9 +201,9 @@ const ListEvents = () => {
               viewBox="0 0 24 24"
               fill="none"
               stroke="#cc6161"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               class="lucide lucide-calendar-check"
             >
               <path d="M8 2v4" />
@@ -222,9 +222,9 @@ const ListEvents = () => {
               viewBox="0 0 24 24"
               fill="none"
               stroke="#cc6161"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               class="lucide lucide-map-pin"
             >
               <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
@@ -264,7 +264,7 @@ const ListEvents = () => {
   };
   return (
     <>
-      <TopNavbar />
+      
 
       <section className="container mx-auto sm:px-20 px-2">
         <div className="mx-auto grid  0 px-4 py-2 grid-cols-1 md:grid-cols-2 md:px-8 lg:grid-cols-3 gap-x-2">

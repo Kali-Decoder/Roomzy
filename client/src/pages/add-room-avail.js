@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TopNavbar from "../components/navbar/topNavbar";
+
 import { Button } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 
@@ -130,7 +130,7 @@ const AddRoomAvail = () => {
   return (
     <>
       <div id="review_div">
-        <TopNavbar />
+        
         <div
           style={{ border: "3px solid #1a202c" }}
           className="sm:w-[38rem] shadow-[0px_8px_0px_0px_#1a202c]  w-[95%] mx-auto my-4 overflow-hidden rounded-2xl bg-white sm:max-w-lg"

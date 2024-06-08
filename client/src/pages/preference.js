@@ -1,5 +1,5 @@
 import React from "react";
-import TopNavbar from "../components/navbar/topNavbar";
+
 import { Button } from "@nextui-org/react";
 
 const Questionaries = () => {
@@ -20,7 +20,6 @@ const Questionaries = () => {
   return (
     <>
       <div>
-        <TopNavbar />
         <section className="container mx-auto flex justify-center items-center flex-col">
           <h1 className="uppercase text-3xl text-center">Your Preference</h1>
           <p className="text-md text-gray-500 uppercase text-center mt-4">
@@ -45,9 +44,14 @@ const Questionaries = () => {
                       >
                         {" "}
                       </label>
-                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQekcrL1wdy13S8K9V7nqZ1UYhlAJzNsz1ilyH02U9dSw&s" />
+                      <img
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQekcrL1wdy13S8K9V7nqZ1UYhlAJzNsz1ilyH02U9dSw&s"
+                        alt="img"
+                      />
                     </div>
-                    <span className=" uppercase text-sm mt-2 text-blue-400 font-bold">{ele}</span>
+                    <span className=" uppercase text-sm mt-2 text-red-400 font-bold">
+                      {ele}
+                    </span>
                   </div>
                 </>
               );
@@ -62,7 +66,7 @@ const Questionaries = () => {
             variant="bordered"
             className="shadow-[0px_3px_0px_0px_#1a202c] py-3  mt-12 uppercase"
           >
-            Update
+            Add Preferences
           </Button>
         </section>
       </div>

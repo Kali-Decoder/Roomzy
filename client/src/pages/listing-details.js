@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import TopNavbar from "../components/navbar/topNavbar";
+
 import { Button } from "@nextui-org/react";
 import TickIcon from "../lib/icons/tick.svg";
 import { useLocation } from "react-router-dom";
@@ -47,7 +47,7 @@ const Profile = () => {
   return (
     <>
       <div id="listing_div">
-        <TopNavbar />
+        
         <div className="grid sm:grid-cols-2 grid-cols-1 border gap-4 mx-auto container justify-items-center">
           <div className="flex flex-col sm:w-[24rem] ">
             <div
