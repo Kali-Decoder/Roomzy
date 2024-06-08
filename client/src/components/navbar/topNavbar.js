@@ -8,6 +8,7 @@ export default function TopNavbar() {
   const [activeTab, setActiveTab] = React.useState(() => {
     return localStorage.getItem("activeTab") || "home";
   });
+  const [prevPathname, setPrevPathname] = React.useState("/");
   const location = useLocation(); // Get the current location using useLocation()
 
   React.useEffect(() => {
@@ -26,6 +27,26 @@ export default function TopNavbar() {
   React.useEffect(() => {
     localStorage.setItem("activeTab", activeTab);
   }, [activeTab]);
+
+   React.useEffect(() => {
+     if (location.pathname !== prevPathname) {
+       setPrevPathname(location.pathname);
+       // Update active tab based on pathname change
+       switch (location.pathname) {
+         case "/":
+           setActiveTab("home");
+           break;
+         case "/generate-list":
+           setActiveTab("listings");
+           break;
+         case "/events":
+           setActiveTab("events");
+           break;
+         default:
+           break;
+       }
+     }
+   }, [location.pathname, prevPathname]);
 
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact-section");
@@ -214,14 +235,17 @@ export default function TopNavbar() {
           <div>
             <ul>
               <li className="mb-1">
-                <a
+                <Link
+                  to="/"
                   className="block p-4 text-sm font-semibold text-gray-400 hover:bg-red-50 hover:text-red-300 rounded"
-                  href="/"
+                  onClick={() => {
+                    setActiveTab("home");
+                  }}
                 >
                   Home
-                </a>
+                </Link>
               </li>
-              {location.pathname === "/" && ( // Render About and Contact links only on "/"
+              {location.pathname === "/" && ( 
                 <>
                   <li className="mb-1">
                     <Link
@@ -244,20 +268,26 @@ export default function TopNavbar() {
                 </>
               )}
               <li className="mb-1">
-                <a
+                <Link
+                  to="/events"
                   className="block p-4 text-sm font-semibold text-gray-400 hover:bg-red-50 hover:text-red-300 rounded"
-                  href="/events"
+                  onClick={() => {
+                    setActiveTab("events");
+                  }}
                 >
                   Events
-                </a>
+                </Link>
               </li>
               <li className="mb-1">
-                <a
+                <Link
+                  to="/generate-list"
                   className="block p-4 text-sm font-semibold text-gray-400 hover:bg-red-50 hover:text-red-300 rounded"
-                  href="/generate-list"
+                  onClick={() => {
+                    setActiveTab("listings");
+                  }}
                 >
                   Listing
-                </a>
+                </Link>
               </li>
               <li className="mb-1">
                 <Link
