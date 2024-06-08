@@ -88,7 +88,7 @@ const RegisterUser = () => {
                     {" "}
                   </label>
                   <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-orange-600 ring-offset-2"></div>
-                  <span>YOU ARE FLAT OWNER</span>
+                  <span>NEED ROOM WITH ROOMMATE</span>
                 </div>
                 <div className="relative flex sm:w-36 w-full items-center justify-center rounded-full bg-gray-50 px-4 py-3 font-medium text-gray-700">
                   <input
@@ -104,7 +104,7 @@ const RegisterUser = () => {
                     {" "}
                   </label>
                   <div className="peer-checked:border-transparent peer-checked:bg-[#FE797A] peer-checked:ring-2 absolute left-4 h-5 w-5 rounded-full border-2 border-gray-300 bg-gray-200 ring-sky-500 ring-offset-2"></div>
-                  <span className="mx-4">YOU ARE NOT FLAT OWNER</span>
+                  <span className="mx-4">NEED ROOMMATE FOR ROOM</span>
                 </div>
               </div>
             </div>
