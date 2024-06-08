@@ -47,78 +47,76 @@ export const registerUser = async (req, res, next) => {
     next(error);
   }
 };
-
 export const loginUser = async (req, res, next) => {
-  const { email, password } = req.body;
-
-  // Check if email and password were provided
-  if (!email || !password) {
-    return next(new ErrorHandler(400, "Please provide email and password"));
-  }
-
-  try {
-    // Find user by email
-    const user = await User.findOne({ email }).select("+password_hash");
-
-    if (!user) {
-      return next(new ErrorHandler(401, "Invalid email or password"));
+    const { email, password } = req.body;
+  
+    // Check if email and password were provided
+    if (!email || !password) {
+      return next(new ErrorHandler(400, 'Please provide email and password'));
     }
-
-    // Check if password matches
-    const isMatch = await user.matchPassword(password);
-
-    if (!isMatch) {
-      return next(new ErrorHandler(401, "Invalid email or password"));
+  
+    try {
+      // Find user by email
+      const user = await User.findOne({ email }).select('+password_hash');
+  
+      if (!user) {
+        return next(new ErrorHandler(401, 'Invalid email or password'));
+      }
+  
+      // Check if password matches
+      const isMatch = await user.matchPassword(password);
+  
+      if (!isMatch) {
+        return next(new ErrorHandler(401, 'Invalid email or password'));
+      }
+  
+      // If matched, send token response
+      sendTokenResponse(user, 200, res);
+    } catch (error) {
+      next(error);
     }
+  };
 
-    // If matched, send token response
-    sendTokenResponse(user, 200, res);
-  } catch (error) {
-    next(error);
-  }
-};
+  export const logoutUser = async (req, res, next) => {
+    try {
+      res.clearCookie("token");
+  
+      res
+        .status(200)
+        .json({ success: true, message: "User logged out successfully" });
+    } catch (error) {
+      next(error);
+    }
+  };
 
-export const logoutUser = async (req, res, next) => {
-  try {
-    res.clearCookie("token");
-
-    res
-      .status(200)
-      .json({ success: true, message: "User logged out successfully" });
-  } catch (error) {
-    next(error);
-  }
-};
 
 export const changePassword = async (req, res, next) => {
-  const { currentPassword, newPassword, confirmNewPassword } = req.body;
+    const { currentPassword, newPassword, confirmNewPassword } = req.body;
 
   if (!currentPassword || !newPassword || !confirmNewPassword) {
-    return next(
-      new ErrorHandler(400, "Please provide current and new password")
-    );
+    return next(new ErrorHandler(400, 'Please provide current and new password'));
   }
 
   try {
-    const user = await User.findById(req.user.id).select("+password_hash");
+    const user = await User.findById(req.user.id).select('+password_hash');
 
     if (!user) {
-      return next(new ErrorHandler(404, "User not found"));
+      return next(new ErrorHandler(404, 'User not found'));
     }
 
     // Check if current password matches
     const isMatch = await user.matchPassword(currentPassword);
 
     if (!isMatch) {
-      return next(new ErrorHandler(401, "Current password is incorrect"));
+      return next(new ErrorHandler(401, 'Current password is incorrect'));
     }
 
     if (newPassword !== confirmNewPassword) {
-      throw new ErrorHandler(
-        400,
-        "New password and confirm password do not match"
-      );
-    }
+        throw new ErrorHandler(
+          400,
+          "New password and confirm password do not match"
+        );
+      }
 
     // Update password
     user.password_hash = newPassword;
@@ -133,21 +131,22 @@ export const changePassword = async (req, res, next) => {
 };
 
 export const getUserProfile = async (req, res, next) => {
-  try {
-    const user = await User.findById(req.user.id).populate("preferences");
-
-    if (!user) {
-      return next(new ErrorHandler(404, "User not found"));
+    try {
+      const user = await User.findById(req.user.id).populate('preferences');
+      console.log("inside profile")
+      if (!user) {
+        return next(new ErrorHandler(404, 'User not found'));
+      }
+  
+      res.status(200).json({
+        success: true,
+        data: user
+      });
+    } catch (error) {
+      next(error);
     }
-
-    res.status(200).json({
-      success: true,
-      data: user,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
+  };
+  
 
   export const updateUserProfile = async (req, res, next) => {
     try {
@@ -168,6 +167,68 @@ export const getUserProfile = async (req, res, next) => {
       next(error);
     }
   };
+
+
+
+export const getUsernameByUserId = async (req, res, next) => {
+  try {
+    const userId = req.params.userId;
+
+  
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+
+    res.status(200).json({
+      success: true,
+      username: user.username
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+export const getRewardByUsername = async (req, res, next) => {
+  try {
+    if(!req.user.id){
+      return res.status(401).json({ success: false, message: 'Unauthorized' });
+    }
+    const { username } = req.params;
+
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+
+    const rewards = user.rewards;
+
+    res.status(200).json({
+      success: true,
+      rewards: rewards
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getIdByUsername = async (username) => {
+  try {
+    if(!req.user.id){
+      return res.status(401).json({ success: false, message: 'Unauthorized' });
+    }
+    const user = await User.findOne({ username });
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+    return { id: user._id, walletAddress: user.wallet_address };
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
 
 
 
