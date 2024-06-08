@@ -1,5 +1,6 @@
 import Room from "../model/room.model.js";
 import User from "../model/user.model.js";
+import Preference from "../model/preference.model.js";
 import { ErrorHandler } from '../utils/errorHandler.js';
 
 export const createRoom = async (req, res, next) => {
@@ -8,7 +9,6 @@ export const createRoom = async (req, res, next) => {
     const room = await Room.create({
       ...req.body,
       user_id: req.user.id,
-      preferences: req.user.preferences,
     });
 
     res.status(201).json({
@@ -21,22 +21,54 @@ export const createRoom = async (req, res, next) => {
 };
 
 export const getAllRooms = async (req, res, next) => {
-    try {
-      const rooms = await Room.find();
-  
-      res.status(200).json({
-        success: true,
-        data: rooms
-      });
-    } catch (error) {
-      next(error);
+  try {
+    const { gender, minRent, maxRent, city, availableFrom, availableTo } = req.query;
+    let filter = {};
+
+
+    if (gender) {
+      const users = await User.find({ gender: gender });
+      const userIds = users.map(user => user._id);
+      filter.user_id = { $in: userIds };
     }
-  };
+
+
+    if (minRent || maxRent) {
+      filter.price = {};
+      if (minRent) filter.price.$gte = minRent;
+      if (maxRent) filter.price.$lte = maxRent;
+    }
+
+    if (city) {
+      filter.city = city;
+    }
+
+    if (availableFrom || availableTo) {
+      filter.available_from = {};
+      filter.available_to = {};
+      if (availableFrom) filter.available_from.$gte = new Date(availableFrom);
+      if (availableTo) filter.available_to.$lte = new Date(availableTo);
+    }
+
+    const rooms = await Room.find(filter).populate('user_id');
+
+    res.status(200).json({
+      success: true,
+      data: rooms
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 
   export const getRoomById = async (req, res, next) => {
     try {
-      const room = await Room.findById(req.params.id);
-  
+     const room = await Room.findById(req.params.id).populate({
+       path: "user_id",
+       populate: { path: "preferences" },
+     });
+      
       if (!room) {
         return next(new ErrorHandler(404, 'Room not found'));
       }

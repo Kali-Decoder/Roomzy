@@ -1,5 +1,5 @@
 import React from "react";
-import TopNavbar from "../components/navbar/topNavbar";
+
 import Hero from "../sections/Hero";
 import Focus from "../sections/Focus";
 import Footer from "../sections/Footer";
@@ -11,8 +11,7 @@ import ExplainBlocks from "../sections/ExplainBlocks";
 
 export default function Main() {
   return (
-    <div>
-      <TopNavbar />
+    <div className="overflow-x-hidden !w-fill !mx-auto">
       <Hero />
       <ExplanationHero />
       <Focus />

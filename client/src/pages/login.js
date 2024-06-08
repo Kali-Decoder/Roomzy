@@ -1,17 +1,23 @@
 import React, { useState } from "react";
-import TopNavbar from "../components/navbar/topNavbar";
+
 import { Button } from "@nextui-org/react";
 import { login } from "../api/apiRequest";
-
+import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
 const LoginUser = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
+    let id= toast.loading('Logging in...');
     const response = await login(email, password);
     if (response.success) {
       console.log("Login successful");
+      toast.success('Login successful', {id});
+      navigate('/events')
     } else {
+      toast.error('Login failed', {id});
       console.log("Login failed:", response.error);
     }
   };
@@ -19,7 +25,7 @@ const LoginUser = () => {
   return (
     <>
       <div id="login_div">
-        <TopNavbar />
+        
         <div
           style={{ border: "3px solid #1a202c" }}
           className="sm:w-[38rem] shadow-[0px_8px_0px_0px_#1a202c] w-[95%] mx-auto my-4 overflow-hidden rounded-2xl bg-white sm:max-w-lg"

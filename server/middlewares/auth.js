@@ -4,16 +4,17 @@ import { ErrorHandler } from '../utils/errorHandler.js';
 
 export const auth = async (req, res, next) => {
   try {
-    const token = req.cookies.token;
+    const token = req.headers.authorization.split(" ")[1];
+    // console.log(token);
 
     if (!token) {
       throw new ErrorHandler(401, 'Unauthorized.Login firsts');
     }
 
-
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     const user = await User.findById(decoded.id);
+    // console.log(user);
 
     if (!user) {
       throw new ErrorHandler(401, 'Unauthorized');

@@ -37,13 +37,27 @@ export default function ExplanationHero() {
         }}
       >
         <div class="grid gap-0 sm:grid-cols-1 justify-items-center container mx-auto lg:grid-cols-2">
-          <img src={first} alt="Image 1" class="w-80 h-auto order-2 sm:order-1 rounded" />
-          <img src={second} alt="Image 2" class="w-80 h-auto order-3  sm:order-2 rounded" />
-          <img src={third} alt="Image 3" class="w-100 h-auto order-1  sm:order-3 rounded" />
+          <img
+            src={first}
+            alt="Image 1"
+            class="w-80 h-auto order-2 sm:order-1 rounded"
+          />
+          <img
+            src={second}
+            alt="Image 2"
+            class="w-80 h-auto order-3  sm:order-2 rounded"
+          />
+          <img
+            src={third}
+            alt="Image 3"
+            class="w-100 h-auto order-1  sm:order-3 rounded"
+          />
         </div>
       </div>
 
-      <div className="pt-8 lg:absolute lg:right-10 mb-10 lg:-bottom-40">
+      <div
+        className="pt-8 lg:absolute lg:right-10 mb-10 lg:-bottom-40"
+      >
         <Card
           aria-describedby="product-explanation"
           className="shadow-[0px_5px_0px_0px_#1a202c] lg:pt-0 flex items-center justify-center p-4 mx-auto lg:mx-0 mb-8 lg:mb-0"
@@ -77,7 +91,6 @@ export default function ExplanationHero() {
             <Button
               as={Link}
               href="https://forms.gle/kcRvqnSBm1XSQVfa7"
-              target="__blank"
               className="shadow-[0px_3px_0px_0px_#1a202c] mt-4"
               style={{ border: "2px solid #1a202c" }}
               variant="bordered"

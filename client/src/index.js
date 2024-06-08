@@ -6,16 +6,23 @@ import reportWebVitals from "./reportWebVitals";
 import { NextUIProvider } from "@nextui-org/react";
 import { Analytics } from "@vercel/analytics/react";
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
+
+import { UserContextWrapper } from "./context/userContext";
+import { Toaster } from 'react-hot-toast';
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <UserContextWrapper>
     <NextUIProvider>
       <TonConnectUIProvider manifestUrl="https://ide.nujan.io/assets/ton/tonconnect-manifest.json">
         <App />
       </TonConnectUIProvider>
 
       <Analytics />
+      <Toaster />
     </NextUIProvider>
+    </UserContextWrapper>
   </React.StrictMode>
 );
 
