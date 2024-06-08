@@ -78,7 +78,7 @@ const Questionaries = () => {
                     key={i}
                     className="flex flex-col justify-center items-center"
                   >
-                    <div className="relative overflow-hidden flex rounded-full items-center justify-center w-30 h-30 bg-gray-50 px-4 py-3 font-medium text-gray-700">
+                    <div className="relative overflow-hidden  flex  rounded-full items-center justify-center w-30 h-30 bg-gray-50 px-4 py-3 font-medium text-gray-700">
                       <input
                         className="peer hidden"
                         type="checkbox"
@@ -88,12 +88,12 @@ const Questionaries = () => {
                         onChange={() => handleCheckboxChange(ele)}
                       />
                       <label
-                        className="peer-checked:border-[#FE797A] peer-checked:border-4 absolute top-0 h-full w-full cursor-pointer rounded-full border"
-                        for={`preferences${i}`}
+                        className="peer-checked:border-[#FE797A] peer-checked:border-8 border absolute top-0 h-full w-full cursor-pointer rounded-full"
+                        htmlFor={`preferences${i}`}
                       >
                         {" "}
                       </label>
-                      <img src={ele.img} alt="img" />
+                      <img src={ele.img} alt="img" className="w-20 h-20" />
                     </div>
                     <span className=" uppercase text-sm mt-2 text-red-400 font-bold">
                       {ele.title}
