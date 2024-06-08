@@ -16,6 +16,14 @@ export default function TopNavbar() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+    const scrollToContact = () => {
+      const contactSection = document.getElementById("contact-section");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+      }
+  };
+  
   return (
     <>
       <nav className="relative px-4 py-4 container mx-auto flex justify-between items-center bg-white">
@@ -48,7 +56,7 @@ export default function TopNavbar() {
         </div>
         <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
           <li>
-            <a className="text-sm text-gray-400 hover:text-gray-500" href="/">
+            <a className="text-sm text-gray-400 hover:text-gray-500 cursor-pointer" href="/">
               Home
             </a>
           </li>
@@ -69,8 +77,8 @@ export default function TopNavbar() {
             </svg>
           </li>
           <li>
-            <a className="text-sm text-blue-600 font-bold" href="#">
-              About Us
+            <a className="text-sm text-blue-600 font-bold cursor-pointer" href="/events">
+              Events
             </a>
           </li>
           <li className="text-gray-300">
@@ -90,8 +98,11 @@ export default function TopNavbar() {
             </svg>
           </li>
           <li>
-            <a className="text-sm text-gray-400 hover:text-gray-500" href="#">
-              Features
+            <a
+              className="text-sm text-gray-400 hover:text-gray-500 cursor-pointer"
+              href="/generate-list"
+            >
+              Listings
             </a>
           </li>
 
@@ -112,7 +123,10 @@ export default function TopNavbar() {
             </svg>
           </li>
           <li>
-            <a className="text-sm text-gray-400 hover:text-gray-500" href="#">
+            <a
+              className="text-sm text-gray-400 hover:text-gray-500 cursor-pointer"
+              onClick={scrollToContact}
+            >
               Contact
             </a>
           </li>
@@ -126,7 +140,6 @@ export default function TopNavbar() {
           Sign In
         </a>
 
-        
         <a
           className={` ${
             navbarSize ? "hidden" : "block"
