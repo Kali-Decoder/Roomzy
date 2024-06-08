@@ -41,7 +41,7 @@
   margin: 0 auto;
   left: 0;
   height: 600px;
-  width: 900px;
+  overflow: hidden;
   background-image: linear-gradient(to right, #80808012 1px, transparent 1px),
     linear-gradient(to bottom, #80808012 1px, transparent 1px);
   background-size: 24px 24px;

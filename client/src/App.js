@@ -26,7 +26,8 @@ export default function App() {
         <Route path="/add-room-avail" element={<AddRoomAvail />} />
         <Route path="/register-user" element={<RegisterUser />} />
         <Route path="/questions" element={<Questionaries />} />
-        <Route path="/generate-list" element={<RecommendedUsers />} />  
+        <Route path="/generate-list" element={<RecommendedUsers title={"Listed Users"} />} />  
+        <Route path="/listed-rooms" element={<RecommendedUsers title={"Listed Rooms"} />} />  
         <Route path="/login" element={<LoginUser />} />  
         <Route path="/events" element={<ListEvents />} />
         <Route path="/profile" element={<ProfilePage />} />

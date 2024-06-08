@@ -18,7 +18,7 @@ export default function TopNavbar() {
   }, []);
   return (
     <>
-      <nav className="relative px-4 py-4 container mx-auto flex justify-between items-center bg-white">
+      <nav className="relative px-4 py-4 mx-auto flex justify-between items-center bg-white">
         <a className="text-3xl font-bold leading-none" href="/">
           <div className="flex mt-1">
             <span
@@ -34,7 +34,7 @@ export default function TopNavbar() {
         <div className="lg:hidden">
           <button
             onClick={() => setNavbarOpen(true)}
-            className="navbar-burger flex items-center text-blue-600 p-3"
+            className="navbar-burger flex items-center text-red-400 p-3"
           >
             <svg
               className="block h-4 w-4 fill-current"
@@ -69,7 +69,7 @@ export default function TopNavbar() {
             </svg>
           </li>
           <li>
-            <a className="text-sm text-blue-600 font-bold" href="#">
+            <a className="text-sm text-red-400 font-bold" href="#">
               About Us
             </a>
           </li>
@@ -130,7 +130,7 @@ export default function TopNavbar() {
         <a
           className={` ${
             navbarSize ? "hidden" : "block"
-          }   py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200`}
+          }   py-2 px-6 bg-red-400 hover:bg-red-400 text-sm text-white font-bold rounded-xl transition duration-200`}
           href="/register-user"
         >
           Sign Up
@@ -178,7 +178,7 @@ export default function TopNavbar() {
             <ul>
               <li className="mb-1">
                 <a
-                  className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+                  className="block p-4 text-sm font-semibold text-gray-400 hover:bg-red-50 hover:text-red-300 rounded"
                   href="#"
                 >
                   Home
@@ -186,7 +186,7 @@ export default function TopNavbar() {
               </li>
               <li className="mb-1">
                 <a
-                  className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+                  className="block p-4 text-sm font-semibold text-gray-400 hover:bg-red-50 hover:text-red-300 rounded"
                   href="#"
                 >
                   About Us
@@ -194,7 +194,7 @@ export default function TopNavbar() {
               </li>
               <li className="mb-1">
                 <a
-                  className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+                  className="block p-4 text-sm font-semibold text-gray-400 hover:bg-red-50 hover:text-red-300 rounded"
                   href="#"
                 >
                   Services
@@ -210,7 +210,7 @@ export default function TopNavbar() {
               </li>
               <li className="mb-1">
                 <a
-                  className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl"
+                  className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-red-400 hover:bg-red-700  rounded-xl"
                   href="/register-user"
                 >
                   Sign Up
