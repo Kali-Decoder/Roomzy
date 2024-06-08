@@ -1,8 +1,21 @@
 import React, { useState } from "react";
-
 import { Button } from "@nextui-org/react";
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
+import NightOwl from "../lib/img/preferences/owl.png";
+import PartyLover from "../lib/img/preferences/party.png";
+import EarlyBird from "../lib/img/preferences/bird.png";
+import Studious from "../lib/img/preferences/books.png";
+import FitnessFreak from "../lib/img/preferences/dumbbell.png";
+import PetLover from "../lib/img/preferences/pet_lover.png";
+import Vegan from "../lib/img/preferences/vegan.png";
+import NonAlcoholic from "../lib/img/preferences/non_alcoholic.png";
+import Sporty from "../lib/img/preferences/sporty.png";
+import MusicLover from "../lib/img/preferences/music_lover.png";
+import Wanderer from "../lib/img/preferences/wanderer.png";
+import NonSmoker from "../lib/img/preferences/non_smoker.png";
+
+
 const Questionaries = () => {
   const [selectedPreferences, setSelectedPreferences] = useState([]);
 
@@ -33,21 +46,20 @@ const Questionaries = () => {
     console.log(data);
   }
   const prefers = [
-    "Night Owl",
-    "Party Lover",
-    "Early Bird",
-    "Studious",
-    "Fitness Freak",
-    "Pet Lover",
-    "Vegan",
-    "Non Alcoholic",
-    "Sporty",
-    "Music Lover",
-    "Wanderer",
-    "Non Smoker",
+    { title: "Night Owl", img: NightOwl },
+    { title: "Party Lover", img: PartyLover },
+    { title: "Early Bird", img: EarlyBird },
+    { title: "Studious", img: Studious },
+    { title: "Fitness Freak", img: FitnessFreak },
+    { title: "Pet Lover", img: PetLover },
+    { title: "Vegan", img: Vegan },
+    { title: "Non Alcoholic", img: NonAlcoholic },
+    { title: "Sporty", img: Sporty },
+    { title: "Music Lover", img: MusicLover },
+    { title: "Wanderer", img: Wanderer },
+    {title: "Non Smoker", img: NonSmoker },
   ];
 
-  
   return (
     <>
       <div>
@@ -57,33 +69,33 @@ const Questionaries = () => {
             It will show others what kind of flatmate you prefer. <br /> Please
             select at least 5 preferences to update.
           </p>
-          <div class="grid sm:grid-cols-5 grid-cols-2 w-2/3 gap-4 mt-8">
+          <div class="grid sm:grid-cols-5 grid-cols-2 w-2/3 gap-8 mt-8">
             {prefers.map((ele, i) => {
               return (
                 <>
-                  <div  key={i} className="flex flex-col justify-center items-center">
+                  <div
+                    key={i}
+                    className="flex flex-col justify-center items-center"
+                  >
                     <div className="relative overflow-hidden flex rounded-full items-center justify-center w-30 h-30 bg-gray-50 px-4 py-3 font-medium text-gray-700">
                       <input
                         className="peer hidden"
                         type="checkbox"
-                        name="amenties"
-                        id={`amenties${i}`}
+                        name="preferences"
+                        id={`preferences${i}`}
                         checked={selectedPreferences.includes(ele)}
                         onChange={() => handleCheckboxChange(ele)}
                       />
                       <label
                         className="peer-checked:border-[#FE797A] peer-checked:border-4 absolute top-0 h-full w-full cursor-pointer rounded-full border"
-                        for={`amenties${i}`}
+                        for={`preferences${i}`}
                       >
                         {" "}
                       </label>
-                      <img
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQekcrL1wdy13S8K9V7nqZ1UYhlAJzNsz1ilyH02U9dSw&s"
-                        alt="img"
-                      />
+                      <img src={ele.img} alt="img" />
                     </div>
                     <span className=" uppercase text-sm mt-2 text-red-400 font-bold">
-                      {ele}
+                      {ele.title}
                     </span>
                   </div>
                 </>
