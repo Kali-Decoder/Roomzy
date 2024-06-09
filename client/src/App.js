@@ -33,7 +33,7 @@ export default function App() {
         <Route path="/login" element={<LoginUser />} />  
         <Route path="/events" element={<Protected Component={ListEvents} />} />
         <Route path="/profile" element={<Protected Component={ProfilePage} />} />
-        <Route path="/listing-details" element={<Protected Component={ListingDetails} />} />
+        <Route path="/listing-details/:userId" element={<Protected Component={ListingDetails} />} />
         <Route path="/billing" element={<Protected Component={Bill}/>} />
       </Routes>
     </Router>

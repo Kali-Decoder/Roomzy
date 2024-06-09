@@ -1,4 +1,3 @@
-
 import TopNavbar from "../components/navbar/topNavbar";
 import { Button } from "@nextui-org/react";
 import { useTonConnect } from "../hooks/useTonConnect";
@@ -64,7 +63,7 @@ const RegisterUser = () => {
       };
       console.log(transformedData);
       const response = await fetch(
-        "https://freely-mate.vercel.app/api/v1/user/register",
+        "http://localhost:4000/api/v1/user/register",
         {
           method: "POST",
           headers: {
@@ -75,11 +74,12 @@ const RegisterUser = () => {
       );
 
       if (response.ok) {
-        //  if (formData.whoYouAre === "NEED ROOM WITH ROOMMATE") {
-        //    navigate("/generate-list");
-        //  } else if (formData.whoYouAre === "NEED ROOMMATE FOR ROOM") {
-        //    navigate("/add-room-avail");
-        //  }
+        const data = await response.json();
+        console.log(data);
+
+        if (data.success) {
+          localStorage.setItem("token", data.token);
+        }
 
         setFormData({
           fullName: "",

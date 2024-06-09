@@ -63,7 +63,7 @@ const RecommendedUsers = ({ title }) => {
       });
       
       const res = await response.json();
-      console.log(res);
+      console.log(res,"recom");
 
       // Transform the data to match the expected user structure
       if (title === "Listed Rooms") {
@@ -77,6 +77,7 @@ const RecommendedUsers = ({ title }) => {
           rent: item.price,
           photo: item.user_id.profile_picture_url,
           room_id: item._id,
+          userId:item.user_id._id,
         }));
         setUsers(transformedUsers);
       } else if (title === "Listed Users") {
@@ -88,7 +89,7 @@ const RecommendedUsers = ({ title }) => {
           distance: "5 km",
           rent: item.rent,
           photo: item.profile_picture_url,
-          user_id: item._id,
+          userId: item._id,
         }));
         setUsers(transformedUsers);
       }
@@ -214,11 +215,14 @@ const RecommendedUsers = ({ title }) => {
                     <span className="text-xs">from your search</span>
                   </span>
                   <Button
-                    onClick={() =>
-                      navigate("/listing-details", {
-                        state: { room_id: user.room_id },
-                      })
-                    }
+                    onClick={() => {
+                      const { userId, room_id } = user ?? {};
+                      const listingPath = `/listing-details/${userId}`;
+                      const queryParams = room_id ? `?roomId=${room_id}` : '';
+                      const state = { room_id, user_id: userId };
+                    
+                      navigate(`${listingPath}${queryParams}`, { state });
+                    }}
                     style={{
                       border: "1px solid #1a202c",
                     }}

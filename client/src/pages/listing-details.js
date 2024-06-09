@@ -77,8 +77,10 @@ const getPreferenceImage = (title) => {
 
 const Profile = () => {
   const location = useLocation();
-  const room_id = location.state.room_id;
-  console.log(room_id);
+  const searchParams = new URLSearchParams(location.search);
+  const room_id = searchParams.get('roomId');
+  const wallet=searchParams.get('wallet');
+  console.log(room_id,wallet);
   const [details, setDetails] = useState({});
 
   useEffect(() => {
@@ -86,7 +88,7 @@ const Profile = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await fetch(
-          `https://freely-mate.vercel.app/api/v1/rooms/${room_id}`,
+          `http://localhost:4000/api/v1/rooms/${room_id}`,
           {
             method: "GET",
             headers: {

@@ -87,7 +87,7 @@ export default function ExplanationHero() {
             </ol>
             <Button
               as={Link}
-              to={token ? "/generate-list" : "/register-user"}
+              href={token ? "/generate-list" : "/register-user"}
               className="shadow-[0px_3px_0px_0px_#1a202c] mt-4"
               style={{ border: "2px solid #1a202c" }}
               variant="bordered"

@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseURL = "https://freely-mate.vercel.app/api/v1";
+const baseURL = "http://localhost:4000/api/v1";
 const headers = { "Content-Type": "application/json" };
 
 export const login = async (email, password) => {
