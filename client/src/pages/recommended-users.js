@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import LocationIcon from "../lib/icons/location.svg";
 import TelegramIcon from "../lib/icons/telegram.svg";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@nextui-org/react";
+import { Button, user } from "@nextui-org/react";
 import Filter from "../components/user-list/Filter";
 
 const RecommendedUsers = ({ title }) => {
@@ -69,15 +69,15 @@ const RecommendedUsers = ({ title }) => {
       if (title === "Listed Rooms") {
 
         const transformedUsers = res.data.map((item) => ({
-          full_name: item.user_id.full_name,
-          telegram_username: item.user_id.username,
-          location: `${item.city}, ${item.state}`,
-          gender_preference: item.looking_for,
+          full_name: item?.user_id?.full_name,
+          telegram_username: item?.user_id?.username,
+          location: `${item?.city}, ${item?.state}`,
+          gender_preference: item?.looking_for,
           distance: "5 km",
-          rent: item.price,
-          photo: item.user_id.profile_picture_url,
-          room_id: item._id,
-          userId:item.user_id._id,
+          rent: item?.price,
+          photo: item?.user_id?.profile_picture_url,
+          room_id: item?._id,
+          userId:item?.user_id?._id,
         }));
         setUsers(transformedUsers);
       } else if (title === "Listed Users") {
@@ -113,6 +113,8 @@ const RecommendedUsers = ({ title }) => {
       name?.includes(query) || location?.includes(query) || rent?.includes(query)
     );
   });
+
+  console.log(filteredUsers,users,"filteredUsers")
 
   return (
     <div className="items-center md:mx-12 px-5">
