@@ -72,6 +72,14 @@ const ProfileIcon = () => {
                 Your Profile
               </Link>
             </li>
+            <li>
+              <Link
+                to="/questions"
+                className="block px-4 py-2 hover:bg-red-100 "
+              >
+                Set Your Preferences
+              </Link>
+            </li>
           </ul>
           <div className="py-1">
             <button
