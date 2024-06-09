@@ -63,9 +63,11 @@ const RecommendedUsers = ({ title }) => {
       });
       
       const res = await response.json();
+      console.log(res);
 
       // Transform the data to match the expected user structure
       if (title === "Listed Rooms") {
+
         const transformedUsers = res.data.map((item) => ({
           full_name: item.user_id.full_name,
           telegram_username: item.user_id.username,
@@ -101,12 +103,13 @@ const RecommendedUsers = ({ title }) => {
   }, [filters]);
 
   const filteredUsers = users.filter((user) => {
-    const name = user.full_name?.toLowerCase();
-    const location = user.location?.toLowerCase();
-    const rent = user.rent?.toString();
+    console.log(user,"inside filter")
+    const name = user?.full_name?.toLowerCase();
+    const location = user?.location?.toLowerCase();
+    const rent = user?.rent?.toString();
     const query = searchQuery?.toLowerCase();
     return (
-      name.includes(query) || location.includes(query) || rent.includes(query)
+      name?.includes(query) || location?.includes(query) || rent?.includes(query)
     );
   });
 
@@ -117,9 +120,7 @@ const RecommendedUsers = ({ title }) => {
           {title}
         </h1>
         <div className="items-center flex flex-row justify-between w-full flex-wrap gap-3">
-        {title === "Listed Rooms" ? <Filter setFilters={setFilters} /> : <div></div>}
-
-          <div className="md:col-span-6">
+        <div className="md:col-span-6">
             <div className="relative w-full">
               <input
                 type="text"
@@ -132,6 +133,9 @@ const RecommendedUsers = ({ title }) => {
               />
             </div>
           </div>
+        {title === "Listed Rooms" ? <Filter setFilters={setFilters} /> : <div></div>}
+
+         
         </div>
         <div className="flex flex-row flex-wrap gap-4 items-center justify-between mb-5 md:mt-12 mt-6">
           {filteredUsers.map((user) => (

@@ -74,7 +74,7 @@ const Filter = ({ setFilters }) => {
         closeDropdown={closeOtherDropdowns}
         icon={CalendarIcon}
       /> */}
-      <button onClick={applyFilters} className="bg-red-400 text-white px-4 py-2 rounded-md">
+      <button onClick={applyFilters} className="bg-red-300 hover:bg-red-400 text-white px-2 py-1.5 rounded-md">
         Apply Filters
       </button>
     </div>
