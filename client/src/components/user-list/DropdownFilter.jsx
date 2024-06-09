@@ -33,19 +33,17 @@ const DropdownFilter = ({ label, type, options, selected, setSelected, isOpen, t
   }, [isOpen, closeDropdown]);
 
   return (
-    <div className="relative inline-block text-left">
-      <div ref={dropdownRef}>
-        <button
-          onClick={toggleDropdown}
-          className="inline-flex items-center justify-between w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-400"
-        >
-          <span className="flex items-center">
-            <Icon className="w-5 h-5 mr-2 text-red-300" />
-            {type === 'select' ? selected : label}
-          </span>
-          {isOpen ? <ChevronUpIcon className="w-4 h-4 ml-2 -mr-1 text-gray-500" /> : <ChevronDownIcon className="w-4 h-4 ml-2 -mr-1 text-gray-500" />}
-        </button>
-      </div>
+    <div className="relative inline-block text-left" ref={dropdownRef}>
+      <button
+        onClick={toggleDropdown}
+        className="inline-flex items-center justify-between w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-400"
+      >
+        <span className="flex items-center">
+          <Icon className="w-5 h-5 mr-2 text-red-300" />
+          {type === 'select' ? selected : label}
+        </span>
+        {isOpen ? <ChevronUpIcon className="w-4 h-4 ml-2 -mr-1 text-gray-500" /> : <ChevronDownIcon className="w-4 h-4 ml-2 -mr-1 text-gray-500" />}
+      </button>
 
       {isOpen && (
         <div className="origin-top-right absolute left-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10 px-2">

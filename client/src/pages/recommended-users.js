@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import LocationIcon from "../lib/icons/location.svg";
 import TelegramIcon from "../lib/icons/telegram.svg";
-
 import { useNavigate } from "react-router-dom";
 import { Button } from "@nextui-org/react";
 import Filter from "../components/user-list/Filter";
@@ -10,84 +9,84 @@ const RecommendedUsers = ({ title }) => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [users, setUsers] = useState([]);
+  const [filters, setFilters] = useState({
+    gender: 'Both',
+    location: 'Nearby',
+    rent: [],
+  });
   const randomMatch = () => Math.floor(Math.random() * 50) + 51;
-  // const users = [
-  //   {
-  //     firstname: "Lelah",
-  //     lastname: "Nicholson",
-  //     telegram_username: "@lelah",
-  //     location: "Troy, MI",
-  //     gender_preference: "female",
-  //     distance: "5 miles",
-  //     rent: 10000,
-  //     photo: "https://randomuser.me/api/portraits/women/79.jpg",
-  //   },
-  //   {
-  //     firstname: "Jane",
-  //     lastname: "Nicholson",
-  //     telegram_username: "@jane",
-  //     location: "Austin, TX",
-  //     gender_preference: "female",
-  //     distance: "10 miles",
-  //     rent: 12000,
-  //     photo: "https://randomuser.me/api/portraits/women/68.jpg",
-  //   },
-  //   {
-  //     firstname: "James",
-  //     lastname: "Webb",
-  //     telegram_username: "@james",
-  //     location: "Fort Worth, TX",
-  //     gender_preference: "male",
-  //     distance: "15 miles",
-  //     rent: 15000,
-  //     photo: "https://randomuser.me/api/portraits/men/32.jpg",
-  //   },
-  //   {
-  //     firstname: "Deborah",
-  //     lastname: "Smith",
-  //     telegram_username: "@deborah",
-  //     location: "Cincinnati, OH",
-  //     gender_preference: "female",
-  //     distance: "20 miles",
-  //     rent: 11000,
-  //     photo: "https://randomuser.me/api/portraits/women/19.jpg",
-  //   },
-  //   {
-  //     firstname: "Leo",
-  //     lastname: "Gold",
-  //     telegram_username: "@leo",
-  //     location: "Austin, TX",
-  //     gender_preference: "male",
-  //     distance: "25 miles",
-  //     rent: 13000,
-  //     photo: "https://randomuser.me/api/portraits/men/40.jpg",
-  //   },
-  // ];
+
+  const roomUrl = "http://localhost:4000/api/v1/rooms";
+  const userUrl = "http://localhost:4000/api/v1/user";
+
+  let baseUrl;
+
+  if (title === "Listed Rooms") {
+    baseUrl = roomUrl;
+  } else {
+    baseUrl = userUrl;
+  }
 
   const handleGetUsers = async () => {
     try {
-     const token = localStorage.getItem("token");
-     const response = await fetch("https://freely-mate.vercel.app/api/v1/rooms", {
-       method: "GET",
-       headers: {
-         "Content-Type": "application/json",
-         Authorization: `Bearer ${token}`,
-       },
-     });
+      const token = localStorage.getItem("token");
+      
+      // Construct the query parameters based on the filters
+      let queryParams = new URLSearchParams();
+
+      if (filters.gender !== 'Both') {
+        queryParams.append('gender', filters.gender.toUpperCase());
+      }
+
+      if(filters.rent.length > 0) {
+        queryParams.append('minRent', filters.rent[0]);
+        queryParams.append('maxRent', filters.rent[1]);
+
+      }
+
+      if(filters.location!=="Nearby") {
+        queryParams.append('city', filters.location)
+      }
+
+
+
+      const response = await fetch(`${baseUrl}?${queryParams.toString()}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      
       const res = await response.json();
+
       // Transform the data to match the expected user structure
-      const transformedUsers = res.data.map((item) => ({
-        full_name: item.user_id.full_name,
-        telegram_username: item.user_id.username,
-        location: `${item.city}, ${item.state}`,
-        gender_preference: item.looking_for,
-        distance: "5 km",
-        rent: item.price,
-        photo: item.user_id.profile_picture_url,
-        room_id: item._id,
-      }));
-      console.log(transformedUsers);
-      setUsers(transformedUsers);
+      if (title === "Listed Rooms") {
+        const transformedUsers = res.data.map((item) => ({
+          full_name: item.user_id.full_name,
+          telegram_username: item.user_id.username,
+          location: `${item.city}, ${item.state}`,
+          gender_preference: item.looking_for,
+          distance: "5 km",
+          rent: item.price,
+          photo: item.user_id.profile_picture_url,
+          room_id: item._id,
+        }));
+        setUsers(transformedUsers);
+      } else if (title === "Listed Users") {
+        const transformedUsers = res.data.map((item) => ({
+          full_name: item.full_name,
+          telegram_username: item.username,
+          location: `${item.city}, ${item.state}`,
+          gender_preference: item.gender_preference,
+          distance: "5 km",
+          rent: item.rent,
+          photo: item.profile_picture_url,
+          user_id: item._id,
+        }));
+        setUsers(transformedUsers);
+      }
+
     } catch (error) {
       console.log(error);
     }
@@ -95,7 +94,7 @@ const RecommendedUsers = ({ title }) => {
 
   useEffect(() => {
     handleGetUsers();
-  }, []);
+  }, [filters]);
 
   const filteredUsers = users.filter((user) => {
     const name = user.full_name?.toLowerCase();
@@ -109,15 +108,13 @@ const RecommendedUsers = ({ title }) => {
 
   return (
     <div className="items-center md:mx-12 px-5">
-      
-
-      <div className=" min-h-screen items-center mt-4 md:mx-4 gap-x-3">
-        <h1 className="capitalize text-left mb-5 text-2xl font-bold">
+      <div className="min-h-screen items-center mt-4 md:mx-4 gap-x-3">
+        <h1 className="capitalize text-left mb-5 text-2xl font-bold whitespace-nowrap">
           {title}
         </h1>
-        <div className="items-center  flex flex-row justify-between w-full flex-wrap gap-3">
-          <Filter />
-          <div className=" md:col-span-6">
+        <div className="items-center flex flex-row justify-between w-full flex-wrap gap-3">
+          <Filter setFilters={setFilters} />
+          <div className="md:col-span-6">
             <div className="relative w-full">
               <input
                 type="text"
@@ -131,7 +128,6 @@ const RecommendedUsers = ({ title }) => {
             </div>
           </div>
         </div>
-
         <div className="flex flex-row flex-wrap gap-4 items-center justify-between mb-5 md:mt-12 mt-6">
           {filteredUsers.map((user) => (
             <div
@@ -144,14 +140,14 @@ const RecommendedUsers = ({ title }) => {
             >
               <div className="flex flex-row sm:flex-col items-center justify-between">
                 <img
-                  src={user.photo}
+                  src={user.photo || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQekcrL1wdy13S8K9V7nqZ1UYhlAJzNsz1ilyH02U9dSw&s"}
                   alt={user.firstname}
                   className="rounded-full w-20 h-20 object-cover"
                 />
                 <div className="flex flex-col items-center justify-end gap-2">
-                  <span className="text-gray-500 text-sm">Match</span>
+                  <span className="text-gray-500 text-sm sm:translate-x-64 sm:-translate-y-1">Match</span>
                   <div
-                    className="w-12 h-12 m-auto grid place-items-center text-sm font-bold"
+                    className="w-12 h-12 m-auto grid place-items-center text-sm font-bold sm:translate-x-64 sm:-translate-y-1"
                     style={{
                       position: "relative",
                       borderRadius: "50%",
@@ -167,11 +163,9 @@ const RecommendedUsers = ({ title }) => {
                   </div>
                 </div>
               </div>
-
               <div className="mt-3 sm:mt-0 w-full">
                 <div className="flex flex-row items-center justify-between w-full gap-4">
-                  <h2 className="text-lg font-semibold">{user.full_name}</h2>
-
+                  <h2 className="text-lg font-semibold whitespace-nowrap">{user.full_name}</h2>
                   <div className="flex bg-red-300 w-fit-content px-2 sm:px-8 py-1 rounded-xl items-center gap-2">
                     <span className="text-[14px] font-semibold tracking-wider">
                       {user.telegram_username}
@@ -179,11 +173,10 @@ const RecommendedUsers = ({ title }) => {
                     <img
                       src={TelegramIcon}
                       alt="telegram"
-                      className="w-5 h-5 mr-1"
+                      className="w-5 h-5 mr-6"
                     />
                   </div>
                 </div>
-
                 <div className="flex flex-row items-center gap-2 mt-2">
                   <img src={LocationIcon} alt="map" className="w-5 h-5" />
                   <span className="text-gray-500 text-sm">{user.location}</span>
@@ -197,7 +190,6 @@ const RecommendedUsers = ({ title }) => {
                       ₹{user.rent || 5000}
                     </span>
                   </div>
-
                   <div className="flex flex-col">
                     <span className="block text-gray-500 text-[12px]">
                       Looking for
@@ -222,9 +214,10 @@ const RecommendedUsers = ({ title }) => {
                       border: "1px solid #1a202c",
                     }}
                     variant="bordered"
-                    className="shadow-[0px_3px_0px_0px_#1a202c] w-[40%] py-3 mt-3 uppercase"
+                    size="sm"
+                    className="uppercase font-semibold tracking-wider"
                   >
-                    View Details
+                    See Details
                   </Button>
                 </div>
               </div>
