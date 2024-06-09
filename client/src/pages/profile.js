@@ -9,7 +9,7 @@ const ProfilePage = () => {
   const handleCopyLink = () => {
     
     if (user && user._id) {
-      const referralLink = `https://roomzy-two.vercel.app/register-user?referralLink=${user._id}`;
+      const referralLink = `https://roomzy-nine.vercel.app/register-user?referralLink=${user._id}`;
       navigator.clipboard
         .writeText(referralLink)
         .then(() => {

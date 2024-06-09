@@ -88,7 +88,7 @@ const Profile = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await fetch(
-          `http://localhost:4000/api/v1/rooms/${room_id}`,
+          `https://roomzy-876.vercel.app/api/v1/rooms/${room_id}`,
           {
             method: "GET",
             headers: {

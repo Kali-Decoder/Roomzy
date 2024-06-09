@@ -107,7 +107,7 @@ const AddRoomAvail = () => {
         return;
       }
       const response = await fetch(
-        "http://localhost:4000/api/v1/rooms/create",
+        "https://roomzy-876.vercel.app/api/v1/rooms/create",
         {
           method: "POST",
           headers: {

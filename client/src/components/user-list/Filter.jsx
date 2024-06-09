@@ -54,7 +54,7 @@ const Filter = ({ setFilters }) => {
         closeDropdown={closeOtherDropdowns}
         icon={MapIcon}
       />
-      <DropdownFilter
+      {/* <DropdownFilter
         label="Rent"
         type="slider"
         selected={rent}
@@ -63,7 +63,7 @@ const Filter = ({ setFilters }) => {
         toggleDropdown={() => toggleDropdown('rent')}
         closeDropdown={closeOtherDropdowns}
         icon={CurrencyDollarIcon}
-      />
+      /> */}
       {/* <DropdownFilter
         label="Date"
         type="date"

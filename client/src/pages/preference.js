@@ -48,7 +48,7 @@ const Questionaries = () => {
   // };
   const addPreferences = async () => {
     let id = toast.loading('Updating preferences...');
-    const response = await fetch("http://localhost:4000/api/v1/user/preferences", {
+    const response = await fetch("https://roomzy-876.vercel.app/api/v1/user/preferences", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

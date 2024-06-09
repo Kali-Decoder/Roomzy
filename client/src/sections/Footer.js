@@ -1,5 +1,6 @@
 import { ReactComponent as Logo } from "../lib/logo2.svg";
-import MapIcon from '../lib/icons/map-pin-simple-area-bold.svg';
+import MapIcon from "../lib/icons/map-pin-simple-area-bold.svg";
+import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <footer key="1" className="bg-white py-6 mt-12">
@@ -21,29 +22,31 @@ export default function Footer() {
           <hr className="w-1/3 border-gray-200" />
         </div>
         <div className="flex justify-center space-x-4 mt-4">
-          <FacebookIcon className="text-gray-600" />
-          <InstagramIcon className="text-gray-600" />
-          <LinkedinIcon className="text-gray-600" />
+          <FacebookIcon className="text-gray-600 cursor-pointer" />
+          <InstagramIcon className="text-gray-600 cursor-pointer" />
+          <Link to={"https://www.linkedin.com/in/sneha-gupta-239aa1201/"}>
+            <LinkedinIcon className="text-gray-600 cursor-pointer" />
+          </Link>
         </div>
         <div className="flex flex-col md:flex-row justify-between items-center mt-4">
           <div className="flex space-x-4 text-sm text-gray-600">
-            <a className="hover:text-gray-800" href="#">
+            <a className="hover:text-gray-800" href="/client/node_modules/">
               Legal Rooms
             </a>
             <span>|</span>
-            <a className="hover:text-gray-800" href="#">
+            <a className="hover:text-gray-800" href="/client/node_modules/">
               Privacy Policy
             </a>
             <span>|</span>
-            <a className="hover:text-gray-800" href="#">
+            <a className="hover:text-gray-800" href="/client/node_modules/">
               Security of Information
             </a>
             {/* <span>|</span>
-            <a className="hover:text-gray-800" href="#">
+            <a className="hover:text-gray-800" href="/client/node_modules/">
               Website Accessibility
             </a>
             <span>|</span> */}
-            {/* <a className="hover:text-gray-800" href="#">
+            {/* <a className="hover:text-gray-800" href="/client/node_modules/">
               Manage Cookies
             </a> */}
           </div>
