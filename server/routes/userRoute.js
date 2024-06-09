@@ -1,5 +1,5 @@
 import express from "express";
-import { registerUser,loginUser,logoutUser,changePassword,getUserProfile,updateUserProfile, getUsernameByUserId, getRewardByUsername, getIdByUsername} from "../controllers/userController.js";
+import { registerUser,loginUser,logoutUser,changePassword,getUserProfile,updateUserProfile, getUsernameByUserId, getRewardByUsername, getIdByUsername, getAllUsers} from "../controllers/userController.js";
 import { setPreferences,getPreferences } from "../controllers/prefrenceController.js";
 import { auth } from "../middlewares/auth.js";
 
@@ -16,5 +16,6 @@ router.get('/preferences', auth, getPreferences);
 router.get('/:userId/username', auth, getUsernameByUserId);
 router.get('/:username/rewards',  getRewardByUsername);
 router.get('/:username/wallet', getIdByUsername);
+router.get('/',auth,getAllUsers)
 
 export default router;
