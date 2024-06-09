@@ -34,6 +34,8 @@ const RecommendedUsers = ({ title }) => {
       // Construct the query parameters based on the filters
       let queryParams = new URLSearchParams();
 
+      if(title === "Listed Rooms"){
+        
       if (filters.gender !== 'Both') {
         queryParams.append('gender', filters.gender.toUpperCase());
       }
@@ -47,6 +49,8 @@ const RecommendedUsers = ({ title }) => {
       if(filters.location!=="Nearby") {
         queryParams.append('city', filters.location)
       }
+      }
+
 
 
 
@@ -113,7 +117,8 @@ const RecommendedUsers = ({ title }) => {
           {title}
         </h1>
         <div className="items-center flex flex-row justify-between w-full flex-wrap gap-3">
-          <Filter setFilters={setFilters} />
+        {title === "Listed Rooms" ? <Filter setFilters={setFilters} /> : <div></div>}
+
           <div className="md:col-span-6">
             <div className="relative w-full">
               <input
