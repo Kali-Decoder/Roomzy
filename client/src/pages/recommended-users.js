@@ -16,8 +16,8 @@ const RecommendedUsers = ({ title }) => {
   });
   const randomMatch = () => Math.floor(Math.random() * 50) + 51;
 
-  const roomUrl = "http://localhost:4000/api/v1/rooms";
-  const userUrl = "http://localhost:4000/api/v1/user";
+  const roomUrl = "https://roomzy-876.vercel.app/api/v1/rooms";
+  const userUrl = "https://roomzy-876.vercel.app/api/v1/user";
 
   let baseUrl;
 

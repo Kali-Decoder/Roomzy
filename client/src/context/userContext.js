@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 export const UserContext = createContext();
 
-const base = "http://localhost:4000";
+const base = "https://roomzy-876.vercel.app";
 
 export const UserContextWrapper = ({ children }) => {
   const [isLogin, setIsLogin] = useState(false);
