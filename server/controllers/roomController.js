@@ -25,6 +25,8 @@ export const getAllRooms = async (req, res, next) => {
     const { gender, minRent, maxRent, city, availableFrom, availableTo } = req.query;
     let filter = {};
 
+    console.log(gender, minRent, maxRent, city, availableFrom, availableTo)
+
 
     if (gender) {
       const users = await User.find({ gender: gender });
@@ -35,8 +37,8 @@ export const getAllRooms = async (req, res, next) => {
 
     if (minRent || maxRent) {
       filter.price = {};
-      if (minRent) filter.price.$gte = minRent;
-      if (maxRent) filter.price.$lte = maxRent;
+      if (minRent) Number(filter.price).$gte = Number(minRent);
+      if (maxRent) Number(filter.price).$lte = Number(maxRent);
     }
 
     if (city) {
@@ -48,6 +50,11 @@ export const getAllRooms = async (req, res, next) => {
       filter.available_to = {};
       if (availableFrom) filter.available_from.$gte = new Date(availableFrom);
       if (availableTo) filter.available_to.$lte = new Date(availableTo);
+    }
+
+    if (availableTo !== undefined && availableTo !== "") {
+      filter.available_to = {};
+      filter.available_to.$lte = new Date(availableTo);
     }
 
     const rooms = await Room.find(filter).populate('user_id');
