@@ -18,7 +18,7 @@ export const registerUser = async (req, res, next) => {
   const referralUserId = req.query.referral;
   console.log(referralUserId);
   try {
-    const userExists = await User.findOne({ email });
+    const userExists = await User.findOne({ email,username });
 
     if (userExists) {
       return next(new ErrorHandler(400, "User already exists with this email"));
