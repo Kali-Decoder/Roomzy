@@ -49,8 +49,8 @@ const ProfileIcon = () => {
           className="z-10 absolute -translate-x-36 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
         >
           <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-            <div>{user.full_name}</div>
-            <div className="font-medium truncate">{user.email}</div>
+            <div>{user?.full_name || "Neeraj Choubisa"}</div>
+            <div className="font-medium truncate">{user?.email || "email"}</div>
           </div>
           <ul
             className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -79,7 +79,7 @@ const ProfileIcon = () => {
                 setIsLogin(false);
                 setIsOpen(false);
                 localStorage.removeItem('token');
-                navigate('/')
+                navigate('/login');
               }}
               className="block w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-red-100 "
             >

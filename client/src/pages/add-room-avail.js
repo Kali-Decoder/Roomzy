@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
-import TV from "../lib/img/amenities/tv.png";
+import TV from "../lib/img/amenities/TV.png";
 import Fridge from "../lib/img/amenities/fridge.png";
 import Kitchen from "../lib/img/amenities/kitchen.png";
 import Wifi from "../lib/img/amenities/wifi.png";

@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import DropdownFilter from './DropdownFilter';
 import { UserIcon, MapIcon, CurrencyDollarIcon, CalendarIcon } from '@heroicons/react/24/solid';
 
-const Filter = () => {
+const Filter = ({ setFilters }) => {
   const [gender, setGender] = useState('Both');
   const [location, setLocation] = useState('Nearby');
-  const [rent, setRent] = useState([0, 1000]);
-  const [date, setDate] = useState(new Date());
+  const [rent, setRent] = useState([]);
+  const [date, setDate] = useState();
   const [openDropdown, setOpenDropdown] = useState(null);
 
   const closeOtherDropdowns = () => {
@@ -21,8 +21,17 @@ const Filter = () => {
     }
   };
 
+  const applyFilters = () => {
+    setFilters({
+      gender,
+      location,
+      rent,
+      date,
+    });
+  };
+
   return (
-    <div className="flex gap-4  flex-wrap items-center">
+    <div className="flex gap-4 flex-wrap items-center">
       <DropdownFilter
         label="Gender"
         type="select"
@@ -31,18 +40,18 @@ const Filter = () => {
         setSelected={setGender}
         isOpen={openDropdown === 'gender'}
         toggleDropdown={() => toggleDropdown('gender')}
-        closeDropdown={() => setOpenDropdown(null)}
+        closeDropdown={closeOtherDropdowns}
         icon={UserIcon}
       />
       <DropdownFilter
         label="Location"
         type="select"
-        options={['Nearby', 'Delhi', 'Mumbai']}
+        options={['Nearby', 'Delhi', 'Mumbai','Delhi','Udaipur']}
         selected={location}
         setSelected={setLocation}
         isOpen={openDropdown === 'location'}
         toggleDropdown={() => toggleDropdown('location')}
-        closeDropdown={() => setOpenDropdown(null)}
+        closeDropdown={closeOtherDropdowns}
         icon={MapIcon}
       />
       <DropdownFilter
@@ -52,19 +61,22 @@ const Filter = () => {
         setSelected={setRent}
         isOpen={openDropdown === 'rent'}
         toggleDropdown={() => toggleDropdown('rent')}
-        closeDropdown={() => setOpenDropdown(null)}
+        closeDropdown={closeOtherDropdowns}
         icon={CurrencyDollarIcon}
       />
-      <DropdownFilter
+      {/* <DropdownFilter
         label="Date"
         type="date"
         selected={date}
         setSelected={setDate}
         isOpen={openDropdown === 'date'}
         toggleDropdown={() => toggleDropdown('date')}
-        closeDropdown={() => setOpenDropdown(null)}
+        closeDropdown={closeOtherDropdowns}
         icon={CalendarIcon}
-      />
+      /> */}
+      <button onClick={applyFilters} className="bg-red-400 text-white px-4 py-2 rounded-md">
+        Apply Filters
+      </button>
     </div>
   );
 };

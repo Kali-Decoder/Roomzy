@@ -47,7 +47,7 @@ export default function TopNavbar() {
         case "/":
           setActiveTab("home");
           break;
-        case "/generate-list":
+        case "/listed-rooms":
           setActiveTab("listings");
           break;
         case "/events":
@@ -157,7 +157,7 @@ export default function TopNavbar() {
           )}
           <li>
             <Link
-              to="/generate-list"
+              to="/listed-rooms"
               className={`text-sm ${
                 activeTab === "listings"
                   ? "font-bold text-red-300"
@@ -167,7 +167,7 @@ export default function TopNavbar() {
                 setActiveTab("listings");
               }}
             >
-              Listings
+              Listed Rooms
             </Link>
           </li>
           <li>
@@ -297,13 +297,13 @@ export default function TopNavbar() {
               </li>
               <li className="mb-1">
                 <Link
-                  to="/generate-list"
+                  to="/listed-rooms"
                   className="block p-4 text-sm font-semibold text-gray-400 hover:bg-red-50 hover:text-red-300 rounded"
                   onClick={() => {
                     setActiveTab("listings");
                   }}
                 >
-                  Listing
+                  Listed Rooms
                 </Link>
               </li>
               {token ? (
