@@ -39,3 +39,11 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   display: none;
 }
+
+.my-element::-webkit-scrollbar {
+  display: none;
+}
+.my-element {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}

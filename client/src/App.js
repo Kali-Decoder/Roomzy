@@ -15,6 +15,7 @@ import ListingDetails from "./pages/listing-details";
 import Bill from "./components/billing/Bill";
 import TopNavbar from "./components/navbar/topNavbar";
 import Protected from "./components/Protected";
+import SingleEvent from "./pages/single-page-event";
 
 
 export default function App() {
@@ -35,6 +36,7 @@ export default function App() {
         <Route path="/profile" element={<Protected Component={ProfilePage} />} />
         <Route path="/listing-details/:userId" element={<Protected Component={ListingDetails} />} />
         <Route path="/billing" element={<Protected Component={Bill}/>} />
+        <Route path="/single-page-event" element={<SingleEvent/>} />
       </Routes>
     </Router>
   );
