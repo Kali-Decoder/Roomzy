@@ -123,7 +123,10 @@ const SingleEvent = () => {
                 >
                   Rent a Room for a Roommate
                 </button>
-                <button onClick={()=>setShowFindRoomModal(true)} className="whitespace-nowrap rounded-md bg-gray-200 px-4 py-3 font-medium">
+                <button
+                  onClick={() => setShowFindRoomModal(true)}
+                  className="whitespace-nowrap rounded-md bg-gray-200 px-4 py-3 font-medium"
+                >
                   Find a Room with Roommate
                 </button>
               </div>
@@ -153,29 +156,11 @@ const SingleEvent = () => {
       </div>
 
       {showAddRoomModal && (
-        <div
-          onClick={() => setShowAddRoomModal(false)}
-          className=" fixed top-0 right-0 left-0 z-50 backdrop-blur-md justify-center items-center w-full md:inset-0"
-        >
-          <div className="p-4 w-full flex justify-center  ">
-            <div className="bg-transparent rounded-lg shadow ">
-              <AddRoomAvailModal setShowAddRoomModal={setShowAddRoomModal} />
-            </div>
-          </div>
-        </div>
+        <AddRoomAvailModal setShowAddRoomModal={setShowAddRoomModal} />
       )}
 
       {showFindRoomModal && (
-        <div
-      
-          className=" fixed top-0 right-0 left-0 z-50 backdrop-blur-md justify-center items-center w-full md:inset-0"
-        >
-          <div className="p-4 w-full flex justify-center  ">
-            <div className="bg-transparent rounded-lg shadow ">
-              <FindRoomModal setShowFindRoomModal={setShowFindRoomModal} />
-            </div>
-          </div>
-        </div>
+        <FindRoomModal setShowFindRoomModal={setShowFindRoomModal} />
       )}
     </>
   );

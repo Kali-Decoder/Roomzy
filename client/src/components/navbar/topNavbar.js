@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom"; // Import Lin
 import MapIcon from "../../lib/icons/map-pin-simple-area-bold.svg";
 import ProfileIcon from "./ProfileIcon";
 import { UserContext } from "../../context/userContext";
-
 export default function TopNavbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const [navbarSize, setNavbarSize] = React.useState(false);
