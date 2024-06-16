@@ -6,7 +6,7 @@ import PageNotFound from "./pages/notFound";
 import AddRoomAvail from "./components/AddRoomAvailModal";
 import "./output.css";
 import RegisterUser from "./pages/register-user";
-import Questionaries from "./pages/preference";
+import Questionaries from "./components/FindRoomModal";
 import RecommendedUsers from "./pages/recommended-users";
 import LoginUser from "./pages/login";
 import ListEvents from "./pages/list-events";
@@ -28,7 +28,6 @@ export default function App() {
         <Route path="*" element={<PageNotFound />} />
      
         <Route path="/register-user" element={<RegisterUser />} />
-        <Route path="/questions" element={<Protected Component={Questionaries} />} />
         <Route path="/generate-list" element={< Protected Component={RecommendedUsers} title={"Listed Users"} />} />  
         <Route path="/listed-rooms" element={<Protected Component={RecommendedUsers} title="Listed Rooms" />} />
         <Route path="/login" element={<LoginUser />} />  

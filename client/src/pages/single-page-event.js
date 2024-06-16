@@ -1,5 +1,6 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import AddRoomAvailModal from "../components/AddRoomAvailModal";
+import FindRoomModal from "../components/FindRoomModal";
 
 const SingleEvent = () => {
   const dynamicContent = `Get ready for an immersive two-week experience focused on Starknet, the Validity Rollup!
@@ -14,6 +15,7 @@ const SingleEvent = () => {
     .filter((paragraph) => paragraph.trim() !== "");
 
   const [showAddRoomModal, setShowAddRoomModal] = useState(false);
+  const [showFindRoomModal, setShowFindRoomModal] = useState(false);
   return (
     <>
       <div className="flex container mx-auto mt-4  ">
@@ -121,7 +123,7 @@ const SingleEvent = () => {
                 >
                   Rent a Room for a Roommate
                 </button>
-                <button className="whitespace-nowrap rounded-md bg-gray-200 px-4 py-3 font-medium">
+                <button onClick={()=>setShowFindRoomModal(true)} className="whitespace-nowrap rounded-md bg-gray-200 px-4 py-3 font-medium">
                   Find a Room with Roommate
                 </button>
               </div>
@@ -152,12 +154,25 @@ const SingleEvent = () => {
 
       {showAddRoomModal && (
         <div
-       
+          onClick={() => setShowAddRoomModal(false)}
           className=" fixed top-0 right-0 left-0 z-50 backdrop-blur-md justify-center items-center w-full md:inset-0"
         >
-          <div className="p-4 w-full flex justify-center h-[100vh]">
+          <div className="p-4 w-full flex justify-center  ">
             <div className="bg-transparent rounded-lg shadow ">
-              <AddRoomAvailModal setShowAddRoomModal={setShowAddRoomModal}/>
+              <AddRoomAvailModal setShowAddRoomModal={setShowAddRoomModal} />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showFindRoomModal && (
+        <div
+      
+          className=" fixed top-0 right-0 left-0 z-50 backdrop-blur-md justify-center items-center w-full md:inset-0"
+        >
+          <div className="p-4 w-full flex justify-center  ">
+            <div className="bg-transparent rounded-lg shadow ">
+              <FindRoomModal setShowFindRoomModal={setShowFindRoomModal} />
             </div>
           </div>
         </div>

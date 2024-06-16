@@ -147,10 +147,9 @@ const AddRoomAvailModal = ({setShowAddRoomModal}) => {
   return (
     <>
       <div id="review_div">
-        
         <div
           style={{ border: "3px solid #1a202c" }}
-          className="sm:w-[38rem] shadow-[0px_8px_0px_0px_#1a202c] border border-red-400  w-[95%] mx-auto my-4 overflow-hidden rounded-2xl bg-white sm:max-w-lg"
+          className="sm:w-[38rem] overflow-y-scroll h-[95vh]  my-element shadow-[0px_8px_0px_0px_#1a202c] border border-red-400  w-[95%] mx-auto rounded-2xl bg-white sm:max-w-lg"
         >
           <div className=" px-10 py-10 text-center text-black">
             <p className="uppercase text-2xl font-semibold">
@@ -497,6 +496,15 @@ const AddRoomAvailModal = ({setShowAddRoomModal}) => {
               onClick={handleSubmit}
             >
               Add Room
+            </Button>
+
+            <Button
+              style={{ border: "1px solid #1a202c" }}
+              variant="bordered"
+              className="shadow-[0px_3px_0px_0px_#1a202c] w-full"
+              onClick={()=>setShowAddRoomModal(false)}
+            >
+              Cancel
             </Button>
           </div>
         </div>

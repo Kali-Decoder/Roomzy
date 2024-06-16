@@ -32,7 +32,7 @@ import NonSmoker from "../lib/img/preferences/non_smoker.png";
   ];
 
 
-const Questionaries = () => {
+const FindRoomModal = ({setShowFindRoomModal}) => {
   const [selectedPreferences, setSelectedPreferences] = useState([]);
 
   const navigator = useNavigate();
@@ -106,7 +106,7 @@ const Questionaries = () => {
                         onChange={handleChange}
                       />
                       <label
-                        className="peer-checked:border-[#FE797A] peer-checked:border-8 border absolute top-0 h-full w-full cursor-pointer rounded-full"
+                        className="peer-checked:border-[#FE797A] peer-checked:border-3 border absolute top-0 h-full w-full cursor-pointer rounded-full"
                         htmlFor={`preferences${i}`}
                       >
                         {" "}
@@ -122,7 +122,8 @@ const Questionaries = () => {
               );
             })}
           </div>
-          <Button
+         <div className="flex gap-4">
+         <Button
             style={{
               border: "1px solid #1a202c",
               marginBottom: "20px",
@@ -134,10 +135,24 @@ const Questionaries = () => {
           >
             Add Preferences
           </Button>
+
+          <Button
+            style={{
+              border: "1px solid #1a202c",
+              marginBottom: "20px",
+              marginTop: "20px",
+            }}
+            variant="bordered"
+            onClick={()=>setShowFindRoomModal(false)}
+            className="shadow-[0px_3px_0px_0px_#1a202c] py-3  mt-12 uppercase"
+          >
+            Cancel
+          </Button>
+         </div>
         </section>
       </div>
     </>
   );
 };
 
-export default Questionaries;
+export default FindRoomModal;
