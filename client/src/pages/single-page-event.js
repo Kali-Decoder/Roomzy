@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useState} from "react";
+import AddRoomAvailModal from "../components/AddRoomAvailModal";
 
 const SingleEvent = () => {
   const dynamicContent = `Get ready for an immersive two-week experience focused on Starknet, the Validity Rollup!
@@ -11,6 +12,8 @@ const SingleEvent = () => {
   const paragraphs = dynamicContent
     .split("\n")
     .filter((paragraph) => paragraph.trim() !== "");
+
+  const [showAddRoomModal, setShowAddRoomModal] = useState(false);
   return (
     <>
       <div className="flex container mx-auto mt-4  ">
@@ -77,15 +80,17 @@ const SingleEvent = () => {
             </p>
             <div className="flex mt-3 gap-4">
               <div>
-                <div class="rounded-lg bg-gray-100 flex py-2 px-3">
-                  <span class="font-bold text-indigo-600 text-xl">25</span>
+                <div className="rounded-lg bg-gray-100 flex py-2 px-3">
+                  <span className="font-bold text-indigo-600 text-xl">25</span>
                 </div>
               </div>
-              <div class="flex-1">
-                <p class="text-green-500 text-md font-semibold">
+              <div className="flex-1">
+                <p className="text-green-500 text-md font-semibold">
                   Thursday, June 13
                 </p>
-                <p class="text-gray-400 text-sm">10:00 AM - Jun 26, 6:00 PM</p>
+                <p className="text-gray-400 text-sm">
+                  10:00 AM - Jun 26, 6:00 PM
+                </p>
               </div>
             </div>
             <div className="flex space-x-2 mt-4">
@@ -110,7 +115,10 @@ const SingleEvent = () => {
                 Nice to have you on 🏘️ Rooomzy{" "}
               </p>
               <div className="mt-8 flex  justify-center space-y-3 sm:flex-row sm:space-x-3 sm:space-y-0">
-                <button className="whitespace-nowrap rounded-md bg-red-400 px-4 py-3 font-medium text-white">
+                <button
+                  onClick={() => setShowAddRoomModal(true)}
+                  className="whitespace-nowrap rounded-md bg-red-400 px-4 py-3 font-medium text-white"
+                >
                   Rent a Room for a Roommate
                 </button>
                 <button className="whitespace-nowrap rounded-md bg-gray-200 px-4 py-3 font-medium">
@@ -141,6 +149,19 @@ const SingleEvent = () => {
           </div>
         </div>
       </div>
+
+      {showAddRoomModal && (
+        <div
+       
+          className=" fixed top-0 right-0 left-0 z-50 backdrop-blur-md justify-center items-center w-full md:inset-0"
+        >
+          <div className="p-4 w-full flex justify-center h-[100vh]">
+            <div className="bg-transparent rounded-lg shadow ">
+              <AddRoomAvailModal setShowAddRoomModal={setShowAddRoomModal}/>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

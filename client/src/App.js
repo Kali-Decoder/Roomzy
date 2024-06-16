@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainPage from "./pages/main";
 import Reviews from "./pages/reviews";
 import PageNotFound from "./pages/notFound";
-import AddRoomAvail from "./pages/add-room-avail";
+import AddRoomAvail from "./components/AddRoomAvailModal";
 import "./output.css";
 import RegisterUser from "./pages/register-user";
 import Questionaries from "./pages/preference";
@@ -26,7 +26,7 @@ export default function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/review" element={<Protected Component={Reviews} />} />
         <Route path="*" element={<PageNotFound />} />
-        <Route path="/add-room-avail" element={<Protected Component={AddRoomAvail} />} />
+     
         <Route path="/register-user" element={<RegisterUser />} />
         <Route path="/questions" element={<Protected Component={Questionaries} />} />
         <Route path="/generate-list" element={< Protected Component={RecommendedUsers} title={"Listed Users"} />} />  

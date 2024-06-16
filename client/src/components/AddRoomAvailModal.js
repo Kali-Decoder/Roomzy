@@ -12,7 +12,7 @@ import Parking from "../lib/img/amenities/parking.png";
 import Cook from "../lib/img/amenities/cook.png";
 import PowerBackup from "../lib/img/amenities/power_backup.png";
 
-const AddRoomAvail = () => {
+const AddRoomAvailModal = ({setShowAddRoomModal}) => {
   const navigate = useNavigate();
   const highlights = [
     "Attached washroom",
@@ -150,7 +150,7 @@ const AddRoomAvail = () => {
         
         <div
           style={{ border: "3px solid #1a202c" }}
-          className="sm:w-[38rem] shadow-[0px_8px_0px_0px_#1a202c]  w-[95%] mx-auto my-4 overflow-hidden rounded-2xl bg-white sm:max-w-lg"
+          className="sm:w-[38rem] shadow-[0px_8px_0px_0px_#1a202c] border border-red-400  w-[95%] mx-auto my-4 overflow-hidden rounded-2xl bg-white sm:max-w-lg"
         >
           <div className=" px-10 py-10 text-center text-black">
             <p className="uppercase text-2xl font-semibold">
@@ -507,4 +507,4 @@ const AddRoomAvail = () => {
   );
 };
 
-export default AddRoomAvail;
+export default AddRoomAvailModal;
