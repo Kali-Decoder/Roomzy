@@ -45,13 +45,13 @@ export default function Hero() {
           <Button
             as={Link}
             size="lg"
-            href="/add-room-avail"
+            href="/register-user"
      
             variant="bordered"
             className="shadow-[0px_3px_0px_0px_#1a202c] "
             style={{ border: "2px solid #1a202c" }}
           >
-            Add Your Room Now
+            Register Your Self
           </Button>
           <Button onClick={handleLearnMoreClick} size="lg" variant="flat">
             Learn more

@@ -4,7 +4,57 @@ import { useTonConnect } from "../hooks/useTonConnect";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import avatar1 from "../lib/img/avatar1.avif";
+import avatar2 from "../lib/img/avatar2.avif";
+import avatar3 from "../lib/img/avatar3.avif";
+import avatar4 from "../lib/img/avatar4.avif";
+import avatar5 from "../lib/img/avatar5.avif";
+import avatar6 from "../lib/img/avatar6.avif";
+import avatar7 from "../lib/img/avatar7.avif";
+import avatar8 from "../lib/img/avatar8.avif";
 const RegisterUser = () => {
+  const avatars = [
+    {
+      id: 1,
+      src: avatar1,
+      name: "Dope",
+    },
+    {
+      id: 2,
+      src: avatar2,
+      name: "Cool",
+    },
+    {
+      id: 3,
+      src: avatar3,
+      name: "Cute",
+    },
+    {
+      id: 4,
+      src: avatar4,
+      name: "Smart",
+    },
+    {
+      id: 5,
+      src: avatar5,
+      name: "Funny",
+    },
+    {
+      id: 6,
+      src: avatar6,
+      name: "Happy",
+    },
+    {
+      id: 7,
+      src: avatar7,
+      name: "Sad",
+    },
+    {
+      id: 8,
+      src: avatar8,
+      name: "Angry",
+    },
+  ];
   const navigate = useNavigate();
   const { connected, sender } = useTonConnect();
 
@@ -321,28 +371,28 @@ const RegisterUser = () => {
                 <p className="text-gray-600">Choose your Avatar</p>
 
                 <div className="grid sm:grid-cols-4 grid-cols-3 gap-4">
-                  {[1, 2, 4, 5, 6, 7, 8, 9].map((ele, i) => (
+                  {avatars?.map((ele, i) => (
                     <div
                       key={i}
                       className="flex flex-col justify-center items-center"
                     >
-                      <div className="relative overflow-hidden flex border rounded-full items-center justify-center w-20 h-20 bg-gray-50 px-4 py-3 font-medium text-gray-700">
+                      <div className="relative overflow-hidden  flex border rounded-full items-center justify-center w-20 h-20 bg-gray-50 px-4 py-3 font-medium text-gray-700">
                         <input
                           className="peer hidden"
                           type="radio"
                           name="avatar"
-                          id={`avatar${ele}`}
-                          value={ele}
-                          checked={formData.avatar == ele}
+                          id={`avatar${ele.id}`}
+                          value={ele.id}
+                          checked={formData.avatar == ele.id}
                           onChange={handleChange}
                         />
                         <label
                           className="peer-checked:border-[#FE797A] peer-checked:border-2 absolute top-0 h-full w-full cursor-pointer rounded-full border"
-                          htmlFor={`avatar${ele}`}
+                          htmlFor={`avatar${ele.id}`}
                         ></label>
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQekcrL1wdy13S8K9V7nqZ1UYhlAJzNsz1ilyH02U9dSw&s" />
+                        <img src={ele.src} className="w-full h-full" />
                       </div>
-                      <span className="font-bold text-xs mt-2">{ele}</span>
+                      <span className="font-bold text-xs mt-2">{ele.name}</span>
                     </div>
                   ))}
                 </div>
