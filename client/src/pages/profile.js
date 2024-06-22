@@ -24,13 +24,13 @@ const ProfilePage = () => {
   return (
     <>
       <div className="flex-col w-full items-center  flex mt-4">
-        <main className=" w-1/2  max-h-screen">
-          <div className="px-6 py-8">
+        <main className=" sm:w-1/2 w-1/1 max-h-screen">
+          <div className="px-6 py-8 ">
             <div className=" mx-auto">
               <div className="bg-white rounded-3xl p-8 mb-5">
                 <img
                   class="w-20 h-20 rounded-full"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSLU5_eUUGBfxfxRd4IquPiEwLbt4E_6RYMw&s"
+                  src="https://media.licdn.com/dms/image/D4D03AQEQJqL85iYI4A/profile-displayphoto-shrink_800_800/0/1716271708118?e=1724284800&v=beta&t=C9lshfPQZpIPyhVDXCNnLufd9Mc8TfrFK0dWHkmw1JY"
                   alt="Rounded avatar"
                 />
                 <h1 className="text-xl font-bold mt-4">Neeraj Choubisa</h1>
@@ -109,7 +109,7 @@ const ProfilePage = () => {
 
                 <hr className="my-6" />
 
-                <div className="grid grid-cols-2 gap-x-20">
+                <div className="grid sm:grid-cols-2 grid-cols-1 gap-x-20">
                   <div>
                     <h2 className="text-2xl font-bold mb-4">Stats</h2>
 
@@ -153,7 +153,7 @@ const ProfilePage = () => {
                     </div>
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold mb-4">
+                    <h2 className="text-2xl font-bold mb-4 mt-3 sm:mt-0">
                       Your Rooms History
                     </h2>
 
