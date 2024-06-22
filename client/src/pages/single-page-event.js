@@ -19,10 +19,10 @@ const SingleEvent = () => {
   return (
     <>
       <div className="flex container mx-auto mt-4  ">
-        <div className="mx-auto relative my-10 border rounded-lg shadow-inner flex gap-3 w-[100%] px-4 py-4">
-          <div className="mb-4 md:mr-6 md:mb-0 w-1/3  flex flex-col  items-center p-4">
+        <div className="mx-auto relative my-10 border rounded-lg shadow-inner flex flex-col lg:flex-row gap-3 w-[100%] px-4 py-4">
+          <div className="mb-4 md:mr-6 md:mb-0 sm:w-1/3 flex flex-col items-center p-4">
             <img
-              className="h-100  border-black border-3 rounded-lg object-cover w-120"
+              className="h-100  border-black border-3 rounded-lg object-cover sm:w-120 w-full"
               src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,quality=75,width=400,height=400/event-covers/03/13570a37-5331-4b99-a027-a9ac6a52aa5a"
               alt=""
             />
@@ -76,8 +76,8 @@ const SingleEvent = () => {
               </div>
             </div>
           </div>
-          <div className="w-2/3  px-2 h-[80vh] overflow-y-scroll my-element">
-            <p className="text-4xl  text-gray-700 mt-4 font-bold font-mona uppercase  ">
+          <div className="sm:w-2/3 sm:mx-auto px-2 h-[80vh] overflow-y-scroll my-element">
+            <p className="text-4xl  text-gray-700 mt-4 font-bold font-mona uppercase text-center ">
               StarkNet Buildstation
             </p>
             <div className="flex mt-3 gap-4">
@@ -116,16 +116,16 @@ const SingleEvent = () => {
                 Hey <span className="truncate font-medium ">Nikku.Dev</span>{" "}
                 Nice to have you on 🏘️ Rooomzy{" "}
               </p>
-              <div className="mt-8 flex  justify-center space-y-3 sm:flex-row sm:space-x-3 sm:space-y-0">
+              <div className="mt-8 flex flex-col justify-center space-y-3 md:flex-row sm:space-x-3 sm:space-y-0">
                 <button
                   onClick={() => setShowAddRoomModal(true)}
-                  className="whitespace-nowrap rounded-md bg-red-400 px-4 py-3 font-medium text-white"
+                  className="whitespace-nowrap rounded-md bg-red-400 px-4 py-3 md:font-medium font-small text-white"
                 >
                   Rent a Room for a Roommate
                 </button>
                 <button
                   onClick={() => setShowFindRoomModal(true)}
-                  className="whitespace-nowrap rounded-md bg-gray-200 px-4 py-3 font-medium"
+                  className="whitespace-nowrap rounded-md bg-gray-200 px-4 py-3 md:font-medium font-small"
                 >
                   Find a Room with Roommate
                 </button>
