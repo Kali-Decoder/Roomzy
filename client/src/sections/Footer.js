@@ -10,13 +10,13 @@ export default function Footer() {
           <hr className="w-1/3 border-gray-200" />
           {/* Container for words and logo */}
           <div className="flex">
-            <span
+          <span
               style={{ color: "black" }}
-              className="font-extrabold text-3xl text-black text-inherit align-middle"
+              className="font-bold text-3xl text-black text-inherit align-middle"
             >
-              Room
+            🆁🅾🅾🅼
               <img src={MapIcon} alt="map" className="inline-block ml-1" />
-              zy
+              🆉🆈
             </span>
           </div>
           <hr className="w-1/3 border-gray-200" />

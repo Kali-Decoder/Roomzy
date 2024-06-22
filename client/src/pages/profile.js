@@ -22,7 +22,7 @@ const ProfilePage = () => {
   };
   return (
     <>
-      <div className="flex-col w-full items-center  flex sm:mt-4 mt-0">
+      <div className="flex-col md:w-1/2 sm:w-1/2 w-full items-center flex sm:mt-4 mt-0">
         <main className=" sm:w-1/2 w-full max-h-screen">
           <div className="px-6 sm:py-8 ">
             <div className=" mx-auto">

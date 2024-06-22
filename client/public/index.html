@@ -8,6 +8,43 @@
     <meta name="theme-color" content="#000000" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+      .loader-container {
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  opacity: 1;
+  transition: all 500ms;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.rotatingLoader {
+  width: 5em;
+  height: 5em;
+  border-radius: 50%;
+  border-top: 4px dashed #4d77ff;
+  animation: round 700ms linear infinite;
+}
+@keyframes round {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}
     </style>
     <meta
       name="roomzy"
@@ -29,10 +66,16 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Roomzy</title>
+   
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <div className="loader-container bg-black" id="loader-container">
+      <div className="loader">
+        <div className="rotatingLoader"></div>
+      </div>
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -43,5 +86,18 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      var loader = document.getElementById("loader-container");
+      window.addEventListener("load", function () {
+        setTimeout(function () {
+          loader.style.opacity = "0";
+        }, 600);
+        setTimeout(function () {
+          loader.style.display = "none";
+        }, 900);
+      });
+    
+    </script>
+   
   </body>
 </html>

@@ -78,11 +78,11 @@ export default function TopNavbar() {
           <div className="flex mt-1">
             <span
               style={{ color: "black" }}
-              className="font-extrabold text-3xl text-black text-inherit align-middle"
+              className="font-bold text-3xl text-black text-inherit align-middle"
             >
-              Room
+            🆁🅾🅾🅼
               <img src={MapIcon} alt="map" className="inline-block ml-1" />
-              zy
+              🆉🆈
             </span>
           </div>
         </a>
