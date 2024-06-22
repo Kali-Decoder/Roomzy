@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import Preferences from "../components/ui/Preference";
 import { UserContext } from "../context/userContext";
 
 const ProfilePage = () => {
@@ -23,14 +22,14 @@ const ProfilePage = () => {
   };
   return (
     <>
-      <div className="flex-col w-full items-center  flex mt-4">
-        <main className=" sm:w-1/2 w-1/1 max-h-screen">
-          <div className="px-6 py-8 ">
+      <div className="flex-col w-full items-center  flex sm:mt-4 mt-0">
+        <main className=" sm:w-1/2 w-full max-h-screen">
+          <div className="px-6 sm:py-8 ">
             <div className=" mx-auto">
               <div className="bg-white rounded-3xl p-8 mb-5">
                 <img
                   class="w-20 h-20 rounded-full"
-                  src="https://media.licdn.com/dms/image/D4D03AQEQJqL85iYI4A/profile-displayphoto-shrink_800_800/0/1716271708118?e=1724284800&v=beta&t=C9lshfPQZpIPyhVDXCNnLufd9Mc8TfrFK0dWHkmw1JY"
+                  src="https://avatars.githubusercontent.com/u/82640789?v=4"
                   alt="Rounded avatar"
                 />
                 <h1 className="text-xl font-bold mt-4">Neeraj Choubisa</h1>
@@ -111,7 +110,7 @@ const ProfilePage = () => {
 
                 <div className="grid sm:grid-cols-2 grid-cols-1 gap-x-20">
                   <div>
-                    <h2 className="text-2xl font-bold mb-4">Stats</h2>
+                    <h2 className="sm:text-2xl text-xl uppercase font-bold mb-4">Stats</h2>
 
                     <div className="grid grid-cols-2 gap-4">
                       <div className="col-span-2">
@@ -123,9 +122,10 @@ const ProfilePage = () => {
                           <div className="mt-5">
                             <button
                               type="button"
+                              onClick={handleCopyLink}
                               className="inline-flex items-center justify-center py-2 px-3 rounded-xl bg-white text-gray-800 hover:text-green-500 text-sm font-semibold transition"
                             >
-                              Start tracking
+                              Refferal Link
                             </button>
                           </div>
                         </div>
@@ -145,15 +145,19 @@ const ProfilePage = () => {
                       <div className="col-span-2">
                         <div className="p-4 bg-purple-100 rounded-xl text-gray-800">
                           <div className="font-bold text-xl leading-none">
-                            Your daily plan
+                            Preferences
                           </div>
-                          <div className="mt-2">5 of 8 completed</div>
+                         <div className="flex-wrap flex gap-y-3 mt-4"> {user?.preferences?.preferences?.map((preference, index) => {
+                            return (
+                              <span class="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-purple-400 border border-purple-400">{preference}</span>
+                            );
+                          })}</div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div>
-                    <h2 className="text-2xl font-bold mb-4 mt-3 sm:mt-0">
+                    <h2 className="sm:text-2xl text-xl uppercase font-bold mb-4 mt-8 sm:mt-0">
                       Your Rooms History
                     </h2>
 
