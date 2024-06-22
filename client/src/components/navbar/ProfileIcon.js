@@ -39,7 +39,7 @@ const ProfileIcon = () => {
         id="avatarButton"
         type="button"
         className="w-10 h-10 rounded-full cursor-pointer"
-        src="https://tailwindcss.com/img/erin-lindford.jpg"
+        src={user?.profile_picture_url || "https://tailwindcss.com/img/erin-lindford.jpg"}
         alt="User dropdown"
         onClick={handleToggle}
       />
