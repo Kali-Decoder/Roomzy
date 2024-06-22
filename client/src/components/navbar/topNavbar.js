@@ -1,4 +1,4 @@
-import React, { useEffect,useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom"; // Import Link and useLocation from react-router-dom
 import MapIcon from "../../lib/icons/map-pin-simple-area-bold.svg";
 import ProfileIcon from "./ProfileIcon";
@@ -14,7 +14,6 @@ export default function TopNavbar() {
 
   const navigate = useNavigate();
   const [token, setToken] = React.useState(null);
-
 
   useEffect(() => {
     let tokenHere = localStorage.getItem("token");
@@ -87,21 +86,6 @@ export default function TopNavbar() {
             </span>
           </div>
         </a>
-        <div className="lg:hidden">
-          <button
-            onClick={() => setNavbarOpen(true)}
-            className="navbar-burger flex items-center text-red-400 p-3"
-          >
-            <svg
-              className="block h-4 w-4 fill-current"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Mobile menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-            </svg>
-          </button>
-        </div>
         <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
           <li>
             <Link
@@ -186,40 +170,74 @@ export default function TopNavbar() {
           </li>
         </ul>
         {token ? (
-          <ProfileIcon />
-        ) : (
-          <div  className="flex flex-row items-center gap-2">
-            <Link
-              className={` ${
-                navbarSize ? "hidden" : "block"
-              } lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-xl transition duration-200`}
-              to="/login"
-            >
-              Sign In
-            </Link>
-
-            <Link
-              className={` ${
-                navbarSize ? "hidden" : "block"
-              }   py-2 px-6 bg-red-400 hover:bg-red-400 text-sm text-white font-bold rounded-xl transition duration-200`}
-              to="/register-user"
-            >
-              Sign Up
-            </Link>
+          <div className="flex flex-row gap-[5px]">
+            <div className="lg:hidden">
+              <button
+                onClick={() => setNavbarOpen(true)}
+                className="navbar-burger flex items-center text-red-400 p-3"
+              >
+                <svg
+                  className="block h-4 w-4 fill-current"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>Mobile menu</title>
+                  <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+                </svg>
+              </button>
+            </div>
+            <ProfileIcon />
           </div>
+        ) : (
+          <>
+            <div className="lg:hidden">
+              <button
+                onClick={() => setNavbarOpen(true)}
+                className="navbar-burger flex items-center text-red-400 p-3"
+              >
+                <svg
+                  className="block h-4 w-4 fill-current"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>Mobile menu</title>
+                  <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+                </svg>
+              </button>
+            </div>
+            <div className="flex flex-row items-center gap-2">
+              <Link
+                className={` ${
+                  navbarSize ? "hidden" : "block"
+                } lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold rounded-xl transition duration-200`}
+                to="/login"
+              >
+                Sign In
+              </Link>
+
+              <Link
+                className={` ${
+                  navbarSize ? "hidden" : "block"
+                }   py-2 px-6 bg-red-400 hover:bg-red-400 text-sm text-white font-bold rounded-xl transition duration-200`}
+                to="/register-user"
+              >
+                Sign Up
+              </Link>
+            </div>
+          </>
         )}
       </nav>
       <div
         className={`navbar-menu relative z-50 ${navbarOpen ? "" : "hidden"}`}
       >
         <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
-        <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
-          <div className="flex items-center mb-8">
+        <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/7 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+          <div className="flex items-center mb-6">
             <Link className="mr-auto text-3xl font-bold leading-none" to="#">
               <div className="flex mt-1">
                 <span
                   style={{ color: "black" }}
-                  className="font-extrabold text-3xl text-black text-inherit align-middle"
+                  className="font-extrabold text-2xl text-black text-inherit align-middle"
                 >
                   Room
                   <img src={MapIcon} alt="map" className="inline-block ml-1" />
@@ -235,8 +253,7 @@ export default function TopNavbar() {
                 className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
-                viewBox="0 
-0 24 24"
+                viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 <path
@@ -305,9 +322,7 @@ export default function TopNavbar() {
                   Listed Rooms
                 </Link>
               </li>
-              {token ? (
-                <ProfileIcon />
-              ) : (
+              {token ? null : (
                 <div className="flex flex-row items-center gap-2">
                   <li className="mb-1">
                     <Link

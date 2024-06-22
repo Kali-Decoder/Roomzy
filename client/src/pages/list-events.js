@@ -195,7 +195,7 @@ const ListEvents = () => {
         </div>
         <button
           className="flex mt-8 items-center space-x-2 rounded-md border-2 border-blue-500 px-4 py-2 font-medium text-blue-600 transition hover:bg-blue-500 hover:text-white"
-          onClick={() => navigate("/generate-list")}
+          onClick={() => navigate("/single-page-event")}
         >
           <span> Find Perfect Roomate </span>
           <span>
