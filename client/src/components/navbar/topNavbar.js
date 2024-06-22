@@ -231,7 +231,7 @@ export default function TopNavbar() {
         className={`navbar-menu relative z-50 ${navbarOpen ? "" : "hidden"}`}
       >
         <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
-        <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-4/7 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+        <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/7 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
           <div className="flex items-center mb-6">
             <Link className="mr-auto text-3xl font-bold leading-none" to="#">
               <div className="flex mt-1">
