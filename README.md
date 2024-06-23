@@ -74,13 +74,11 @@ Roomzy offers several commands through its Telegram bot interface:
 - **/profile**: Displays user history and rewards earned through the platform.
 - **/review @username Your review**: Allows users to add reviews for other users, enhancing community trust and transparency.
 
-
-![alt text](<WhatsApp Image 2024-06-23 at 23.28.11_b40b7046.jpg>)
+![WhatsApp Image 2024-06-23 at 23 28 11_b40b7046](https://github.com/Kali-Decoder/Roomzy/assets/82640582/0f65c11b-7d8b-4ecf-9dde-28f2c2498d9b)
 
 ## Demo Video
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TUvSg5e2S84" frameborder="0" allowfullscreen></iframe>
-
+[Watch Roomzy Video](https://www.youtube.com/watch?v=TUvSg5e2S84)
 
 ## Built With
 
