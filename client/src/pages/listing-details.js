@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@nextui-org/react";
 import TickIcon from "../lib/icons/tick.svg";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { TonConnectButton } from "@tonconnect/ui-react";
 import { useTonConnectUI } from "@tonconnect/ui-react";
 
@@ -140,7 +140,7 @@ const Profile = () => {
                     variant="bordered"
                     className="shadow-[0px_3px_0px_0px_#1a202c] w-32 py-3 uppercase"
                   >
-                    Chat
+                   <Link to={`https://t.me/${details?.user_id?.username}`}>Chat</Link>
                   </Button>
                 </div>
                 <TonConnectButton />
