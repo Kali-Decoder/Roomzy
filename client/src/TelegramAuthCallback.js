@@ -6,7 +6,7 @@ import { urlStrToAuthDataMap } from "@telegram-auth/server/utils";
 const TelegramAuthCallback = () => {
   const [searchParams] = useSearchParams();
   const validator = new AuthDataValidator({
-    botToken: process.env.REACT_APP_BOT_TOKEN,
+    botToken: "7039254736:AAFtZOqu6VUmjjrGcGXOWv6prJYXz3d_r3s",
   });
 
   useEffect(() => {
