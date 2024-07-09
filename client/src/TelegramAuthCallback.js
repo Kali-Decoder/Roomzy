@@ -9,7 +9,8 @@ const TelegramAuthCallback = () => {
   useEffect(() => {
     const getHashParams = () => {
       // Extract the hash from the URL
-      const hash = window.location.hash.substring(1);
+      const hash = window.location.hash.split('#')[2];
+      console.log(hash)
       console.log("Full Hash String:", hash); // Log the full hash string
 
       // Parse the hash string into parameters
