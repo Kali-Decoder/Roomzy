@@ -1,27 +1,25 @@
-import crypto from "crypto";
+import CryptoJS from "crypto-js";
 
 export const verifyTelegramHash = (data, botToken) => {
   const { id, first_name, last_name, username, auth_date, hash } = data;
-  const secret = crypto
-    .createHmac("sha256", botToken)
-    .update(auth_date + "\n" + id)
-    .digest();
-  const hmac = crypto
-    .createHmac("sha256", secret)
-    .update(
-      auth_date +
-        "\n" +
-        id +
-        "\n" +
-        first_name +
-        "\n" +
-        last_name +
-        "\n" +
-        username +
-        "\n" +
-        botToken
-    )
-    .digest("hex");
+  const secret = CryptoJS.HmacSHA256(
+    auth_date + "\n" + id,
+    botToken
+  ).toString();
+  const hmac = CryptoJS.HmacSHA256(
+    auth_date +
+      "\n" +
+      id +
+      "\n" +
+      first_name +
+      "\n" +
+      last_name +
+      "\n" +
+      username +
+      "\n" +
+      botToken,
+    secret
+  ).toString(CryptoJS.enc.Hex);
 
   return hmac === hash;
 };
