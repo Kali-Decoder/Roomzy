@@ -16,7 +16,7 @@ import Bill from "./components/billing/Bill";
 import TopNavbar from "./components/navbar/topNavbar";
 import Protected from "./components/Protected";
 import SingleEvent from "./pages/single-page-event";
-// import TelegramAuthCallback from "./TelegramAuthCallback";
+import TelegramAuthCallback from "./TelegramAuthCallback";
 
 
 export default function App() {
@@ -36,7 +36,7 @@ export default function App() {
         <Route path="/listing-details/:userId" element={<Protected Component={ListingDetails} />} />
         <Route path="/billing" element={<Protected Component={Bill}/>} />
         <Route path="/single-page-event" element={<SingleEvent />} />
-        {/* <Route path="/telegram-auth-callback" element={<TelegramAuthCallback />} /> */}
+        <Route path="/telegram-auth-callback" element={<TelegramAuthCallback />} />
       </Routes>
     </Router>
   );
