@@ -11,7 +11,7 @@ const app = express();
 
 const JWT_SECRET = "rakeshjareensnehaahensneerajheskar";
 
-app.post("/api/generate-token", (req, res) => {
+app.post("/api/v1/generate-token", (req, res) => {
   const { id, first_name, last_name, username } = req.body;
 
   // Create the payload with user info

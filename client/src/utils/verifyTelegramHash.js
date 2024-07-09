@@ -19,7 +19,10 @@ export const verifyTelegramHash = (data, botToken) => {
       "\n" +
       botToken,
     secret
-  ).toString(CryptoJS.enc.Hex);
+    ).toString(CryptoJS.enc.Hex);
+    
+    console.log("HMAC", hmac);
+    console.log("HASH", hash);
 
   return hmac === hash;
 };

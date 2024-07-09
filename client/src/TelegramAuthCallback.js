@@ -24,7 +24,7 @@ const TelegramAuthCallback = () => {
 
     if (verifyTelegramHash(data, botToken)) {
       // Call your backend API to generate a token
-      fetch("http://localhost:8000/api/generate-token", {
+      fetch("https://roomzy-876.vercel.app/api/v1/generate-token", {
         // Make sure to use the correct URL
         method: "POST",
         headers: {
