@@ -10,6 +10,8 @@ const TelegramAuthCallback = () => {
     const getHashParams = () => {
       const hash = window.location.hash.substring(1);
       const params = new URLSearchParams(hash);
+      console.log(params);
+      console.log(params.get("hash"));
       return {
         id: params.get("id"),
         first_name: params.get("first_name"),
