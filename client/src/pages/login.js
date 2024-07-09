@@ -1,23 +1,24 @@
 import React, { useState } from "react";
-
 import { Button } from "@nextui-org/react";
 import { login } from "../api/apiRequest";
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
+import toast from "react-hot-toast";
+import { LoginButton } from "@telegram-auth/react";
+
 const LoginUser = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    let id= toast.loading('Logging in...');
+    let id = toast.loading("Logging in...");
     const response = await login(email, password);
     if (response.success) {
       console.log("Login successful");
-      toast.success('Login successful', {id});
-      navigate('/events')
+      toast.success("Login successful", { id });
+      navigate("/events");
     } else {
-      toast.error('Login failed', {id});
+      toast.error("Login failed", { id });
       console.log("Login failed:", response.error);
     }
   };
@@ -25,7 +26,6 @@ const LoginUser = () => {
   return (
     <>
       <div id="login_div">
-        
         <div
           style={{ border: "3px solid #1a202c" }}
           className="sm:w-[38rem] shadow-[0px_8px_0px_0px_#1a202c] w-[95%] mx-auto my-4 overflow-hidden rounded-2xl bg-white sm:max-w-lg"
@@ -74,6 +74,17 @@ const LoginUser = () => {
             >
               Login
             </Button>
+
+            <div className="text-center my-4">or</div>
+
+            <LoginButton
+              botUsername={process.env.REACT_APP_BOT_USERNAME}
+              authCallbackUrl="/telegram-auth-callback"
+              buttonSize="large"
+              cornerRadius={5}
+              showAvatar={true}
+              lang="en"
+            />
           </div>
         </div>
       </div>
