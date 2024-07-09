@@ -11,7 +11,8 @@ const TelegramAuthCallback = () => {
 
   useEffect(() => {
     const validateAuthData = async () => {
-      const data = urlStrToAuthDataMap(searchParams.toString());
+        const data = urlStrToAuthDataMap(searchParams.toString());
+        
 
       try {
         const user = await validator.validate(data);

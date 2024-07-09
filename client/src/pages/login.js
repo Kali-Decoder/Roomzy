@@ -79,7 +79,7 @@ const LoginUser = () => {
 
             <LoginButton
               botUsername="kamra_of_rakesh_bot"
-              authCallbackUrl="/telegram-auth-callback"
+              authCallbackUrl="https://roomzy-nine.vercel.app/telegram-auth-callback"
               buttonSize="large"
               cornerRadius={5}
               showAvatar={true}
