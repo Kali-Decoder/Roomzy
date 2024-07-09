@@ -78,7 +78,7 @@ const LoginUser = () => {
             <div className="text-center my-4">or</div>
 
             <LoginButton
-              botUsername={process.env.REACT_APP_BOT_USERNAME}
+              botUsername="kamra_of_rakesh_bot"
               authCallbackUrl="/telegram-auth-callback"
               buttonSize="large"
               cornerRadius={5}
