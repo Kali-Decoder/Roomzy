@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { verifyTelegramHash } from "../utils/verifyTelegramHash";
+import { verifyTelegramHash } from "./utils/verifyTelegramHash";
 
 const TelegramAuthCallback = () => {
   const navigate = useNavigate();
